@@ -46,10 +46,8 @@ C["media"] = {
 	-- colors
 	["bordercolor"] = { .1, .1, .1, 1 }, -- border color of tukui panels
 	["backdropcolor"] = { 0, 0, 0, 1 }, -- background color of tukui panels
-	["altbordercolor"] = { .4, .4, .4 }, -- alternative border color, mainly for unitframes text panels.
 	--["bordercolor"] = C.general.bordercolor or { .1, .1, .1, 1 }, -- border color of tukui panels
 	--["backdropcolor"] = C.general.backdropcolor or { 0, 0, 0, 1 }, -- background color of tukui panels
-	--["altbordercolor"] = C.unitframes.altbordercolor or { .4, .4, .4 }, -- alternative border color, mainly for unitframes text panels.
 	["gradienthealth"] = {                                    -- health gradient color if unicolor is true. Credits to Hydra
 		1.0, 0.3, 0.3, -- R, G, B (low HP)
 		0.6, 0.3, 0.3, -- R, G, B (medium HP)
