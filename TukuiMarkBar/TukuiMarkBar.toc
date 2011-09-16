@@ -1,0 +1,9 @@
+## Interface: 40200
+## Title: |cffC495DDTukui|r Mark Bar
+## Notes: HIDE YO KIDS, HIDE YO MARKS!
+## Author: Smelly
+## Version: 3.0
+## RequiredDeps: Tukui
+
+MarkBarLocal.lua
+core.lua

@@ -1,0 +1,23 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/">	
+	<Script file="commands.lua"/>
+	<Script file="invite.lua"/>
+	<Script file="damage.lua"/>
+	<Script file="altpowerbar.lua"/>
+	<Script file="threatbar.lua"/>
+	
+	<Script file="autoquest.lua"/>
+	
+	<Script file="combo\combo.lua"/>	
+	<Script file="combo\deathknight.lua"/>	
+	<Script file="combo\druid.lua"/>	
+	<Script file="combo\hunter.lua"/>	
+	<Script file="combo\mage.lua"/>	
+	<Script file="combo\paladin.lua"/>	
+	<Script file="combo\priest.lua"/>	
+	<Script file="combo\shaman.lua"/>	
+	<Script file="combo\warlock.lua"/>	
+	<Script file="combo\warrior.lua"/>
+	
+	<Script file="raidutility.lua"/>
+	<Script file="micromenu.lua"/>
+</Ui>

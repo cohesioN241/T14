@@ -1,0 +1,25 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/">	
+	<Script file="panels\panels.lua"/>
+
+	<Include file="blizzard\load_blizzard.xml"/>
+	<Include file="maps\load_maps.xml"/>
+	<Include file="actionbars\load_actionbars.xml"/>
+	<Include file="chat\load_chat.xml"/>
+	<Include file="datatext\load_datatext.xml"/>
+	<Include file="loot\load_loot.xml"/>
+	<Include file="misc\load_misc.xml"/>
+	<Include file="unitframes\load_unitframes.xml"/>
+
+	<Script file="bags\bags.lua"/>
+	<Include file="buffs\template.xml"/>
+	<Script file="buffs\buffs.lua"/>
+	<Script file="tooltip\tooltip.lua"/>
+	<Script file="tooltip\tooltipids.lua"/>
+	<Script file="nameplates\nameplates.lua"/>
+	<Script file="notifications\buffreminder.lua"/>
+	<Script file="skins\blizzardframes.lua"/>
+	<Script file="skins\chatbubbles.lua"/>	
+	
+	<Script file="tooltip\tooltipilvl.lua"/>
+	<Include file="skins\load_skins.xml"/>
+</Ui>
