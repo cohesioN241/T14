@@ -762,7 +762,7 @@ do
 		button:SetSize(continuex, continuey)
 		button:SetPoint("TOP", quit, "BOTTOM", 0, -13)
 
-		button.text = T.SetFontString(button, C.media.font, 12)
+		button.text = T.SetFontString(button, C.media.caith, 12)
 		button.text:SetPoint("CENTER", 0, 0)
 		button.text:SetText("Tukui")
 
