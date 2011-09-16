@@ -17,7 +17,6 @@
 	<Script file="tooltip\tooltip.lua"/>
 	<Script file="tooltip\tooltipids.lua"/>
 	<Script file="nameplates\nameplates.lua"/>
-	<Script file="notifications\buffreminder.lua"/>
 	<Script file="skins\blizzardframes.lua"/>
 	<Script file="skins\chatbubbles.lua"/>	
 	

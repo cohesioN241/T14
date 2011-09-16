@@ -228,11 +228,6 @@ C["invite"] = {
 	["autoaccept"] = true,                              -- auto-accept invite from guildmate and friends.
 }
 
-C["buffreminder"] = {
-	["enable"] = true,                                  -- this is now the new innerfire warning script for all armor/aspect class.
-	["sound"] = false,                                   -- enable warning sound notification for reminder.
-}
-
 C["combo"] = {											-- credit to Dajova
 	["display"] = true,									-- enable numeric combo display
 	-- combo setup

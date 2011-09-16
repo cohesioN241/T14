@@ -19,7 +19,6 @@ local ALLOWED_GROUPS = {
 	["merchant"]=1,
 	["error"]=1,
 	["invite"]=1,
-	["buffreminder"]=1,
 	["combo"]=1,
 	["others"]=1,
 }
@@ -193,11 +192,6 @@ local function Local(o)
 	-- others
 	if o == "TukuiConfigUIothers" then o = TukuiL.option_others end
 	if o == "TukuiConfigUIotherspvpautorelease" then o = TukuiL.option_others_bg end
-	
-	-- reminder
-	if o == "TukuiConfigUIbuffreminder" then o = TukuiL.option_reminder end
-	if o == "TukuiConfigUIbuffreminderenable" then o = TukuiL.option_reminder_enable end
-	if o == "TukuiConfigUIbuffremindersound" then o = TukuiL.option_reminder_sound end
 	
 	-- error
 	if o == "TukuiConfigUIerror" then o = TukuiL.option_error end
