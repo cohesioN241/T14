@@ -7,9 +7,9 @@ if not C["actionbar"].enable == true then return end
 
 local TukuiShift = CreateFrame("Frame", "TukuiShiftBar", UIParent)
 if T.myclass ~= "SHAMAN" and C["actionbar"].vertical_shapeshift then
-	TukuiShift:Width(T.stancebuttonsize + 10)
+	TukuiShift:Width(T.buttonsize + 10)
 else
-	TukuiShift:Height(T.stancebuttonsize + 10)
+	TukuiShift:Height(T.buttonsize + 10)
 end
 TukuiShift:Point("BOTTOMLEFT",  TukuiChatLeft, "BOTTOMRIGHT", 16, 0)
 -- TukuiShift:SetFrameLevel(20)
@@ -33,9 +33,9 @@ TukuiShift:SetScript("OnEvent", function(self, event, ...)
 		if forms > 0 then
 			if InCombatLockdown() then return end
 			if C["actionbar"].vertical_shapeshift then
-				TukuiShift:Height((T.stancebuttonsize * forms) + (T.buttonspacing * forms + 1) + 5)
+				TukuiShift:Height((T.buttonsize * forms) + (T.buttonspacing * forms + 1) + 5)
 			else
-				TukuiShift:Width((T.stancebuttonsize * forms) + (T.buttonspacing * forms + 1) + 5)
+				TukuiShift:Width((T.buttonsize * forms) + (T.buttonspacing * forms + 1) + 5)
 			end
 			TukuiShift:Show()
 		else

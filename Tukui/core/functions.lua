@@ -1,5 +1,12 @@
-local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
+local T, C, L = unpack(select(2, ...))
 
+-- Define action bar default buttons size
+T.buttonsize = T.Scale(C.actionbar.buttonsize)
+T.buttonspacing = T.Scale(C.actionbar.buttonspacing)
+T.petbuttonsize = T.Scale(C.actionbar.petbuttonsize)
+T.petbuttonspacing = T.Scale(C.actionbar.buttonspacing)
+
+-- return if we are currently playing on PTR.
 T.IsPTRVersion = function()
 	if T.toc > 40200 then
 		return true
@@ -16,6 +23,7 @@ T.SetFontString = function(parent, fontName, fontHeight, fontStyle)
 	return fs
 end
 
+-- set the position of the datatext tooltip
 T.DataTextTooltipAnchor = function(self)
 	local panel = self:GetParent()
 	local anchor = "ANCHOR_TOP"
@@ -51,6 +59,7 @@ T.DataTextTooltipAnchor = function(self)
 	return anchor, panel, xoff, yoff
 end
 
+-- used to update shift action bar buttons
 T.TukuiShiftBarUpdate = function()
 	local numForms = GetNumShapeshiftForms()
 	local texture, name, isActive, isCastable
@@ -89,6 +98,7 @@ T.TukuiShiftBarUpdate = function()
 	end
 end
 
+-- used to update pet bar buttons
 T.TukuiPetBarUpdate = function(self, event)
 	local petActionButton, petActionIcon, petAutoCastableTexture, petAutoCastShine
 	for i=1, NUM_PET_ACTION_SLOTS, 1 do
@@ -167,17 +177,13 @@ T.TukuiPetBarUpdate = function(self, event)
 	end
 end
 
--- Define action bar buttons size
-T.buttonsize = T.Scale(C.actionbar.buttonsize)
-T.petbuttonsize = T.Scale(C.actionbar.petbuttonsize)
-T.stancebuttonsize = T.Scale(C.actionbar.stancebuttonsize)
-T.buttonspacing = T.Scale(C.actionbar.buttonspacing)
-
+-- remove decimal from a number
 T.Round = function(number, decimals)
 	if not decimals then decimals = 0 end
     return (("%%.%df"):format(decimals)):format(number)
 end
 
+-- want hex color instead of RGB?
 T.RGBToHex = function(r, g, b)
 	r = r <= 1 and r >= 0 and r or 0
 	g = g <= 1 and g >= 0 and g or 0
@@ -185,23 +191,23 @@ T.RGBToHex = function(r, g, b)
 	return string.format("|cff%02x%02x%02x", r*255, g*255, b*255)
 end
 
---Check Player's Role
-local RoleUpdater = CreateFrame("Frame")
-local function CheckRole(self, event, unit)
-	local tree = GetPrimaryTalentTree()
-	local resilience
-	local resilperc = GetCombatRatingBonus(COMBAT_RATING_RESILIENCE_PLAYER_DAMAGE_TAKEN)
-	if resilperc > GetDodgeChance() and resilperc > GetParryChance() then
-		resilience = true
-	else
-		resilience = false
+--Return short value of a number
+T.ShortValue = function(v)
+	if v >= 1e6 then
+		return ("%.1fm"):format(v / 1e6):gsub("%.?0+([km])$", "%1")
+	elseif v >= 1e3 or v <= -1e3 then
+		return ("%.1fk"):format(v / 1e3):gsub("%.?0+([km])$", "%1")
+ 	else
+		return v
 	end
-	if ((T.myclass == "PALADIN" and tree == 2) or
-	(T.myclass == "WARRIOR" and tree == 3) or
-	(T.myclass == "DEATHKNIGHT" and tree == 1)) and
-	resilience == false or
-	(T.myclass == "DRUID" and tree == 2 and GetBonusBarOffset() == 3) then
-		T.Role = "Tank"
+end
+
+-- used to return role
+T.CheckRole = function()
+	local role
+	local tree = GetPrimaryTalentTree()
+	if ((T.myclass == "PALADIN" and tree == 2) or (T.myclass == "WARRIOR" and tree == 3) or (T.myclass == "DEATHKNIGHT" and tree == 1)) or (T.myclass == "DRUID" and tree == 2 and GetBonusBarOffset() == 3) then
+		role = "Tank"
 	else
 		local playerint = select(2, UnitStat("player", 4))
 		local playeragi	= select(2, UnitStat("player", 2))
@@ -209,37 +215,19 @@ local function CheckRole(self, event, unit)
 		local playerap = base + posBuff + negBuff;
 
 		if (((playerap > playerint) or (playeragi > playerint)) and not (T.myclass == "SHAMAN" and tree ~= 1 and tree ~= 3) and not (UnitBuff("player", GetSpellInfo(24858)) or UnitBuff("player", GetSpellInfo(65139)))) or T.myclass == "ROGUE" or T.myclass == "HUNTER" or (T.myclass == "SHAMAN" and tree == 2) then
-			T.Role = "Melee"
+			role = "Melee"
 		else
-			T.Role = "Caster"
+			role = "Caster"
 		end
 	end
-end
-RoleUpdater:RegisterEvent("PLAYER_ENTERING_WORLD")
-RoleUpdater:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
-RoleUpdater:RegisterEvent("PLAYER_TALENT_UPDATE")
-RoleUpdater:RegisterEvent("CHARACTER_POINTS_CHANGED")
-RoleUpdater:RegisterEvent("UNIT_INVENTORY_CHANGED")
-RoleUpdater:RegisterEvent("UPDATE_BONUS_ACTIONBAR")
-RoleUpdater:SetScript("OnEvent", CheckRole)
-CheckRole()
-
---Return short value of a number
-function T.ShortValue(v)
-	if v >= 1e6 then
-		return ("%.1fm"):format(v / 1e6):gsub("%.?0+([km])$", "%1")
-	elseif v >= 1e3 or v <= -1e3 then
-		return ("%.1fk"):format(v / 1e3):gsub("%.?0+([km])$", "%1")
-	else
-		return v
-	end
+	return role
 end
 
 --Add time before calling a function
 --Usage T.Delay(seconds, functionToCall, ...)
 local waitTable = {}
 local waitFrame
-function T.Delay(delay, func, ...)
+T.Delay = function(delay, func, ...)
 	if(type(delay)~="number" or type(func)~="function") then
 		return false
 	end

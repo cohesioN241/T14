@@ -1,6 +1,5 @@
 ﻿<Ui xmlns="http://www.blizzard.com/wow/ui/">	
 	<Script file="dev\reloadui.lua"/>
-	<Script file="dev\commands.lua"/>
 	
 	<Script file="core\init.lua"/>
 	<Script file="core\constants.lua"/>	
@@ -10,18 +9,18 @@
 	<Script file="media\media.lua"/>
 			
 	<Include file="config\load_config.xml"/>
-	<Script file="core\configui.lua"/>
+	<Script file="core\config.lua"/>
 
-	<Script file="core\uiscale.lua"/>
+	<Script file="core\video.lua"/>
 	<Script file="core\deprecated.lua"/>
 	<Script file="core\api.lua"/>
 	<Script file="core\functions.lua"/>
-	<Script file="core\launch.lua"/>
-	<Script file="core\disable.lua"/>
-	<Script file="core\clientfonts.lua"/>
+	<Script file="core\fonts.lua"/>
+	<Script file="core\protection.lua"/>
+	<Script file="core\install.lua"/>
 
 	<Include file="modules\load_modules.xml"/>
 	
-	<Script file="core\movers.lua"/>
+	<Script file="core\move.lua"/>
 	<Script file="dev\test.lua"/>
 </Ui>

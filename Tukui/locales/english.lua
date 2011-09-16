@@ -1,5 +1,4 @@
--- localization for enUS and enGB
-local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
+local T, C, L = unpack(select(2, ...))
 
 L.chat_BATTLEGROUND_GET = "[BG]"
 L.chat_BATTLEGROUND_LEADER_GET = "[BG]"
