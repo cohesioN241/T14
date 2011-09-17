@@ -28,6 +28,7 @@ if T.client == "deDE" then
 	
 	L.disband = "Gruppe wird aufgelöst."  
  
+	L.datatext_notalents ="No Talents"
 	L.datatext_download = "Download: "
 	L.datatext_bandwidth = "Bandbreite: "
 	L.datatext_guild = "Gilde"

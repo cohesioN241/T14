@@ -30,6 +30,7 @@ if T.client == "zhCN" then
 
 	L.disband = "正在解散团队"
 
+	L.datatext_notalents ="No Talents"
 	L.datatext_download = "下载： "
 	L.datatext_bandwidth = "带宽："
 	L.datatext_guild = "公会"

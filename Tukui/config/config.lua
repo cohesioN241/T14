@@ -179,6 +179,9 @@ C["datatext"] = {
 		
 	["statblock"] = true,								-- display statblock in topleft corner
 	["maptime"] = true,									-- show display clock below minimap
+	
+	["talent"] = 0,                                     -- show talent
+	["calltoarms"] = 0,                                 -- show dungeon and call to arms
 }
 
 C["chat"] = {
