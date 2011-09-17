@@ -225,6 +225,15 @@ function Stuffing:BagFrameSlotNew (slot, p)
 		slot = slot - 4
 		tpl = "BankItemButtonBagTemplate"
 		ret.frame = CreateFrame("CheckButton", "StuffingBBag" .. slot, p, tpl)
+		ret.frame:StyleButton()
+		ret.frame:SetTemplate("Default")
+		local icon = _G["StuffingBBag" .. slot .. "IconTexture"]
+		local border = _G["StuffingBBag" .. slot .. "NormalTexture"]
+		icon:SetTexCoord(.08, .92, .08, .92)
+		icon:ClearAllPoints()
+		icon:Point("TOPLEFT", 2, -2)
+		icon:Point("BOTTOMRIGHT", -2, 2)
+		border:SetTexture("")
 		ret.frame:SetID(slot + 4)
 		ret.frame:SetNormalTexture("")
 		ret.frame:SetPushedTexture("")
@@ -242,6 +251,15 @@ function Stuffing:BagFrameSlotNew (slot, p)
 	else
 		tpl = "BagSlotButtonTemplate"
 		ret.frame = CreateFrame("CheckButton", "StuffingFBag" .. slot .. "Slot", p, tpl)
+		ret.frame:StyleButton()
+		ret.frame:SetTemplate("Default")
+		local icon = _G["StuffingFBag" .. slot .. "SlotIconTexture"]
+		local border = _G["StuffingFBag" .. slot .. "SlotNormalTexture"]
+		icon:SetTexCoord(.08, .92, .08, .92)
+		icon:ClearAllPoints()
+		icon:Point("TOPLEFT", 2, -2)
+		icon:Point("BOTTOMRIGHT", -2, 2)
+		border:SetTexture("")
 		ret.frame:SetNormalTexture("")
 		ret.frame:SetPushedTexture("")
 		ret.frame:SetHeight(30)
@@ -649,27 +667,22 @@ function Stuffing:Layout(lb)
 	end
 
 	f:SetClampedToScreen(1)
+	f:SetTemplate("Default")
 
 	-- bag frame stuff
 	local fb = f.bags_frame
 	if bag_bars == 1 then
-		fb:SetClampedToScreen(1)
+		fb:SetTemplate("Default")
 
 		local bsize = 24
 		if lb then bsize = 23.3 end
 
-		local w = 2 * 12
-		w = w + ((#bs - 1) * bsize)
-		w = w + (12 * (#bs - 2))
-
-		fb:Height(2 * 12 + bsize)
-		fb:Width(w)
+		fb:Height(bsize + 16)
+		fb:Width(f:GetWidth())
 		fb:Show()
 	else
 		fb:Hide()
 	end
-
-
 
 	local idx = 0
 	for _, v in ipairs(bs) do
@@ -698,7 +711,7 @@ function Stuffing:Layout(lb)
 			b.iconTex = iconTex
 
 			b.frame:SetTemplate("Default")
-			b.frame.overlay:Kill()
+			--b.frame.overlay:Kill()	-- fix bug
 			b.frame:SetBackdropColor(.05, .05, .05)
 			b.frame:StyleButton()
 
@@ -766,7 +779,7 @@ function Stuffing:Layout(lb)
 				b.frame:SetNormalTexture("")
 				b.frame:Show()
 				b.frame:SetTemplate("Default")
-				b.frame.overlay:Kill()
+				--b.frame.overlay:Kill()	-- fix bug
 				b.frame:SetBackdropColor(.05, .05, .05)
 				b.frame:StyleButton()
 				
