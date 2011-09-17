@@ -305,7 +305,7 @@ local function Shared(self, unit)
 				ufbg:Point("BOTTOMRIGHT", power, 2, -2)
 				local DruidManaUpdate = CreateFrame("Frame")
 				DruidManaUpdate:SetScript("OnUpdate", function() T.UpdateDruidManaText(self) end)
-				local DruidManaText = T.SetFontString(health, font1, 12)
+				local DruidManaText = T.SetFontString(health, unpack(T.Fonts.uPower.setfont))
 				DruidManaText:SetTextColor(1, 0.49, 0.04)
 				self.DruidManaText = DruidManaText
 
