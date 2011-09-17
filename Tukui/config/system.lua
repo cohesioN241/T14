@@ -112,7 +112,10 @@ T.Fonts = {
 	raidAssist = Font(pixel, nil, "MONOCHROMEOUTLINE", nil, nil, nil),
 	
 	-- addons
-	addons = Font(caith, 12, "OUTLINE", nil, nil, nil)
+	addons = Font(caith, 12, nil, nil, nil, nil),
+	
+	-- config
+	cFont = Font(caith, 12, nil, nil, nil, nil)
 }
 
 T.Textures = {
