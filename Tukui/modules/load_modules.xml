@@ -17,8 +17,6 @@
 	<Script file="tooltip\tooltip.lua"/>
 	<Script file="tooltip\tooltipids.lua"/>
 	<Script file="nameplates\nameplates.lua"/>
-	<Script file="skins\blizzardframes.lua"/>
-	<Script file="skins\chatbubbles.lua"/>	
 	
 	<Script file="tooltip\tooltipilvl.lua"/>
 	<Include file="skins\load_skins.xml"/>

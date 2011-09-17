@@ -13,6 +13,8 @@ RaidUtilityPanel:CreatePanel("Default", T.Scale(170), panel_height, "TOP", UIPar
 local r,g,b,_ = C["media"].backdropcolor
 RaidUtilityPanel:SetBackdropColor(r,g,b,0.6)
 RaidUtilityPanel:CreateShadow("Default")
+RaidUtilityPanel:SetFrameLevel(10)
+RaidUtilityPanel:SetFrameStrata("Medium")
 
 --Check if We are Raid Leader or Raid Officer
 local function CheckRaidStatus()
