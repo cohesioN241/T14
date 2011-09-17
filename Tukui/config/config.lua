@@ -127,6 +127,7 @@ C["actionbar"] = {
 	["vertical_rightbars"] = false,						-- vertical or horizontal right bars
 	["vertical_shapeshift"] = true,						-- (NOT FOR SHAMANS/TOTEMS) vertical or horizontal shapeshift bar
 	["mainswap"] = false,								-- swap bottom actionbars (main bar on top)
+	["ownshdbar"] = false,                              -- use a complete new stance bar for shadow dance (rogue only)
 }
 
 C["bags"] = {
