@@ -22,7 +22,7 @@ end
 
 local function Shared(self, unit)
 	-- set our own colors
-	self.colors = T.oUF_colors
+	self.colors = T.UnitColor
 	
 	-- register click
 	self:RegisterForClicks("AnyUp")
@@ -291,10 +291,11 @@ local function Shared(self, unit)
 			if T.myclass == "DRUID" then
 				ufbg:Point("TOPLEFT", health, -2, 10)
 				ufbg:Point("BOTTOMRIGHT", power, 2, -2)
-				CreateFrame("Frame"):SetScript("OnUpdate", function() T.UpdateDruidMana(self) end)
-				local DruidMana = T.SetFontString(health, unpack(T.Fonts.uPower.setfont))
-				DruidMana:SetTextColor(1, 0.49, 0.04)
-				self.DruidManaText = DruidMana
+				local DruidManaUpdate = CreateFrame("Frame")
+				DruidManaUpdate:SetScript("OnUpdate", function() T.UpdateDruidManaText(self) end)
+				local DruidManaText = T.SetFontString(health, unpack(T.Fonts.uPower.setfont))
+				DruidManaText:SetTextColor(1, 0.49, 0.04)
+				self.DruidManaText = DruidManaText
 				
 				local DruidManaBackground = CreateFrame("Frame", nil, self)
 				DruidManaBackground:Point("BOTTOMLEFT", self, "TOPLEFT", 0, 3)
