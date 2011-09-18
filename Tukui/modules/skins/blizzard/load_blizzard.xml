@@ -6,10 +6,10 @@
 	<Script file="barbershop.lua"/>
 	<Script file="bgscore.lua"/>
 	<Script file="binding.lua"/>
+	<Script file="bubbles.lua"/>
 	<Script file="calendar.lua"/>
 	<Script file="character.lua"/>
 	<Script file="chat.lua"/>
-	<Script file="chatbubbles.lua"/>
 	<Script file="colorpicker.lua"/>
 	<Script file="debugtools.lua"/>
 	<Script file="dressup.lua"/>
