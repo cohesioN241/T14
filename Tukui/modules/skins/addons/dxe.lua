@@ -43,8 +43,8 @@ skin:SetScript("OnEvent", function(self, event, addon)
 	end
 
 	-- Hook Health frames (Skin & spacing)
-	DXT.LayoutHealthWatchers_ = DXT.LayoutHealthWatchers
-	DXT.LayoutHealthWatchers = function(self)
+	DXE.LayoutHealthWatchers_ = DXE.LayoutHealthWatchers
+	DXE.LayoutHealthWatchers = function(self)
 		for i,hw in ipairs(self.HW) do
 			if hw:IsShown() then
 				hw:SetTemplate("Transparent")
@@ -54,8 +54,8 @@ skin:SetScript("OnEvent", function(self, event, addon)
 		end
 	end
 
-	DXT.Alerts.RefreshBars_ = DXT.Alerts.RefreshBars
-	DXT.Alerts.RefreshBars = function(self)
+	DXE.Alerts.RefreshBars_ = DXE.Alerts.RefreshBars
+	DXE.Alerts.RefreshBars = function(self)
 		if self.refreshing then return end
 		self.refreshing = true
 		self:RefreshBars_()
@@ -70,16 +70,16 @@ skin:SetScript("OnEvent", function(self, event, addon)
 		self.refreshing = false
 	end
 
-	DXT.Alerts.Simple_ = DXT.Alerts.Simple
-	DXT.Alerts.Simple = function(self,...)
+	DXE.Alerts.Simple_ = DXE.Alerts.Simple
+	DXE.Alerts.Simple = function(self,...)
 		self:Simple_(...)
 		self:RefreshBars()
 	end
 
 	-- Force some updates
 	DXE:LayoutHealthWatchers()
-	DXT.Alerts:RefreshBars()
-	--DXT.Pane.border:Kill()
+	DXE.Alerts:RefreshBars()
+	--DXE.Pane.border:Kill()
 
 	--Force some default profile options
 	if not DXEDB then DXEDB = {} end
