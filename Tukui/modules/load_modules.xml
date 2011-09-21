@@ -13,12 +13,10 @@
 	<Script file="bags\bags.lua"/>
 	<Include file="buffs\template.xml"/>
 	<Script file="buffs\buffs.lua"/>
+	<Script file="buffs\header.lua"/>
 	<Script file="tooltip\tooltip.lua"/>
 	<Script file="tooltip\tooltipids.lua"/>
 	<Script file="nameplates\nameplates.lua"/>
-	<Script file="notifications\buffreminder.lua"/>
-	<Script file="skins\blizzardframes.lua"/>
-	<Script file="skins\chatbubbles.lua"/>	
 	
 	<Script file="tooltip\tooltipilvl.lua"/>
 	<Include file="skins\load_skins.xml"/>

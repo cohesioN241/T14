@@ -363,11 +363,11 @@ local BorderColor = function(self)
 
 	if player then
 		local class = select(2, UnitClass(unit))
-		local c = T.Colors.class[class]
+		local c = T.UnitColor.class[class]
 		r, g, b = c[1], c[2], c[3]
 		healthBar:SetStatusBarColor(r, g, b)
 	elseif reaction then
-		local c = T.Colors.reaction[reaction]
+		local c = T.UnitColor.reaction[reaction]
 		r, g, b = c[1], c[2], c[3]
 		healthBar:SetStatusBarColor(r, g, b)
 	else

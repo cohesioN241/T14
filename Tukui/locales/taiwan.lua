@@ -1,4 +1,4 @@
-local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
+local T, C, L = unpack(select(2, ...))
 
 if T.client == "zhTW" then
 
@@ -28,6 +28,7 @@ if T.client == "zhTW" then
 	
 	L.disband = "æ­£åœ¨è§£æ•£éšŠä¼"
 
+	L.datatext_notalents ="No Talents"
 	L.datatext_download = "ä¸‹è¼‰: "
 	L.datatext_bandwidth = "å¯¬é »: "
 	L.datatext_guild = "å…¬æœƒ"

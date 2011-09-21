@@ -6,7 +6,11 @@ local noop = T.dummy
 local floor = math.floor
 local class = T.myclass
 local texture = C.media.blank
-local backdropr, backdropg, backdropb, backdropa, borderr, borderg, borderb = 0, 0, 0, 1, 0, 0, 0
+local backdropr, backdropg, backdropb = unpack(C["media"].backdropcolor)
+local borderr, borderg, borderb = unpack(C["media"].bordercolor)
+local backdropa = 1
+local bordera = 1
+local template
 
 -- pixel perfect script of custom ui Scale.
 local mult = 768/string.match(GetCVar("gxResolution"), "%d+x(%d+)")/C["general"].uiscale
@@ -43,15 +47,6 @@ end
 local function CreateShadow(f, t)
 	if f.shadow then return end -- we seriously don't want to create shadow 2 times in a row on the same frame.
 	
-	borderr, borderg, borderb = 0, 0, 0
-	backdropr, backdropg, backdropb = 0, 0, 0
-	
-	if t == "ClassColor" then
-		local c = T.oUF_colors.class[class]
-		borderr, borderg, borderb = c[1], c[2], c[3]
-		backdropr, backdropg, backdropb = unpack(C["media"].backdropcolor)
-	end
-	
 	local shadow = CreateFrame("Frame",  f:GetName() and f:GetName() .. "Shadow" or nil, f)
 	shadow:SetFrameLevel(1)
 	shadow:SetFrameStrata(f:GetFrameStrata())
@@ -63,8 +58,8 @@ local function CreateShadow(f, t)
 		edgeFile = C["media"].glowTex, edgeSize = T.Scale(3),
 		insets = {left = T.Scale(5), right = T.Scale(5), top = T.Scale(5), bottom = T.Scale(5)},
 	})
-	shadow:SetBackdropColor(backdropr, backdropg, backdropb, 0)
-	shadow:SetBackdropBorderColor(borderr, borderg, borderb, 0.9)
+	shadow:SetBackdropColor(0, 0, 0, 0)
+	shadow:SetBackdropBorderColor(0, 0, 0, 0.8)
 	f.shadow = shadow
 end
 
@@ -111,26 +106,28 @@ local function CreateBorder(f, i, o)
 	end
 end
 
-local function GetTemplate(t)
-	if t == "ClassColor" then
-		local c = T.oUF_colors.class[class]
+-- function to update color when it doesn't match template we try to apply
+local function UpdateColor(t)
+	if t == template then return end
+
+	if t == "ClassColor" or t == "Class Color" or t == "Class" then
+		local c = T.UnitColor.class[class]
 		borderr, borderg, borderb = c[1], c[2], c[3]
 		backdropr, backdropg, backdropb = unpack(C["media"].backdropcolor)
+		backdropa = 1
 	else
+		local balpha = 1
+		if t == "Transparent" then balpha = 0.8 end
 		borderr, borderg, borderb = unpack(C["media"].bordercolor)
 		backdropr, backdropg, backdropb = unpack(C["media"].backdropcolor)
+		backdropa = balpha
 	end
+	
+	template = t
 end
 
 local function CreatePanel(f, t, w, h, a1, p, a2, x, y)
-	GetTemplate(t)
-	
-	if t == "Transparent" then
-		f:CreateBorder(true, true)
-		backdropa = .7
-	else 
-		backdropa = 1
-	end
+	UpdateColor(t)
 	
 	f:Width(w)
 	f:Height(h)
@@ -173,9 +170,13 @@ local function CreateBackdrop(f, t, tex)
 end
 
 local function SetTemplate(f, t, tex)
-	if tex then texture = C.media.normTex else texture = C.media.blank end
+	if tex then
+		texture = C.media.normTex
+	else
+		texture = C.media.blank
+	end
 	
-	GetTemplate(t)
+	UpdateColor(t)
 
 	f:SetBackdrop({
 		bgFile = texture, 
@@ -183,15 +184,6 @@ local function SetTemplate(f, t, tex)
 		tile = false, tileSize = 0, edgeSize = mult, 
 		insets = { left = -mult, right = -mult, top = -mult, bottom = -mult}
 	})
-	
-	if t == "Transparent" then
-		backdropa = .7
-	elseif t == "Skinning" then
-		backdropa = 1
-	else
-		backdropa = 1
-		f:CreateOverlay()
-	end
 	
 	f:SetBackdropColor(backdropr, backdropg, backdropb, backdropa)
 	f:SetBackdropBorderColor(borderr, borderg, borderb)

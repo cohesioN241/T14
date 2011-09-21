@@ -115,8 +115,8 @@ if Options.datatext == false then
 	CloseButton:SetScript("OnEnter", ButtonEnter)
 	CloseButton:SetScript("OnLeave", ButtonLeave)
 	
-	local CloseButtonText = T.SetFontString(CloseButton, C["media"].font, 20, "OUTLINE")
-	CloseButtonText:SetText("x")
+	local CloseButtonText = T.SetFontString(CloseButton, C["media"].pixel_font, 12, "MONOCHROME")
+	CloseButtonText:SetText("X")
 	CloseButtonText:SetPoint("CENTER", CloseButton, "CENTER")
 
 	ToggleButton:SetScript("OnMouseDown", function()

@@ -1,4 +1,4 @@
-local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
+local T, C, L = unpack(select(2, ...))
 
 if T.client == "esES" then
 
@@ -28,6 +28,7 @@ if T.client == "esES" then
 	
 	L.disband = "Deshacer grupo."
  
+	L.datatext_notalents ="No Talents"
 	L.datatext_download = "Descarga: "
 	L.datatext_bandwidth = "Ancho de banda: "
 	L.datatext_guild = "Hermandad"

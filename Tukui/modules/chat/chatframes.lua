@@ -65,7 +65,12 @@ local function StyleChat(frame)
 
 	tabtext:SetFont(unpack(T.Fonts.cTab.setfont))
 	if id < 11 then
-		tabtext:SetTextColor(unpack(C["datatext"].color))
+		if C["datatext"].classcolor then
+			local c = RAID_CLASS_COLORS[select(2, UnitClass("player"))]
+			tabtext:SetTextColor(c.r, c.g, c.b)
+		else
+			tabtext:SetTextColor(unpack(C["datatext"].color))
+		end
 		tabtext.SetTextColor = T.dummy
 	end
 	tabtext:SetShadowOffset(0, 0)

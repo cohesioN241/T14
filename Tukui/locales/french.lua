@@ -1,4 +1,4 @@
-local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
+local T, C, L = unpack(select(2, ...))
 
 if T.client == "frFR" then
 
@@ -28,6 +28,7 @@ if T.client == "frFR" then
 
 	L.disband = "Dissoudre le groupe"
 
+	L.datatext_notalents ="No Talents"
 	L.datatext_download = "Téléchargement : "
 	L.datatext_bandwidth = "Bande passante : "
 	L.datatext_guild = "Guilde"

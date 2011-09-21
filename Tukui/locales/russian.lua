@@ -1,4 +1,4 @@
-local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
+local T, C, L = unpack(select(2, ...))
 
 if T.client == "ruRU" then
  
@@ -28,6 +28,7 @@ if T.client == "ruRU" then
  
 	L.disband = "Роспуск группы."
 
+	L.datatext_notalents ="No Talents"
 	L.datatext_download = "Загрузка: "
 	L.datatext_bandwidth = "Скорость: "
 	L.datatext_guild = "Гильдия"

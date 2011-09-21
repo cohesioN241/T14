@@ -1,5 +1,6 @@
 -- This will filter everythin NON user config data out of TukuiDB
 
+local T, C, L
 local myPlayerRealm = GetCVar("realmName")
 local myPlayerName  = UnitName("player")
 
@@ -19,7 +20,6 @@ local ALLOWED_GROUPS = {
 	["merchant"]=1,
 	["error"]=1,
 	["invite"]=1,
-	["buffreminder"]=1,
 	["combo"]=1,
 	["others"]=1,
 }
@@ -30,246 +30,13 @@ local TableFilter = {
 }
 
 local function Local(o)
-	local T, C, L = unpack(Tukui)
-	
-	-- general
-	if o == "TukuiConfigUIgeneral" then o = TukuiL.option_general end
-	if o == "TukuiConfigUIgeneralautoscale" then o = TukuiL.option_general_uiscale end
-	if o == "TukuiConfigUIgeneraloverridelowtohigh" then o = TukuiL.option_general_override end
-	if o == "TukuiConfigUIgeneralmultisampleprotect" then o = TukuiL.option_general_multisample end
-	if o == "TukuiConfigUIgeneraluiscale" then o = TukuiL.option_general_customuiscale end
-	
-	-- nameplate
-	if o == "TukuiConfigUInameplate" then o = TukuiL.option_nameplates end
-	if o == "TukuiConfigUInameplateenable" then o = TukuiL.option_nameplates_enable end
-	if o == "TukuiConfigUInameplateshowhealth" then o = TukuiL.option_nameplates_showhealth end
-	if o == "TukuiConfigUInameplateenhancethreat" then o = TukuiL.option_nameplates_enhancethreat end
-	if o == "TukuiConfigUInameplateoverlap" then o = UNIT_NAMEPLATES_ALLOW_OVERLAP end
-	if o == "TukuiConfigUInameplatecombat" then o = TukuiL.option_nameplates_combat end
-	if o == "TukuiConfigUInameplategoodcolor" then o = TukuiL.option_nameplates_goodcolor end
-	if o == "TukuiConfigUInameplatebadcolor" then o = TukuiL.option_nameplates_badcolor end
-	if o == "TukuiConfigUInameplatetransitioncolor" then o = TukuiL.option_nameplates_transitioncolor end
-	
-	-- merchant
-	if o == "TukuiConfigUImerchant" then o = TukuiL.option_merchant end
-	if o == "TukuiConfigUImerchantsellgrays" then o = TukuiL.option_merchant_autosell end
-	if o == "TukuiConfigUImerchantautorepair" then o = TukuiL.option_merchant_autorepair end
-	if o == "TukuiConfigUImerchantsellmisc" then o = TukuiL.option_merchant_sellmisc end
-	if o == "TukuiConfigUImerchantguildrepair" then o = TukuiL.option_merchant_guildrepair end
-	
-	-- bags
-	if o == "TukuiConfigUIbags" then o = TukuiL.option_bags end
-	if o == "TukuiConfigUIbagsenable" then o = TukuiL.option_bags_enable end
-	
-	-- datatext
-	if o == "TukuiConfigUIdatatext" then o = TukuiL.option_datatext end
-	if o == "TukuiConfigUIdatatexttime24" then o = TukuiL.option_datatext_24h end
-	if o == "TukuiConfigUIdatatextlocaltime" then o = TukuiL.option_datatext_localtime end
-	if o == "TukuiConfigUIdatatextbattleground" then o = TukuiL.option_datatext_bg end
-	if o == "TukuiConfigUIdatatexthps_text" then o = TukuiL.option_datatext_hps end
-	if o == "TukuiConfigUIdatatextguild" then o = TukuiL.option_datatext_guild end
-	if o == "TukuiConfigUIdatatextarp" then o = TukuiL.option_datatext_arp end
-	if o == "TukuiConfigUIdatatextsystem" then o = TukuiL.option_datatext_mem end
-	if o == "TukuiConfigUIdatatextbags" then o = TukuiL.option_datatext_bags end
-	if o == "TukuiConfigUIdatatextfontsize" then o = TukuiL.option_datatext_fontsize end
-	if o == "TukuiConfigUIdatatextfps_ms" then o = TukuiL.option_datatext_fps_ms end
-	if o == "TukuiConfigUIdatatextarmor" then o = TukuiL.option_datatext_armor end
-	if o == "TukuiConfigUIdatatextavd" then o = TukuiL.option_datatext_avd end
-	if o == "TukuiConfigUIdatatextpower" then o = TukuiL.option_datatext_power end
-	if o == "TukuiConfigUIdatatexthaste" then o = TukuiL.option_datatext_haste end
-	if o == "TukuiConfigUIdatatextfriends" then o = TukuiL.option_datatext_friend end
-	if o == "TukuiConfigUIdatatextwowtime" then o = TukuiL.option_datatext_time end
-	if o == "TukuiConfigUIdatatextgold" then o = TukuiL.option_datatext_gold end
-	if o == "TukuiConfigUIdatatextdps_text" then o = TukuiL.option_datatext_dps end
-	if o == "TukuiConfigUIdatatextcrit" then o = TukuiL.option_datatext_crit end	
-	if o == "TukuiConfigUIdatatextdur" then o = TukuiL.option_datatext_dur end
-	if o == "TukuiConfigUIdatatextcurrency" then o = TukuiL.option_datatext_currency end
-	if o == "TukuiConfigUIdatatextmicromenu" then o = TukuiL.option_datatext_micromenu end
-	if o == "TukuiConfigUIdatatexthit" then o = TukuiL.option_datatext_hit end	
-	if o == "TukuiConfigUIdatatextmastery" then o = TukuiL.option_datatext_mastery end
-	if o == "TukuiConfigUIdatatextclasscolor" then o = TukuiL.option_datatext_classcolor end
-	if o == "TukuiConfigUIdatatextcolor" then o = TukuiL.option_datatext_color end
-	if o == "TukuiConfigUIdatatextstyle" then o = TukuiL.option_datatext_style end
-	if o == "TukuiConfigUIdatatextexpreptext" then o = TukuiL.option_datatext_expreptext end
-	if o == "TukuiConfigUIdatatextlocation_coords" then o = TukuiL.option_datatext_location_coords end
-	if o == "TukuiConfigUIdatatextlocation" then o = TukuiL.option_datatext_location end
-	if o == "TukuiConfigUIdatatextexprepbars" then o = TukuiL.option_datatext_exprepbars end
-	if o == "TukuiConfigUIdatatextregen" then o = TukuiL.option_datatext_regen end
-	if o == "TukuiConfigUIdatatextmaptime" then o = TukuiL.option_datatext_maptime end
-	if o == "TukuiConfigUIdatatextstatblock" then o = TukuiL.option_datatext_statblock end
-	
-	-- unit frames
-	if o == "TukuiConfigUIunitframes" then o = TukuiL.option_unitframes_unitframes end
-	if o == "TukuiConfigUIunitframescombatfeedback" then o = TukuiL.option_unitframes_combatfeedback end
-	if o == "TukuiConfigUIunitframesrunebar" then o = TukuiL.option_unitframes_runebar end
-	if o == "TukuiConfigUIunitframesauratimer" then o = TukuiL.option_unitframes_auratimer end
-	if o == "TukuiConfigUIunitframestotemtimer" then o = TukuiL.option_unitframes_totembar end
-	if o == "TukuiConfigUIunitframesshowtotalhpmp" then o = TukuiL.option_unitframes_totalhpmp end
-	if o == "TukuiConfigUIunitframesshowplayerinparty" then o = TukuiL.option_unitframes_playerparty end
-	if o == "TukuiConfigUIunitframesraidunitdebuffwatch" then o = TukuiL.option_unitframes_aurawatch end
-	if o == "TukuiConfigUIunitframesunitcastbar" then o = TukuiL.option_unitframes_castbar end
-	if o == "TukuiConfigUIunitframestargetauras" then o = TukuiL.option_unitframes_targetaura end
-	if o == "TukuiConfigUIunitframespositionbychar" then o = TukuiL.option_unitframes_saveperchar end
-	if o == "TukuiConfigUIunitframesws_show_time" then o = TukuiL.option_unitframes_wstimer end
-	if o == "TukuiConfigUIunitframesplayeraggro" then o = TukuiL.option_unitframes_playeraggro end
-	if o == "TukuiConfigUIunitframesshowsmooth" then o = TukuiL.option_unitframes_smooth end
-	if o == "TukuiConfigUIunitframescharportrait" then o = TukuiL.option_unitframes_portrait end
-	if o == "TukuiConfigUIunitframesenable" then o = TukuiL.option_unitframes_enable end
-	if o == "TukuiConfigUIunitframesws_show_target" then o = TukuiL.option_unitframes_wstarget end
-	if o == "TukuiConfigUIunitframestargetpowerpvponly" then o = TukuiL.option_unitframes_enemypower end
-	if o == "TukuiConfigUIunitframesgridonly" then o = TukuiL.option_unitframes_gridonly end
-	if o == "TukuiConfigUIunitframeshealcomm" then o = TukuiL.option_unitframes_healcomm end
-	if o == "TukuiConfigUIunitframesfocusdebuffs" then o = TukuiL.option_unitframes_focusdebuff end
-	if o == "TukuiConfigUIunitframesws_show_player" then o = TukuiL.option_unitframes_wsplayer end
-	if o == "TukuiConfigUIunitframesaggro" then o = TukuiL.option_unitframes_raidaggro end
-	if o == "TukuiConfigUIunitframesshowboss" then o = TukuiL.option_unitframes_boss end
-	if o == "TukuiConfigUIunitframesenemyhcolor" then o = TukuiL.option_unitframes_enemyhostilitycolor end
-	if o == "TukuiConfigUIunitframesshowsymbols" then o = TukuiL.option_unitframes_symbol end
-	if o == "TukuiConfigUIunitframesshowthreat" then o = TukuiL.option_unitframes_threatbar end
-	if o == "TukuiConfigUIunitframesshowrange" then o = TukuiL.option_unitframes_enablerange end
-	if o == "TukuiConfigUIunitframesshowfocustarget" then o = TukuiL.option_unitframes_focus end
-	if o == "TukuiConfigUIunitframescblatency" then o = TukuiL.option_unitframes_latency end
-	if o == "TukuiConfigUIunitframescbicons" then o = TukuiL.option_unitframes_icon end
-	if o == "TukuiConfigUIunitframesplayerauras" then o = TukuiL.option_unitframes_playeraura end
-	if o == "TukuiConfigUIunitframesauratextscale" then o = TukuiL.option_unitframes_aurascale end
-	if o == "TukuiConfigUIunitframesgridscale" then o = TukuiL.option_unitframes_gridscale end
-	if o == "TukuiConfigUIunitframeshighThreshold" then o = TukuiL.option_unitframes_manahigh end
-	if o == "TukuiConfigUIunitframeslowThreshold" then o = TukuiL.option_unitframes_manalow end
-	if o == "TukuiConfigUIunitframesraidalphaoor" then o = TukuiL.option_unitframes_range end
-	if o == "TukuiConfigUIunitframesmaintank" then o = TukuiL.option_unitframes_maintank end
-	if o == "TukuiConfigUIunitframesmainassist" then o = TukuiL.option_unitframes_mainassist end
-	if o == "TukuiConfigUIunitframesunicolor" then o = TukuiL.option_unitframes_unicolor end
-	if o == "TukuiConfigUIunitframestotdebuffs" then o = TukuiL.option_unitframes_totdebuffs end
-	if o == "TukuiConfigUIunitframesclassbar" then o = TukuiL.option_unitframes_classbar end
-	if o == "TukuiConfigUIunitframesdeathknight" then o = TukuiL.option_unitframes_deathknight end
-	if o == "TukuiConfigUIunitframeswarlock" then o = TukuiL.option_unitframes_warlock end
-	if o == "TukuiConfigUIunitframesshaman" then o = TukuiL.option_unitframes_shaman end
-	if o == "TukuiConfigUIunitframesdruid" then o = TukuiL.option_unitframes_druid end
-	if o == "TukuiConfigUIunitframespaladin" then o = TukuiL.option_unitframes_paladin end
-	if o == "TukuiConfigUIunitframesweakenedsoulbar" then o = TukuiL.option_unitframes_weakenedsoulbar end
-	if o == "TukuiConfigUIunitframesonlyselfdebuffs" then o = TukuiL.option_unitframes_onlyselfdebuffs end
-	if o == "TukuiConfigUIunitframesshowfocustarget" then o = TukuiL.option_unitframes_focus end
-	if o == "TukuiConfigUIunitframeshealthvertical" then o = TukuiL.option_unitframes_healthvertical end
-	if o == "TukuiConfigUIunitframeshealthdeficit" then o = TukuiL.option_unitframes_healthdeficit end
-	if o == "TukuiConfigUIunitframeshidepower" then o = TukuiL.option_unitframes_hidepower end
-	if o == "TukuiConfigUIunitframesonlyselfdebuffs" then o = TukuiL.option_unitframes_onlyselfdebuffs end
-	if o == "TukuiConfigUIunitframesonlyselfbuffs" then o = TukuiL.option_unitframes_onlyselfbuffs end
-	if o == "TukuiConfigUIunitframesbuffrows" then o = TukuiL.option_unitframes_buffrows end
-	if o == "TukuiConfigUIunitframesdebuffrows" then o = TukuiL.option_unitframes_debuffrows end
-	if o == "TukuiConfigUIunitframescbclasscolor" then o = TukuiL.option_unitframes_dcbclasscolor end
-	if o == "TukuiConfigUIunitframessortname" then o = TukuiL.option_unitframes_sortname end
-	if o == "TukuiConfigUIunitframesfocusdebuffs" then o = TukuiL.option_unitframes_focusdebuffs end
-	if o == "TukuiConfigUIunitframesfocusbuffs" then o = TukuiL.option_unitframes_focusdebuffs end
-	if o == "TukuiConfigUIunitframeshealthColor" then o = TukuiL.option_unitframes_healthColor end
-	if o == "TukuiConfigUIunitframescbcustomcolor" then o = TukuiL.option_unitframes_cbcustomcolor end
-	if o == "TukuiConfigUIunitframesdebuffHighlightFilter" then o = TukuiL.option_unitframes_debuffHighlightFilter end
-	if o == "TukuiConfigUIunitframeshealthBgColor" then o = TukuiL.option_unitframes_healthBgColor end
-	if o == "TukuiConfigUIunitframesvertical" then o = TukuiL.option_unitframes_vertical end
-	if o == "TukuiConfigUIunitframesplayerHighlight" then o = TukuiL.option_unitframes_playerHighlight end
-	if o == "TukuiConfigUIunitframesstyle" then o = TukuiL.option_unitframes_style end
-	if o == "TukuiConfigUIunitframesgradienthealth" then o = TukuiL.option_unitframes_gradienthealth end
-	if o == "TukuiConfigUIunitframesmouseoverhighlight" then o = TukuiL.option_unitframes_mouseoverhighlight end
-	if o == "TukuiConfigUIunitframesdpsunitdebuffwatch" then o = TukuiL.option_unitframes_dpsunitdebuffwatch end
-	if o == "TukuiConfigUIunitframesraiddebuffstime" then o = TukuiL.option_unitframes_raiddebuffstime end
-		
-	-- loot
-	if o == "TukuiConfigUIloot" then o = TukuiL.option_loot end
-	if o == "TukuiConfigUIlootlootframe" then o = TukuiL.option_loot_enableloot end
-	if o == "TukuiConfigUIlootautogreed" then o = TukuiL.option_loot_autogreed end
-	if o == "TukuiConfigUIlootrolllootframe" then o = TukuiL.option_loot_enableroll end
-	
-	-- invite
-	if o == "TukuiConfigUIinvite" then o = TukuiL.option_invite end
-	if o == "TukuiConfigUIinviteautoaccept" then o = TukuiL.option_invite_autoinvite end
-
-	-- tooltip
-	if o == "TukuiConfigUItooltip" then o = TukuiL.option_tooltip end
-	if o == "TukuiConfigUItooltipenable" then o = TukuiL.option_tooltip_enable end
-	if o == "TukuiConfigUItooltiphidecombat" then o = TukuiL.option_tooltip_hidecombat end
-	if o == "TukuiConfigUItooltiphidebuttons" then o = TukuiL.option_tooltip_hidebutton end
-	if o == "TukuiConfigUItooltiphideuf" then o = TukuiL.option_tooltip_hideuf end
-	if o == "TukuiConfigUItooltipcursor" then o = TukuiL.option_tooltip_cursor end
-	
-	-- others
-	if o == "TukuiConfigUIothers" then o = TukuiL.option_others end
-	if o == "TukuiConfigUIotherspvpautorelease" then o = TukuiL.option_others_bg end
-	
-	-- reminder
-	if o == "TukuiConfigUIbuffreminder" then o = TukuiL.option_reminder end
-	if o == "TukuiConfigUIbuffreminderenable" then o = TukuiL.option_reminder_enable end
-	if o == "TukuiConfigUIbuffremindersound" then o = TukuiL.option_reminder_sound end
-	
-	-- error
-	if o == "TukuiConfigUIerror" then o = TukuiL.option_error end
-	if o == "TukuiConfigUIerrorenable" then o = TukuiL.option_error_hide end
-	
-	-- action bar
-	if o == "TukuiConfigUIactionbar" then o = TukuiL.option_actionbar end
-	if o == "TukuiConfigUIactionbarhideshapeshift" then o = TukuiL.option_actionbar_hidess end
-	if o == "TukuiConfigUIactionbarshowgrid" then o = TukuiL.option_actionbar_showgrid end
-	if o == "TukuiConfigUIactionbarenable" then o = TukuiL.option_actionbar_enable end
-	if o == "TukuiConfigUIactionbarrightbarmouseover" then o = TukuiL.option_actionbar_rb end
-	if o == "TukuiConfigUIactionbarhotkey" then o = TukuiL.option_actionbar_hk end
-	if o == "TukuiConfigUIactionbarshapeshiftmouseover" then o = TukuiL.option_actionbar_ssmo end
-	if o == "TukuiConfigUIactionbarbottomrows" then o = TukuiL.option_actionbar_rbn end
-	if o == "TukuiConfigUIactionbarrightbars" then o = TukuiL.option_actionbar_rn end
-	if o == "TukuiConfigUIactionbarbuttonsize" then o = TukuiL.option_actionbar_buttonsize end
-	if o == "TukuiConfigUIactionbarbuttonspacing" then o = TukuiL.option_actionbar_buttonspacing end
-	if o == "TukuiConfigUIactionbarpetbuttonsize" then o = TukuiL.option_actionbar_petbuttonsize end
-	if o == "TukuiConfigUIactionbarvertical_rightbars" then o = TukuiL.option_actionbar_vertical_rightbars end
-	if o == "TukuiConfigUIactionbarstancebuttonsize" then o = TukuiL.option_actionbar_stancebuttonsize end
-	if o == "TukuiConfigUIactionbarvertical_shapeshift" then o = TukuiL.option_actionbar_vertical_shapeshift end
-	if o == "TukuiConfigUIactionbarmainswap" then o = TukuiL.option_actionbar_mainswap end
-	
-	-- quest watch frame
-	if o == "TukuiConfigUIwatchframe" then o = TukuiL.option_quest end
-	if o == "TukuiConfigUIwatchframemovable" then o = TukuiL.option_quest_movable end
-	
-	-- arena
-	if o == "TukuiConfigUIarena" then o = TukuiL.option_arena end
-	if o == "TukuiConfigUIarenaspelltracker" then o = TukuiL.option_arena_st end
-	if o == "TukuiConfigUIarenaunitframes" then o = TukuiL.option_arena_uf end
-	
-	-- pvp
-	if o == "TukuiConfigUIpvp" then o = TukuiL.option_pvp end
-	if o == "TukuiConfigUIpvpinterrupt" then o = TukuiL.option_pvp_ii end
-	
-	-- cooldowns
-	if o == "TukuiConfigUIcooldown" then o = TukuiL.option_cooldown end
-	if o == "TukuiConfigUIcooldownenable" then o = TukuiL.option_cooldown_enable end
-	if o == "TukuiConfigUIcooldowntreshold" then o = TukuiL.option_cooldown_th end
-	
-	-- chat
-	if o == "TukuiConfigUIchat" then o = TukuiL.option_chat end
-	if o == "TukuiConfigUIchatenable" then o = TukuiL.option_chat_enable end
-	if o == "TukuiConfigUIchatwhispersound" then o = TukuiL.option_chat_whispersound end
-	if o == "TukuiConfigUIchatheight" then o = TukuiL.option_chat_height end
-	if o == "TukuiConfigUIchatbackground" then o = TukuiL.option_chat_background end
-	if o == "TukuiConfigUIchatjustifyRight" then o = TukuiL.option_chat_justify_Right end
-	if o == "TukuiConfigUIchatrightchat" then o = TukuiL.option_chat_rightchat end
-	if o == "TukuiConfigUIchatwidth" then o = TukuiL.option_chat_width end
-	
-	-- aura
-	if o == "TukuiConfigUIauras" then o = TukuiL.option_auras end
-	if o == "TukuiConfigUIaurasplayer" then o = TukuiL.option_auras_player end
-	
-	-- combo
-	if o == "TukuiConfigUIcombo" then o = TukuiL.option_combo end
-	if o == "TukuiConfigUIcombowarrior" then o = TukuiL.option_combo_warrior end
-	if o == "TukuiConfigUIcombopaladin" then o = TukuiL.option_combo_paladin end
-	if o == "TukuiConfigUIcomboshaman" then o = TukuiL.option_combo_shaman end
-	if o == "TukuiConfigUIcombodknight" then o = TukuiL.option_combo_dknight end
-	if o == "TukuiConfigUIcombomage" then o = TukuiL.option_combo_mage end
-	if o == "TukuiConfigUIcombodruid" then o = TukuiL.option_combo_druid end
-	if o == "TukuiConfigUIcombodisplay" then o = TukuiL.option_combo_display end
-	if o == "TukuiConfigUIcombohunter" then o = TukuiL.option_combo_hunter end
-	if o == "TukuiConfigUIcombowarlock" then o = TukuiL.option_combo_warlock end
-	if o == "TukuiConfigUIcombopriest" then o = TukuiL.option_combo_priest end
-	
-	-- others
-	if o == "TukuiConfigUIothersautoquest" then o = TukuiL.option_others_autoquest end
-
-	T.option = o
+	local string = o
+	for option, value in pairs(TukuiConfigUILocalization) do
+		if option == o then
+			string = value
+		end
+	end
+	return string
 end
 
 local NewButton = function(text,parent)
@@ -277,7 +44,7 @@ local NewButton = function(text,parent)
 	
 	local result = CreateFrame("Button", nil, parent)
 	local label = result:CreateFontString(nil,"OVERLAY",nil)
-	label:SetFont(C.media.font,12)
+	label:SetFont(unpack(T.Fonts.cFont.setfont))
 	label:SetText(text)
 	result:SetWidth(label:GetWidth())
 	result:SetHeight(label:GetHeight())
@@ -287,13 +54,10 @@ local NewButton = function(text,parent)
 end
 
 StaticPopupDialogs["PERCHAR"] = {
-	text = TukuiL.option_perchar,
+	text = TukuiConfigUILocalization.option_perchar,
 	OnAccept = function() 
-		if TukuiConfigAllCharacters:GetChecked() then 
-			TukuiConfigAll[myPlayerRealm][myPlayerName] = true
-		else 
-			TukuiConfigAll[myPlayerRealm][myPlayerName] = false
-		end 	
+		TukuiConfigPublic = nil
+		TukuiConfigPrivate = nil	
 		ReloadUI() 
 	end,
 	OnCancel = function() 
@@ -312,7 +76,7 @@ StaticPopupDialogs["PERCHAR"] = {
 }
 
 StaticPopupDialogs["RESET_PERCHAR"] = {
-	text = TukuiL.option_resetchar,
+	text = TukuiConfigUILocalization.option_resetchar,
 	OnAccept = function() 
 		TukuiConfig = TukuiConfigSettings
 		ReloadUI() 
@@ -326,7 +90,7 @@ StaticPopupDialogs["RESET_PERCHAR"] = {
 }
 
 StaticPopupDialogs["RESET_ALL"] = {
-	text = TukuiL.option_resetall,
+	text = TukuiConfigUILocalization.option_resetall,
 	OnAccept = function() 
 		TukuiConfigSettings = nil
 		TukuiConfig = nil
@@ -344,27 +108,27 @@ StaticPopupDialogs["RESET_ALL"] = {
 local function SetValue(group,option,value)		
 	--Determine if we should be copying our default settings to our player settings, this only happens if we're not using player settings by default
 	local mergesettings
-	if TukuiConfig == TukuiConfigSettings then
+	if TukuiConfigPrivate == TukuiConfigPublic then
 		mergesettings = true
 	else
 		mergesettings = false
 	end
 
 	if TukuiConfigAll[myPlayerRealm][myPlayerName] == true then
-		if not TukuiConfig then TukuiConfig = {} end	
-		if not TukuiConfig[group] then TukuiConfig[group] = {} end
-		TukuiConfig[group][option] = value
+		if not TukuiConfigPrivate then TukuiConfig = {} end
+		if not TukuiConfigPrivate[group] then TukuiConfigPrivate[group] = {} end
+		TukuiConfigPrivate[group][option] = value
 	else
 		--Set PerChar settings to the same as our settings if theres no per char settings
 		if mergesettings == true then
-			if not TukuiConfig then TukuiConfig = {} end	
-			if not TukuiConfig[group] then TukuiConfig[group] = {} end
-			TukuiConfig[group][option] = value
+			if not TukuiConfigPrivate then TukuiConfigPrivate = {} end
+			if not TukuiConfigPrivate[group] then TukuiConfigPrivate[group] = {} end
+			TukuiConfigPrivate[group][option] = value
 		end
 		
-		if not TukuiConfigSettings then TukuiConfigSettings = {} end
-		if not TukuiConfigSettings[group] then TukuiConfigSettings[group] = {} end
-		TukuiConfigSettings[group][option] = value
+		if not TukuiConfigPublic then TukuiConfigPublic = {} end
+		if not TukuiConfigPublic[group] then TukuiConfigPublic[group] = {} end
+		TukuiConfigPublic[group][option] = value
 	end
 end
 
@@ -376,8 +140,8 @@ local function ShowGroup(group)
 	end
 	if _G["TukuiConfigUI"..group] then
 		local o = "TukuiConfigUI"..group
-		Local(o)
-		_G["TukuiConfigUITitle"]:SetText(T.option)
+		local translate = Local(group)
+		_G["TukuiConfigUITitle"]:SetText(translate)
 		local height = _G["TukuiConfigUI"..group]:GetHeight()
 		_G["TukuiConfigUI"..group]:Show()
 		local scrollamntmax = 305
@@ -415,9 +179,7 @@ local function ShowGroup(group)
 	end
 end
 
-function CreateTukuiConfigUI()
-	local T, C, L = unpack(Tukui)
-	
+function CreateTukuiConfigUI()	
 	if TukuiConfigUI then
 		ShowGroup("general")
 		TukuiConfigUI:Show()
@@ -441,7 +203,7 @@ function CreateTukuiConfigUI()
 	TukuiConfigUITitleBox:CreateShadow("Default")
 	
 	local title = TukuiConfigUITitleBox:CreateFontString("TukuiConfigUITitle", "OVERLAY")
-	title:SetFont(C.media.font, 12)
+	title:SetFont(unpack(T.Fonts.cFont.setfont))
 	title:SetPoint("LEFT", TukuiConfigUITitleBox, "LEFT", 4, 0)
 		
 	local TukuiConfigUIBG = CreateFrame("Frame","TukuiConfigUI",TukuiConfigUI)
@@ -468,7 +230,7 @@ function CreateTukuiConfigUI()
 	TukuiConfigCover:SetPoint("BOTTOMRIGHT", TukuiConfigUI, "BOTTOMRIGHT")
 	TukuiConfigCover:SetFrameLevel(TukuiConfigUI:GetFrameLevel() + 20)
 	TukuiConfigCover:EnableMouse(true)
-	TukuiConfigCover:SetScript("OnMouseDown", function(self) print(TukuiL.option_makeselection) end)
+	TukuiConfigCover:SetScript("OnMouseDown", function(self) print(TukuiConfigUILocalization.option_makeselection) end)
 	TukuiConfigCover:Hide()	
 		
 	local slider = CreateFrame("Slider", "TukuiConfigUICatagorySlider", groups)
@@ -487,8 +249,8 @@ function CreateTukuiConfigUI()
 	local offset=5
 	for group in pairs(ALLOWED_GROUPS) do
 		local o = "TukuiConfigUI"..group
-		Local(o)
-		local button = NewButton(T.option, child)
+		local translate = Local(group)
+		local button = NewButton(translate, child)
 		button:SetHeight(16)
 		button:SetWidth(125)
 		button:SetPoint("TOPLEFT", 5,-(offset))
@@ -544,19 +306,19 @@ function CreateTukuiConfigUI()
 			if type(value) == "boolean" then
 				local button = CreateFrame("CheckButton", "TukuiConfigUI"..group..option, frame, "InterfaceOptionsCheckButtonTemplate")
 				local o = "TukuiConfigUI"..group..option
-				Local(o)
-				_G["TukuiConfigUI"..group..option.."Text"]:SetText(T.option)
-				_G["TukuiConfigUI"..group..option.."Text"]:SetFont(C.media.font, 12)
+				local translate = Local(group..option)
+				_G["TukuiConfigUI"..group..option.."Text"]:SetText(translate)
+				_G["TukuiConfigUI"..group..option.."Text"]:SetFont(unpack(T.Fonts.cFont.setfont))
 				button:SetChecked(value)
 				button:SetScript("OnClick", function(self) SetValue(group,option,(self:GetChecked() and true or false)) end)
 				button:SetPoint("TOPLEFT", 5, -(offset))
 				offset = offset+25
 			elseif type(value) == "number" or type(value) == "string" then
 				local label = frame:CreateFontString(nil,"OVERLAY",nil)
-				label:SetFont(C.media.font,12)
+				label:SetFont(unpack(T.Fonts.cFont.setfont))
 				local o = "TukuiConfigUI"..group..option
-				Local(o)
-				label:SetText(T.option)
+				local translate = Local(group..option)
+				label:SetText(translate)
 				label:SetWidth(420)
 				label:SetHeight(20)
 				label:SetJustifyH("LEFT")
@@ -588,7 +350,7 @@ function CreateTukuiConfigUI()
 				okbutton:SetPoint("LEFT", editbox, "RIGHT", 2, 0)
 				
 				local oktext = okbutton:CreateFontString(nil,"OVERLAY",nil)
-				oktext:SetFont(C.media.font,12)
+				oktext:SetFont(unpack(T.Fonts.cFont.setfont))
 				oktext:SetText("OK")
 				oktext:SetPoint("CENTER", T.Scale(1), 0)
 				oktext:SetJustifyH("CENTER")
@@ -608,10 +370,10 @@ function CreateTukuiConfigUI()
 				offset = offset+45
 			elseif type(value) == "table" and not TableFilter[option] then
 				local label = frame:CreateFontString(nil,"OVERLAY",nil)
-				label:SetFont(C.media.font,12)
+				label:SetFont(unpack(T.Fonts.cFont.setfont))
 				local o = "TukuiConfigUI"..group..option
-				Local(o)
-				label:SetText(T.option)
+				local translate = Local(group..option)
+				label:SetText(translate)
 				label:SetWidth(420)
 				label:SetHeight(20)
 				label:SetJustifyH("LEFT")
@@ -625,7 +387,7 @@ function CreateTukuiConfigUI()
 				colorbutton:SetBackdropBorderColor(unpack(value))
 				colorbutton:SetPoint("LEFT", label, "RIGHT", 2, 0)
 				local colortext = colorbutton:CreateFontString(nil,"OVERLAY",nil)
-				colortext:SetFont(C.media.font,12)
+				colortext:SetFont(unpack(T.Fonts.cFont.setfont))
 				colortext:SetText("Set Color")
 				colortext:SetPoint("CENTER")
 				colortext:SetJustifyH("CENTER")
@@ -678,7 +440,7 @@ function CreateTukuiConfigUI()
 		frame:Hide()
 	end
 
-	local reset = NewButton(TukuiL.option_button_reset, TukuiConfigUI)
+	local reset = NewButton(TukuiConfigUILocalization.option_button_reset, TukuiConfigUI)
 	reset:SetWidth(100)
 	reset:SetHeight(20)
 	reset:SetPoint("BOTTOMLEFT",-10, -38)
@@ -693,7 +455,7 @@ function CreateTukuiConfigUI()
 	reset:SetTemplate("Default")
 	reset:CreateShadow("Default")
 	
-	local close = NewButton(TukuiL.option_button_close, TukuiConfigUI)
+	local close = NewButton(TukuiConfigUILocalization.option_button_close, TukuiConfigUI)
 	close:SetWidth(100)
 	close:SetHeight(20)
 	close:SetPoint("BOTTOMRIGHT", 10, -38)
@@ -701,7 +463,7 @@ function CreateTukuiConfigUI()
 	close:SetTemplate("Default")
 	close:CreateShadow("Default")
 	
-	local load = NewButton(TukuiL.option_button_load, TukuiConfigUI)
+	local load = NewButton(TukuiConfigUILocalization.option_button_load, TukuiConfigUI)
 	load:SetHeight(20)
 	load:SetPoint("LEFT", reset, "RIGHT", 15, 0)
 	load:SetPoint("RIGHT", close, "LEFT", -15, 0)
@@ -717,9 +479,9 @@ function CreateTukuiConfigUI()
 		button:SetPoint("RIGHT", TukuiConfigUITitleBox, "RIGHT",-3, 0)	
 		
 		local label = TukuiConfigAllCharacters:CreateFontString(nil,"OVERLAY",nil)
-		label:SetFont(C.media.font,12)
+		label:SetFont(unpack(T.Fonts.cFont.setfont))
 		
-		label:SetText(TukuiL.option_setsavedsetttings)
+		label:SetText(TukuiConfigUILocalization.option_setsavedsetttings)
 		label:SetPoint("RIGHT", button, "LEFT")
 		
 		if TukuiConfigAll[myPlayerRealm][myPlayerName] == true then
@@ -753,4 +515,45 @@ do
 			StaticPopup_Show("RESET_ALL")
 		end	
 	end
+	
+	-- create esc button
+	local loaded = CreateFrame("Frame")
+	loaded:RegisterEvent("PLAYER_LOGIN")
+	loaded:SetScript("OnEvent", function(self, event, addon)
+		T, C, L = unpack(Tukui)
+
+		local menu = GameMenuFrame
+		local menuy = menu:GetHeight()
+		local quit = GameMenuButtonQuit
+		local continue = GameMenuButtonContinue
+		local continuex = continue:GetWidth()
+		local continuey = continue:GetHeight()
+		local config = TukuiConfigUI
+		local interface = GameMenuButtonUIOptions
+		local keybinds = GameMenuButtonKeybindings
+
+		menu:SetHeight(menuy + continuey)
+
+		local button = CreateFrame("BUTTON", "GameMenuTukuiButtonOptions", menu, "GameMenuButtonTemplate")
+		button:SetSize(continuex, continuey)
+		button:Point("TOP", interface, "BOTTOM", 0, -1)
+		button:SetText("Tukui")
+
+		if C.general.blizzardreskin then
+			T.SkinButton(button)
+		end
+
+		button:SetScript("OnClick", function(self)
+			local config = TukuiConfigUI
+			if config and config:IsShown() then
+				TukuiConfigUI:Hide()
+			else
+				CreateTukuiConfigUI()
+				HideUIPanel(menu)
+			end
+		end)
+
+		keybinds:ClearAllPoints()
+		keybinds:Point("TOP", button, "BOTTOM", 0, -1)
+	end)
 end

@@ -13,6 +13,8 @@ local function LoadSkin()
 	T.SkinCloseButton(WorldMapFrameCloseButton)
 	T.SkinCloseButton(WorldMapFrameSizeDownButton)
 	T.SkinCloseButton(WorldMapFrameSizeUpButton)
+	WorldMapFrameSizeDownButton.t:SetText("_")	-- minimize button
+	WorldMapFrameSizeUpButton.t:SetText("V")	-- maximize button
 							
 	T.SkinDropDownBox(WorldMapLevelDropDown)
 	T.SkinDropDownBox(WorldMapZoneMinimapDropDown)
