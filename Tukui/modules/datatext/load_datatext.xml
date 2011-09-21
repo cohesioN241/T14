@@ -26,6 +26,4 @@
 	<Script file="regen.lua"/>
 	<Script file="statblock.lua"/>
 	<Script file="maptime.lua"/>
-	<Script file="calltoarms.lua"/>
-	<Script file="talent.lua"/>
 </Ui>

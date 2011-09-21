@@ -2,11 +2,11 @@ local ADDON_NAME, ns = ...
 local oUF = ns.oUF or oUF
 assert(oUF, "Tukui was unable to locate oUF install.")
 
-local T, C, L = unpack(select(2, ...))
+local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
 if not C["unitframes"].enable == true then return end
 
 
-T.UnitColor = setmetatable({
+T.oUF_colors = setmetatable({
 	tapped = T.Colors.tapped,
 	disconnected = T.Colors.disconnected,
 	power = setmetatable({
@@ -51,4 +51,4 @@ T.UnitColor = setmetatable({
 	}, {__index = oUF.colors.class}),
 }, {__index = oUF.colors})
 
-T.ColorTemplate = T.UnitColor
+T.ColorTemplate = T.oUF_colors

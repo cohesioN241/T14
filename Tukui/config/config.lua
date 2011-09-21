@@ -1,9 +1,5 @@
 ﻿local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
 
------------------------------------------
--- This is the default configuration file
------------------------------------------
-
 C["general"] = {
 	["autoscale"] = true,                               -- mainly enabled for users that don't want to mess with the config file
 	["uiscale"] = 0.71,                                 -- set your value (between 0.64 and 1) of your uiscale if autoscale is off
@@ -11,7 +7,6 @@ C["general"] = {
 	["multisampleprotect"] = true,                      -- i don't recommend this because of shitty border but, voila!
 	--["bordercolor"] = { .1, .1, .1, 1 },				-- default border color of panels > currently not working
 	--["backdropcolor"] = { 0, 0, 0, 1 },					-- default backdrop color of panels > currently not working
-	["blizzardreskin"] = true                           -- reskin all Blizzard frames
 }
 
 C["unitframes"] = {
@@ -111,13 +106,11 @@ C["arena"] = {
 
 C["auras"] = {
 	["player"] = true,                                  -- enable tukui buffs/debuffs
-	["consolidate"] = true,                          -- enable downpdown menu with consolidate buff
-	["flash"] = false,                                   -- flash warning for buff with time < 30 sec
 }
 
 C["actionbar"] = {
 	["enable"] = true,                                  -- enable tukui action bars
-	["hotkey"] = true,                                  -- enable hotkey display because it was a lot requested
+	["hotkey"] = true,                                 -- enable hotkey display because it was a lot requested
 	["hideshapeshift"] = false,                         -- hide shapeshift or totembar because it was a lot requested.
 	["showgrid"] = true,                                -- show grid on empty button
 	["buttonsize"] = 27,                                -- normal buttons size
@@ -127,7 +120,6 @@ C["actionbar"] = {
 	["vertical_rightbars"] = false,						-- vertical or horizontal right bars
 	["vertical_shapeshift"] = true,						-- (NOT FOR SHAMANS/TOTEMS) vertical or horizontal shapeshift bar
 	["mainswap"] = false,								-- swap bottom actionbars (main bar on top)
-	["ownshdbar"] = false,                              -- use a complete new stance bar for shadow dance (rogue only)
 }
 
 C["bags"] = {
@@ -181,9 +173,6 @@ C["datatext"] = {
 		
 	["statblock"] = true,								-- display statblock in topleft corner
 	["maptime"] = true,									-- show display clock below minimap
-	
-	["talent"] = 0,                                     -- show talent
-	["calltoarms"] = 0,                                 -- show dungeon and call to arms
 }
 
 C["chat"] = {
@@ -231,6 +220,11 @@ C["error"] = {
 
 C["invite"] = { 
 	["autoaccept"] = true,                              -- auto-accept invite from guildmate and friends.
+}
+
+C["buffreminder"] = {
+	["enable"] = true,                                  -- this is now the new innerfire warning script for all armor/aspect class.
+	["sound"] = false,                                   -- enable warning sound notification for reminder.
 }
 
 C["combo"] = {											-- credit to Dajova

@@ -1,4 +1,4 @@
-local T, C, L = unpack(select(2, ...))
+local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
 
 if T.client == "koKR" then
  
@@ -28,7 +28,6 @@ if T.client == "koKR" then
  
 	L.disband = "공격대를 해체합니다."
  
-	L.datatext_notalents ="No Talents"
 	L.datatext_download = "다운로드: "
 	L.datatext_bandwidth = "대역폭: "
 	L.datatext_guild = "길드"

@@ -34,7 +34,7 @@ else
 	TukuiWatchFrameAnchor:SetWidth(250)
 end
 
-local screenheight = T.screenheight
+local screenheight = T.getscreenheight
 TukuiWatchFrame:SetParent(TukuiWatchFrameAnchor)
 TukuiWatchFrame:SetHeight(screenheight / 1.6)
 TukuiWatchFrame:ClearAllPoints()
@@ -72,18 +72,20 @@ local function setup()
 
 	WatchFrameTitle:SetParent(TukuiWatchFrame)
 	WatchFrameCollapseExpandButton:SetParent(TukuiWatchFrame)
-	WatchFrameCollapseExpandButton:SetSize(16, 16)
 	WatchFrameCollapseExpandButton:SetFrameStrata(WatchFrameHeader:GetFrameStrata())
 	WatchFrameCollapseExpandButton:SetFrameLevel(WatchFrameHeader:GetFrameLevel() + 1)
 	WatchFrameCollapseExpandButton:SetNormalTexture("")
 	WatchFrameCollapseExpandButton:SetPushedTexture("")
 	WatchFrameCollapseExpandButton:SetHighlightTexture("")
 	WatchFrameCollapseExpandButton:SetTemplate("Default")
+	WatchFrameCollapseExpandButton:FontString("text", C.media.pixel_font, 12, "MONOCHROMEOUTLINE")
+	WatchFrameCollapseExpandButton.text:SetText("X")
+	WatchFrameCollapseExpandButton.text:Point("CENTER", 1, 1)
 	WatchFrameCollapseExpandButton:HookScript("OnClick", function(self) 
 		if WatchFrame.collapsed then 
-			self.t:SetText("V")
+			self.text:SetText("V") 
 		else 
-			self.t:SetText("X")
+			self.text:SetText("X")
 		end 
 	end)
 	WatchFrameTitle:Kill()

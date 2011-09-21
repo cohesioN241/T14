@@ -72,13 +72,13 @@ local function style(self)
 end
 
 local function stylesmallbutton(normal, button, icon, name, pet)
+	local Flash	 = _G[name.."Flash"]
 	button:SetNormalTexture("")
 	
-	-- bug fix when moving spell from bar
+	-- another bug fix reported by Affli in t12 beta
 	button.SetNormalTexture = T.dummy
 	
-	local Flash	 = _G[name.."Flash"]
-	Flash:SetTexture("")
+	Flash:SetTexture(media.buttonhover)
 	
 	if not _G[name.."Panel"] then
 		if pet then
@@ -96,11 +96,11 @@ local function stylesmallbutton(normal, button, icon, name, pet)
 			local shine = _G[name.."Shine"]
 			shine:Size(T.petbuttonsize, T.petbuttonsize)
 		else
-			button:Width(T.buttonsize)
-			button:Height(T.buttonsize)
+			button:Width(T.stancebuttonsize)
+			button:Height(T.stancebuttonsize)
 
 			local panel = CreateFrame("Frame", name.."Panel", button)
-			panel:CreatePanel("Default", T.buttonsize, T.buttonsize, "CENTER", button, "CENTER", 0, 0)
+			panel:CreatePanel("Default", T.stancebuttonsize, T.stancebuttonsize, "CENTER", button, "CENTER", 0, 0)
 			panel:SetFrameStrata(button:GetFrameStrata())
 			panel:SetFrameLevel(button:GetFrameLevel() - 1)
 		end
@@ -432,7 +432,7 @@ local function StyleTotemFlyout(flyout)
 		icon:Point("TOPLEFT",button,"TOPLEFT",2,-2)
 		icon:Point("BOTTOMRIGHT",button,"BOTTOMRIGHT",-2,2)			
 		if not InCombatLockdown() then
-			button:Size(T.buttonsize)
+			button:Size(T.stancebuttonsize)
 			button:ClearAllPoints()
 			button:Point("BOTTOM",last,"TOP",0,4)
 		end			
@@ -504,7 +504,7 @@ local function StyleTotemSlotButton(button, index)
 	button.background:ClearAllPoints()
 	button.background:Point("TOPLEFT",button,"TOPLEFT",2,-2)
 	button.background:Point("BOTTOMRIGHT",button,"BOTTOMRIGHT",-2,2)
-	if not InCombatLockdown() then button:Size(T.buttonsize) end
+	if not InCombatLockdown() then button:Size(T.stancebuttonsize) end
 	button:SetBackdropBorderColor(unpack(bordercolors[((index-1) % 4) + 1]))
 	button:CreateShadow("Default")
 	button:StyleButton()
@@ -542,7 +542,7 @@ local function StyleTotemSpellButton(button, index)
 	icon:Point("BOTTOMRIGHT",button,"BOTTOMRIGHT",-2,2)
 	button:SetTemplate("Default")
 	button:GetNormalTexture():SetTexture(nil)
-	if not InCombatLockdown() then button:Size(T.buttonsize) end
+	if not InCombatLockdown() then button:Size(T.stancebuttonsize) end
 	_G[button:GetName().."Highlight"]:SetTexture(nil)
 	_G[button:GetName().."NormalTexture"]:SetTexture(nil)
 	button:CreateShadow("Default")

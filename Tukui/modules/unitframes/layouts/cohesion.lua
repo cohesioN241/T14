@@ -22,7 +22,7 @@ end
 
 local function Shared(self, unit)
 	-- set our own colors
-	self.colors = T.UnitColor
+	self.colors = T.oUF_colors
 	
 	-- register click
 	self:RegisterForClicks("AnyUp")
@@ -226,6 +226,7 @@ local function Shared(self, unit)
 			end
 
 			table.insert(self.__elements, T.HidePortrait)
+			portrait.PostUpdate = T.PortraitUpdate --Worgen Fix (Hydra)
 			self.Portrait = portrait
 			
 			local portraitBG = CreateFrame("Frame", nil, portrait)
@@ -291,11 +292,10 @@ local function Shared(self, unit)
 			if T.myclass == "DRUID" then
 				ufbg:Point("TOPLEFT", health, -2, 10)
 				ufbg:Point("BOTTOMRIGHT", power, 2, -2)
-				local DruidManaUpdate = CreateFrame("Frame")
-				DruidManaUpdate:SetScript("OnUpdate", function() T.UpdateDruidManaText(self) end)
-				local DruidManaText = T.SetFontString(health, unpack(T.Fonts.uPower.setfont))
-				DruidManaText:SetTextColor(1, 0.49, 0.04)
-				self.DruidManaText = DruidManaText
+				CreateFrame("Frame"):SetScript("OnUpdate", function() T.UpdateDruidMana(self) end)
+				local DruidMana = T.SetFontString(health, unpack(T.Fonts.uPower.setfont))
+				DruidMana:SetTextColor(1, 0.49, 0.04)
+				self.DruidManaText = DruidMana
 				
 				local DruidManaBackground = CreateFrame("Frame", nil, self)
 				DruidManaBackground:Point("BOTTOMLEFT", self, "TOPLEFT", 0, 3)

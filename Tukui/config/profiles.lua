@@ -1,25 +1,23 @@
-﻿local T, C, L = unpack(select(2, ...))
-
-----------------------------------------------------------------------------
+﻿----------------------------------------------------------------------------
 -- Per Class Config (overwrite general)
 -- Class need to be UPPERCASE
--- This is an example, note that "WIZARD" doesn't exist on WoW. :P
--- It's just to give an example without interfering the default config.
--- A full configuration list can be found in /Tukui/config/config.lua
 ----------------------------------------------------------------------------
+local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
 
-if T.myclass == "WIZARD" then
-	C.actionbar.hotkey = false
-	C.actionbar.hideshapeshift = true
-	C.unitframes.enemyhcolor = true
- end
+if T.myclass == "PRIEST" then
+	-- do some config!
+end
 
 ----------------------------------------------------------------------------
--- Per Character Name Config (overwrite /Tukui/config/config.lua and class)
+-- Per Character Name Config (overwrite general and class)
 -- Name need to be case sensitive
 ----------------------------------------------------------------------------
 
-if T.myname == "PutYourNameHere" then
-	C.general.autoscale = false
-	C.general.uiscale = 0.64
+if T.myname == "Aereos" then
+	C.datatext.classcolor = false
+end
+
+if T.myname == "Fraiality" then
+	C.datatext.power = 0
+	C.datatext.avd = 4
 end

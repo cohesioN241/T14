@@ -5,19 +5,16 @@ if not C["unitframes"].enable == true then return end
 --	unitframes Functions
 ------------------------------------------------------------------------
 
--- tell oUF Framework that we use our own oUF version (ns.oUF, also know as X-oUF in /Tukui/Tukui.toc)
 local ADDON_NAME, ns = ...
-local oUF = ns.oUF
+local oUF = ns.oUF or oUF
 assert(oUF, "Tukui was unable to locate oUF install.")
 
--- a function to update all unit frames
 T.updateAllElements = function(frame)
 	for _, v in ipairs(frame.__elements) do
 		v(frame, "UpdateElement", frame.unit)
 	end
 end
 
--- Create an animation (like seen on text unitframe when low mana)
 local SetUpAnimGroup = function(self)
 	self.anim = self:CreateAnimationGroup("Flash")
 	self.anim.fadein = self.anim:CreateAnimation("ALPHA", "FadeIn")
@@ -29,7 +26,6 @@ local SetUpAnimGroup = function(self)
 	self.anim.fadeout:SetOrder(1)
 end
 
--- Start the flash anim
 local Flash = function(self, duration)
 	if not self.anim then
 		SetUpAnimGroup(self)
@@ -40,14 +36,12 @@ local Flash = function(self, duration)
 	self.anim:Play()
 end
 
--- Stop the flash anim
 local StopFlash = function(self)
 	if self.anim then
 		self.anim:Finish()
 	end
 end
 
--- Spawn the right-click dropdown on unitframe
 T.SpawnMenu = function(self)
 	local unit = self.unit:gsub("(.)", string.upper, 1)
 	if unit == "Targettarget" or unit == "focustarget" or unit == "pettarget" then return end
@@ -64,8 +58,21 @@ T.SpawnMenu = function(self)
 	end
 end
 
--- called in some function to return a short value. (example: 120 000 return 120k)
-local ShortValue = function(v)
+T.PostUpdatePower = function(element, unit, min, max)
+	element:GetParent().Health:SetHeight(max ~= 0 and 20 or 22)
+end
+
+local ShortValue = function(value)
+	if value >= 1e6 then
+		return ("%.1fm"):format(value / 1e6):gsub("%.?0+([km])$", "%1")
+	elseif value >= 1e3 or value <= -1e3 then
+		return ("%.1fk"):format(value / 1e3):gsub("%.?0+([km])$", "%1")
+	else
+		return value
+	end
+end
+
+local ShortValueNegative = function(v)
 	if v <= 999 then return v end
 	if v >= 1000000 then
 		local value = string.format("%.1fm", v/1000000)
@@ -76,7 +83,6 @@ local ShortValue = function(v)
 	end
 end
 
--- function to update health text
 T.PostUpdateHealth = function(health, unit, min, max)
 	if not UnitIsConnected(unit) or UnitIsDead(unit) or UnitIsGhost(unit) then
 		if not UnitIsConnected(unit) then
@@ -92,7 +98,7 @@ T.PostUpdateHealth = function(health, unit, min, max)
 		-- overwrite healthbar color for enemy player (a tukui option if enabled), target vehicle/pet too far away returning unitreaction nil and friend unit not a player. (mostly for overwrite tapped for friendly)
 		-- I don't know if we really need to call C["unitframes"].unicolor but anyway, it's safe this way.
 		if (C["unitframes"].unicolor ~= true and C["unitframes"].enemyhcolor and unit == "target" and UnitIsEnemy(unit, "player") and UnitIsPlayer(unit)) or (C["unitframes"].unicolor ~= true and unit == "target" and not UnitIsPlayer(unit) and UnitIsFriend(unit, "player")) then
-			local c = T.UnitColor.reaction[UnitReaction(unit, "player")]
+			local c = T.oUF_colors.reaction[UnitReaction(unit, "player")]
 			if c then 
 				r, g, b = c[1], c[2], c[3]
 				health:SetStatusBarColor(r, g, b)
@@ -125,7 +131,7 @@ T.PostUpdateHealth = function(health, unit, min, max)
 				health.value:SetText("|cff559655"..ShortValue(min).."|r")
 				--health.value:SetText("|cff559655"..floor(min / max * 100).."%".."|r")
 			else
-				health.value:SetText("|cff559655-"..ShortValue(max-min).."|r")
+				health.value:SetText("|cff559655-"..ShortValueNegative(max-min).."|r")
 				--health.value:SetText("|cff559655-"..floor(min / max * 100).."%".."|r")
 			end
 		else
@@ -142,7 +148,6 @@ T.PostUpdateHealth = function(health, unit, min, max)
 	end
 end
 
--- function to update health text for party/raid
 T.PostUpdateHealthRaid = function(health, unit, min, max)
 	if (not UnitIsConnected(unit) or UnitIsDead(unit) or UnitIsGhost(unit)) and (not unit:find('partypet%d')) then
 		if not UnitIsConnected(unit) then
@@ -157,7 +162,7 @@ T.PostUpdateHealthRaid = function(health, unit, min, max)
 		-- doing this here to force friendly unit (vehicle or pet) very far away from you to update color correcly
 		-- because if vehicle or pet is too far away, unitreaction return nil and color of health bar is white.
 		if not UnitIsPlayer(unit) and UnitIsFriend(unit, "player") and C["unitframes"].unicolor ~= true then
-			local c = T.UnitColor.reaction[5]
+			local c = T.oUF_colors.reaction[5]
 			local r, g, b = c[1], c[2], c[3]
 			health:SetStatusBarColor(r, g, b)
 			health.bg:SetTexture(.1, .1, .1)
@@ -174,7 +179,7 @@ T.PostUpdateHealthRaid = function(health, unit, min, max)
 		
 		if not unit:find('partypet%d') then
 			if min ~= max then
-				health.value:SetText("|cff559655-"..ShortValue(max-min).."|r")
+				health.value:SetText("|cff559655-"..ShortValueNegative(max-min).."|r")
 			else
 				health.value:SetText(" ")
 			end
@@ -182,12 +187,11 @@ T.PostUpdateHealthRaid = function(health, unit, min, max)
 	end
 end
 
--- function to make sure pet unit health is always colored.
 T.PostUpdatePetColor = function(health, unit, min, max)
 	-- doing this here to force friendly unit (vehicle or pet) very far away from you to update color correcly
 	-- because if vehicle or pet is too far away, unitreaction return nil and color of health bar is white.
 	if not UnitIsPlayer(unit) and UnitIsFriend(unit, "player") and C["unitframes"].unicolor ~= true then
-		local c = T.UnitColor.reaction[5]
+		local c = T.oUF_colors.reaction[5]
 		local r, g, b = c[1], c[2], c[3]
 
 		health:SetStatusBarColor(r, g, b)
@@ -195,7 +199,6 @@ T.PostUpdatePetColor = function(health, unit, min, max)
 	end
 end
 
--- a function to move name of current target unit if enemy or friendly
 T.PostNamePosition = function(self)
 	self.Name:ClearAllPoints()
 	self.Name:SetShadowOffset(1.25, -1.25)
@@ -212,21 +215,19 @@ T.PostNamePosition = function(self)
 	end
 end
 
--- color the power bar according to class / vehicle / etc.
 T.PreUpdatePower = function(power, unit)
-	local pType = select(2, UnitPowerType(unit))
+	local _, pType = UnitPowerType(unit)
 	
-	local color = T.UnitColor.power[pType]
+	local color = T.oUF_colors.power[pType]
 	if color then
 		power:SetStatusBarColor(color[1], color[2], color[3])
 	end
 end
 
--- function to update power text on unit frames
 T.PostUpdatePower = function(power, unit, min, max)
 	local self = power:GetParent()
 	local pType, pToken = UnitPowerType(unit)
-	local color = T.UnitColor.power[pToken]
+	local color = T.oUF_colors.power[pToken]
 
 	if color then
 		power.value:SetTextColor(color[1], color[2], color[3])
@@ -285,18 +286,15 @@ T.PostUpdatePower = function(power, unit, min, max)
 	end
 end
 
--- display casting time
 T.CustomCastTimeText = function(self, duration)
 	self.Time:SetText(("%.1f / %.1f"):format(self.channeling and duration or self.max - duration, self.max))
 end
 
--- display delay in casting time
 T.CustomCastDelayText = function(self, duration)
 	self.Time:SetText(("%.1f |cffaf5050%s %.1f|r"):format(self.channeling and duration or self.max - duration, self.channeling and "- " or "+", self.delay))
 end
 
--- display seconds to min/hour/day
-T.FormatTime = function(s)
+local FormatTime = function(s)
 	local day, hour, minute = 86400, 3600, 60
 	if s >= day then
 		return format("%dd", ceil(s / day))
@@ -310,7 +308,6 @@ T.FormatTime = function(s)
 	return format("%.1f", s)
 end
 
--- create a timer on a buff or debuff
 local CreateAuraTimer = function(self, elapsed)
 	if self.timeLeft then
 		self.elapsed = (self.elapsed or 0) + elapsed
@@ -322,7 +319,7 @@ local CreateAuraTimer = function(self, elapsed)
 				self.first = false
 			end
 			if self.timeLeft > 0 then
-				local time = T.FormatTime(self.timeLeft)
+				local time = FormatTime(self.timeLeft)
 				self.remaining:SetText(time)
 				if self.timeLeft <= 5 then
 					self.remaining:SetTextColor(0.99, 0.31, 0.31)
@@ -338,7 +335,6 @@ local CreateAuraTimer = function(self, elapsed)
 	end
 end
 
--- create a skin for all unitframes buffs/debuffs
 T.PostCreateAura = function(element, button)
 	button:SetTemplate("Default")
 	button:CreateShadow("Default")
@@ -346,9 +342,9 @@ T.PostCreateAura = function(element, button)
 	button.remaining = T.SetFontString(button, unpack(T.Fonts.uAuras.setfont))
 	button.remaining:Point("CENTER", 1, 4)
 	
-	button.cd.noOCC = true -- hide OmniCC CDs, because we  create our own cd with CreateAuraTimer()
-	button.cd.noCooldownCount = true -- hide CDC CDs, because we create our own cd with CreateAuraTimer()
-
+	button.cd.noOCC = true		 	-- hide OmniCC CDs
+	button.cd.noCooldownCount = true	-- hide CDC CDs
+	
 	button.cd:SetReverse()
 	button.icon:Point("TOPLEFT", 2, -2)
 	button.icon:Point("BOTTOMRIGHT", -2, 2)
@@ -371,7 +367,6 @@ T.PostCreateAura = function(element, button)
 	button.remaining:SetParent(button.overlayFrame)
 end
 
--- update cd, border color, etc on buffs / debuffs
 T.PostUpdateAura = function(icons, unit, icon, index, offset, filter, isDebuff, duration, timeLeft)
 	local _, _, _, _, dtype, duration, expirationTime, unitCaster, _ = UnitAura(unit, index, icon.filter)
 
@@ -415,7 +410,6 @@ T.PostUpdateAura = function(icons, unit, icon, index, offset, filter, isDebuff, 
 	icon:SetScript("OnUpdate", CreateAuraTimer)
 end
 
--- hide the portrait if out of range, not connected, etc
 T.HidePortrait = function(self, unit)
 	if self.unit == "target" then
 		if not UnitExists(self.unit) or not UnitIsConnected(self.unit) or not UnitIsVisible(self.unit) then
@@ -426,7 +420,6 @@ T.HidePortrait = function(self, unit)
 	end
 end
 
--- This is mostly just a fix for worgen male portrait because of a bug found in default Blizzard UI.
 T.PortraitUpdate = function(self, unit)
 	--Fucking Furries
 	if self:GetModel() and self:GetModel().find and self:GetModel():find("worgenmale") then
@@ -436,7 +429,6 @@ T.PortraitUpdate = function(self, unit)
 	end
 end
 
--- used to check if a spell is interruptable
 local CheckInterrupt = function(self, unit)
 	if unit == "vehicle" then unit = "player" end
 
@@ -451,17 +443,14 @@ local CheckInterrupt = function(self, unit)
 	end
 end
 
--- check if we can interrupt on cast
 T.CheckCast = function(self, unit, name, rank, castid)
 	CheckInterrupt(self, unit)
 end
 
--- check if we can interrupt on channel cast
 T.CheckChannel = function(self, unit, name, rank)
 	CheckInterrupt(self, unit)
 end
 
--- update warlock shard
 T.UpdateShards = function(self, event, unit, powerType)
 	if(self.unit ~= unit or (powerType and powerType ~= 'SOUL_SHARDS')) then return end
 	local num = UnitPower(unit, SPELL_POWER_SOUL_SHARDS)
@@ -474,7 +463,6 @@ T.UpdateShards = function(self, event, unit, powerType)
 	end
 end
 
--- phasing detection on party/raid
 T.Phasing = function(self, event)
 	local inPhase = UnitInPhase(self.unit)
 	local picon = self.PhaseIcon
@@ -484,7 +472,6 @@ T.Phasing = function(self, event)
 	-- TO BE COMPLETED
 end
 
--- update holy charge display on paladin
 T.UpdateHoly = function(self, event, unit, powerType)
 	if(self.unit ~= unit or (powerType and powerType ~= 'HOLY_POWER')) then return end
 	local num = UnitPower(unit, SPELL_POWER_HOLY_POWER)
@@ -497,7 +484,6 @@ T.UpdateHoly = function(self, event, unit, powerType)
 	end
 end
 
--- druid eclipse bar direction :P
 T.EclipseDirection = function(self)
 	if ( GetEclipseDirection() == "sun" ) then
 			self.Text:SetText("|cffE5994C"..L.unitframes_ouf_starfirespell.."|r")
@@ -508,7 +494,6 @@ T.EclipseDirection = function(self)
 	end
 end
 
--- show the druid bar mana or eclipse if form is moonkin/cat/bear.
 T.DruidBarDisplay = function(self, login)
 	local eb = self.EclipseBar
 	local dm = self.DruidMana
@@ -536,7 +521,6 @@ T.DruidBarDisplay = function(self, login)
 	end
 end
 
--- master looter icon
 T.MLAnchorUpdate = function (self)
 	if self.Leader:IsShown() then
 		self.MasterLooter:SetPoint("TOPLEFT", 14, 8)
@@ -545,12 +529,10 @@ T.MLAnchorUpdate = function (self)
 	end
 end
 
--- when called, it update the name of unit
 T.UpdateName = function(self,event)
 	if self.Name then self.Name:UpdateTag(self.unit) end
 end
 
--- display warning when low mana
 local UpdateManaLevelDelay = 0
 T.UpdateManaLevel = function(self, elapsed)
 	UpdateManaLevelDelay = UpdateManaLevelDelay + elapsed
@@ -568,8 +550,7 @@ T.UpdateManaLevel = function(self, elapsed)
 	end
 end
 
--- show or hide druid mana text if cat/bear form or not
-T.UpdateDruidManaText = function(self)
+T.UpdateDruidMana = function(self)
 	if self.unit ~= "player" then return end
 
 	local num, str = UnitPowerType("player")
@@ -604,7 +585,6 @@ T.UpdateDruidManaText = function(self)
 	end
 end
 
--- red color the border of text panel or name on unitframes if unit have aggro
 T.UpdateThreat = function(self, event, unit)
 	if (self.unit ~= unit) or (unit == "target" or unit == "pet" or unit == "focus" or unit == "focustarget" or unit == "targettarget") then return end
 	local threat = UnitThreatSituation(self.unit)
@@ -625,8 +605,7 @@ T.UpdateThreat = function(self, event, unit)
 		end
 	else
 		if self.panel then
-			local r, g, b = unpack(C["media"].bordercolor)
-			self.panel:SetBackdropBorderColor(r * 0.7, g * 0.7, b * 0.7)
+			self.panel:SetBackdropBorderColor(unpack(C["media"].bordercolor))
 		else
 			self.Name:SetTextColor(1,1,1)
 		end
@@ -644,10 +623,9 @@ T.UpdateThreat = function(self, event, unit)
 end
 
 --------------------------------------------------------------------------------------------
--- Grid theme indicator section
+-- THE AURAWATCH FUNCTION ITSELF. HERE BE DRAGONS!
 --------------------------------------------------------------------------------------------
 
--- position of indicators
 T.countOffsets = {
 	TOPLEFT = {6, 1},
 	TOPRIGHT = {-6, 1},
@@ -659,7 +637,6 @@ T.countOffsets = {
 	BOTTOM = {0, 0},
 }
 
--- skin the icon
 T.CreateAuraWatchIcon = function(self, icon)
 	icon:SetTemplate("Default")
 	icon.icon:Point("TOPLEFT", 1, -1)
@@ -672,7 +649,6 @@ T.CreateAuraWatchIcon = function(self, icon)
 	icon.overlay:SetTexture()
 end
 
--- create the icon
 T.createAuraWatch = function(self, unit)
 	local auras = CreateFrame("Frame", nil, self)
 	auras:SetPoint("TOPLEFT", self.Health, 2, -2)
@@ -731,13 +707,9 @@ T.createAuraWatch = function(self, unit)
 	self.AuraWatch = auras
 end
 
---------------------------------------------------------------------------------------------
--- This is the "Grid" theme debuff display section, like what GridStatusDebuffs does
---------------------------------------------------------------------------------------------
-
 if C["unitframes"].raidunitdebuffwatch == true then
-	-- Class buffs { spell ID, position [, {r,g,b,a}][, anyUnit] }
-	-- It use oUF_AuraWatch lib, for grid indicator
+	-- Classbuffs { spell ID, position [, {r,g,b,a}][, anyUnit] }
+	-- For oUF_AuraWatch
 	do
 		T.buffids = {
 			PRIEST = {
@@ -767,11 +739,9 @@ if C["unitframes"].raidunitdebuffwatch == true then
 			},
 		}
 	end
-	
-	-- Dispellable & Important Raid Debuffs we want to show on Grid!
-	-- It use oUF_RaidDebuffs lib for tracking dispellable / important
-	do
 		local _, ns = ...
+	-- Raid debuffs (now using it with oUF_RaidDebuff instead of oUF_Aurawatch)
+	do
 		local ORD = ns.oUF_RaidDebuffs or oUF_RaidDebuffs
 
 		if not ORD then return end
@@ -779,11 +749,6 @@ if C["unitframes"].raidunitdebuffwatch == true then
 		ORD.ShowDispelableDebuff = true
 		ORD.FilterDispellableDebuff = true
 		ORD.MatchBySpellName = false
-		
-		local function SpellName(id)
-			local name = select(1, GetSpellInfo(id))
- 			return name
- 		end
 
 		T.debuffids = {
 			-- Other debuff
