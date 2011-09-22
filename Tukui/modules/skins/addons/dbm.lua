@@ -104,7 +104,7 @@ local function SkinBars(self)
 					name:Point("LEFT", frame, "LEFT", 4, 0)
 					name:SetWidth(165)
 					name:SetHeight(8)
-					name:SetFont(C["media"].font, 12, "OUTLINE")
+					name:SetFont(C.media.caith, 12, "OUTLINE")
 					name:SetJustifyH("LEFT")
 					name:SetShadowColor(0, 0, 0, 0)
 					name.SetFont = T.dummy
@@ -114,7 +114,7 @@ local function SkinBars(self)
 				if not timer.styled then
 					timer:ClearAllPoints()
 					timer:Point("RIGHT", frame, "RIGHT", -4, 0)
-					timer:SetFont(C["media"].font, 12, "OUTLINE")
+					timer:SetFont(C.media.caith, 12, "OUTLINE")
 					timer:SetJustifyH("RIGHT")
 					timer:SetShadowColor(0, 0, 0, 0)
 					timer.SetFont = T.dummy
@@ -141,7 +141,7 @@ local SkinBossTitle=function()
 	if not anchor.styled then
 		local header={anchor:GetRegions()}
 			if header[1]:IsObjectType("FontString") then
-				header[1]:SetFont(C["media"].font, 12, "OUTLINE")
+				header[1]:SetFont(C.media.caith, 12, "OUTLINE")
 				header[1]:SetTextColor(1,1,1,1)
 				header[1]:SetShadowColor(0, 0, 0, 0)
 				anchor.styled=true
@@ -196,7 +196,7 @@ local SkinBoss=function()
 		if not name.styled then
 			name:ClearAllPoints()
 			name:Point("LEFT", bar, "LEFT", 4, 0)
-			name:SetFont(C["media"].font, 12, "OUTLINE")
+			name:SetFont(C.media.caith, 12, "OUTLINE")
 			name:SetJustifyH("LEFT")
 			name:SetShadowColor(0, 0, 0, 0)
 			name.styled=true
@@ -205,7 +205,7 @@ local SkinBoss=function()
 		if not timer.styled then
 			timer:ClearAllPoints()
 			timer:Point("RIGHT", bar, "RIGHT", -4, 0)
-			timer:SetFont(C["media"].font, 12, "OUTLINE")
+			timer:SetFont(C.media.caith, 12, "OUTLINE")
 			timer:SetJustifyH("RIGHT")
 			timer:SetShadowColor(0, 0, 0, 0)
 			timer.styled=true
@@ -242,7 +242,7 @@ local ForceOptions = function()
 	DBT_SavedOptions["DBM"].BarXOffset = 0
 	DBT_SavedOptions["DBM"].BarYOffset = 2
 	DBT_SavedOptions["DBM"].Texture = C.media.normTex
-	DBT_SavedOptions["DBM"].Font = C.media.font
+	DBT_SavedOptions["DBM"].Font = C.media.caith
 end
 
 local loadOptions = CreateFrame("Frame")

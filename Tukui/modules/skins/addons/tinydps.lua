@@ -18,7 +18,7 @@ frame:SetScript("OnEvent", function(self, event)
 		tinydps.width = TukuiMinimap:GetWidth()
 		tinydps.spacing = 2
 		tinydps.barHeight = 15
-		font.name = C["media"].font
+		font.name = C.media.caith
 		font.size = 11
 		font.outline = "OUTLINE"
 	end

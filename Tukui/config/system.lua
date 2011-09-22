@@ -110,12 +110,8 @@ T.Fonts = {
 	cooldown = Font(pixel, nil, "MONOCHROMEOUTLINE", nil, nil, nil), -- actionbar / bag / etc.
 	movers = Font(pixel, nil, "MONOCHROMEOUTLINE", nil, nil, nil), -- /moveui text + vehicle
 	raidAssist = Font(pixel, nil, "MONOCHROMEOUTLINE", nil, nil, nil),
-	
-	-- addons
-	addons = Font(caith, 12, nil, nil, nil, nil),
-	
-	-- config
-	cFont = Font(caith, 12, nil, nil, nil, nil)
+	addons = Font(caith, 12, nil, nil, nil, nil),	-- addons
+	cFont = Font(caith, 12, nil, nil, nil, nil),	-- config
 }
 
 T.Textures = {

@@ -89,6 +89,6 @@ skin:SetScript("OnEvent", function(self, event, addon)
 	DXEDB["profiles"][T.myname.." - "..T.myrealm]["Globals"]["BackgroundTexture"] = C.media.blank
 	DXEDB["profiles"][T.myname.." - "..T.myrealm]["Globals"]["BarTexture"] = C.media.normTex
 	DXEDB["profiles"][T.myname.." - "..T.myrealm]["Globals"]["Border"] = "None"
-	DXEDB["profiles"][T.myname.." - "..T.myrealm]["Globals"]["Font"] = C.media.font
-	DXEDB["profiles"][T.myname.." - "..T.myrealm]["Globals"]["TimerFont"] = C.media.font
+	DXEDB["profiles"][T.myname.." - "..T.myrealm]["Globals"]["Font"] = C.media.caith
+	DXEDB["profiles"][T.myname.." - "..T.myrealm]["Globals"]["TimerFont"] = C.media.caith
 end)
