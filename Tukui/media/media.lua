@@ -31,6 +31,10 @@ C["media"] = {
 	["kr_uffont"] = [[Fonts\2002.TTF]], -- general font of unitframes
 	["kr_dmgfont"] = [[Fonts\2002.TTF]], -- general font of dmg / sct
 	
+	["cn_font"] = [=[Fonts\ZYKai_T.TTF]=], -- general font of tukui
+	["cn_uffont"] = [[Fonts\ZYHei.TTF]], -- general font of unitframes
+	["cn_dmgfont"] = [[Fonts\ZYKai_C.TTF]], -- general font of dmg / sct
+	
 	-- textures
 	["normTex"] = [[Interface\AddOns\Tukui\media\textures\normTex]], -- texture used for tukui healthbar/powerbar/etc
 	["glowTex"] = [[Interface\AddOns\Tukui\media\textures\glowTex]], -- the glow text around some frame.

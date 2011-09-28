@@ -23,4 +23,8 @@ elseif T.client == "deDE" then
 	C["media"].uffont = C["media"].de_uffont
 	C["media"].font = C["media"].de_font
 	C["media"].dmgfont = C["media"].de_dmgfont
+elseif T.client == "zhCN" then
+	C["media"].uffont = C["media"].cn_uffont
+	C["media"].font = C["media"].cn_font
+	C["media"].dmgfont = C["media"].cn_dmgfont
 end
