@@ -96,7 +96,7 @@ local function LoadSkin()
 		end
 	end)
 	
-	if T.build < 14600 then
+	if tonumber(T.build) < 14600 then
 		LFDDungeonReadyDialog:SetTemplate("Default")
 		LFDDungeonReadyDialog:CreateShadow("Default")
 		T.SkinCloseButton(LFDDungeonReadyDialogCloseButton,LFDDungeonReadyDialog)
