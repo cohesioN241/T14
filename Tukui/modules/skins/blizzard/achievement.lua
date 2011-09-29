@@ -1,7 +1,5 @@
 local T, C, L = unpack(select(2, ...))
 
-print("HELLO")
-
 local function LoadSkin()
 	local frames = {
 		"AchievementFrame",
