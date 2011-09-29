@@ -1,5 +1,6 @@
 ﻿<Ui xmlns="http://www.blizzard.com/wow/ui/">	
 	<Script file="dev\reloadui.lua"/>
+	<Script file="dev\commands.lua"/>
 	
 	<Script file="core\init.lua"/>
 	<Script file="core\constants.lua"/>	
