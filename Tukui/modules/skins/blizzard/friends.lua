@@ -212,7 +212,7 @@ local function LoadSkin()
 	end
 	
 	-- 4.3+ only stuff
-	if tonumber(T.build) > 14600 then
+	if T.build > 14600 then
 		-- bug on PTR with WhoFrame, fixing them
 		WhoFrameEditBox:ClearAllPoints()
 		WhoFrameWhoButton:ClearAllPoints()

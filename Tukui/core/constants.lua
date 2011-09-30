@@ -4,18 +4,19 @@ T.dummy = function() return end
 T.myname = select(1, UnitName("player"))
 T.myclass = select(2, UnitClass("player"))
 T.myrace = select(2, UnitRace("player"))
-T.client = GetLocale() 
+T.myfaction = UnitFactionGroup("player")
+T.client = GetLocale()
 T.resolution = GetCVar("gxResolution")
-T.getscreenheight = tonumber(string.match(T.resolution, "%d+x(%d+)"))
-T.getscreenwidth = tonumber(string.match(T.resolution, "(%d+)x+%d"))
+T.screenheight = tonumber(string.match(T.resolution, "%d+x(%d+)"))
+T.screenwidth = tonumber(string.match(T.resolution, "(%d+)x+%d"))
 T.version = GetAddOnMetadata("Tukui", "Version")
 T.versionnumber = tonumber(T.version)
 T.incombat = UnitAffectingCombat("player")
-T.patch, T.build, T.releasedate, T.toc = GetBuildInfo()
+T.patch, T.buildtext, T.releasedate, T.toc = GetBuildInfo()
+T.build = tonumber(T.buildtext)
 T.level = UnitLevel("player")
 T.myrealm = GetRealmName()
-
-T.InfoLeftRightWidth = 378
+T.InfoLeftRightWidth = 370
 
 if not TukuiSaved then
 	TukuiSaved = {	

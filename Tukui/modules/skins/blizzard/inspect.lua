@@ -60,7 +60,7 @@ local function LoadSkin()
 			slot.backdrop:SetAllPoints()
 		end		
 	
-	if tonumber(T.build) < 14600 then
+	if T.build < 14600 then
 		T.SkinRotateButton(InspectModelFrameRotateLeftButton)
 		T.SkinRotateButton(InspectModelFrameRotateRightButton)
 		InspectModelFrameRotateRightButton:Point("TOPLEFT", InspectModelFrameRotateLeftButton, "TOPRIGHT", 3, 0)

@@ -18,7 +18,7 @@ local function LoadSkin()
 	T.SkinCheckBox(IsUsableCheckButton)
 	T.SkinCheckBox(ShowOnPlayerCheckButton)
 	
-	if tonumber(T.build) < 14600 then
+	if T.build < 14600 then
 		--Dress Up Frame
 		AuctionDressUpFrame:StripTextures()
 		AuctionDressUpFrame:SetTemplate("Default")

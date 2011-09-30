@@ -55,7 +55,7 @@ local function LoadSkin()
 	CharacterFrameExpandButton:Size(CharacterFrameExpandButton:GetWidth() - 7, CharacterFrameExpandButton:GetHeight() - 7)
 	T.SkinNextPrevButton(CharacterFrameExpandButton)
 
-	if tonumber(T.build) < 14600 then
+	if T.build < 14600 then
 		T.SkinRotateButton(CharacterModelFrameRotateLeftButton)
 		T.SkinRotateButton(CharacterModelFrameRotateRightButton)
 		CharacterModelFrameRotateLeftButton:Point("TOPLEFT", CharacterModelFrame, "TOPLEFT", 4, -4)
