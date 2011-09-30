@@ -12,6 +12,8 @@ T.AllowFrameMoving = {
 	TukuiWatchFrameAnchor,
 	TukuiGMFrameAnchor,
 	TukuiVehicleAnchor,
+	TukuiDurabilityAnchor,
+	TukuiWorldStateAnchor,
 }
 
 -- used to exec various code if we enable or disable moving
@@ -68,7 +70,7 @@ local function exec(self, enable)
 		end
 	end
 
-	if self == TukuiTooltipAnchor or self == TukuiRollAnchor or self == TukuiAchievementHolder or self == TukuiVehicleAnchor then
+	if self == TukuiTooltipAnchor or self == TukuiRollAnchor or self == TukuiAchievementHolder or self == TukuiVehicleAnchor or self == TukuiDurabilityAnchor then
 		if enable then
 			self:SetAlpha(1)
 		else
@@ -106,6 +108,16 @@ local function exec(self, enable)
 			TukuiShapeShiftHolder:SetAlpha(1)
 		else
 			TukuiShapeShiftHolder:SetAlpha(0)
+		end
+	end
+	
+	if self == TukuiWorldStateAnchor then
+		if enable then
+			TukuiWorldStateAnchor:SetBackdropBorderColor(1,0,0,1)
+			TukuiWorldStateAnchor:SetBackdropColor(unpack(C.media.backdropcolor))
+		else
+			TukuiWorldStateAnchor:SetBackdropBorderColor(0,0,0,0)
+			TukuiWorldStateAnchor:SetBackdropColor(0,0,0,0)
 		end
 	end
 end
