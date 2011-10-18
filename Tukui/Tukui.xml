@@ -17,6 +17,7 @@
 	<Script file="core\functions.lua"/>
 	<Script file="core\fonts.lua"/>
 	<Script file="core\protection.lua"/>
+	<Script file="core\popups.lua"/>
 	<Script file="core\install.lua"/>
 
 	<Include file="modules\load_modules.xml"/>

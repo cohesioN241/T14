@@ -116,6 +116,7 @@ if T.client == "zhTW" then
 	L.popup_install_no = "ä¸ç”¨äº†, æ•‘å‘½é€™UIçœŸå·®"
 	L.popup_reset_yes = "ç•¶ç„¶å•¦, é è¨­å°±æ˜¯ç¾Ž!"
 	L.popup_reset_no = "ä¸å›‰, ä¸ç„¶æˆ‘æœƒç™¼æ–‡æŠ±æ€¨!"
+	L.popup_fix_ab = "There is something wrong with your action bar. Do you want to reloadui to fix it?"
  
 	L.merchant_repairnomoney = "æ‚¨æ²’æœ‰è¶³å¤ çš„é‡‘éŒ¢ä¾†ä¿®ç†!"
 	L.merchant_repaircost = "æ‚¨çš„è£å‚™å·²ä¿®ç†, èŠ±è²»äº†"

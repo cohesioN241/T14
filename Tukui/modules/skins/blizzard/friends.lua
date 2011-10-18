@@ -9,7 +9,7 @@ local function LoadSkin()
 		"Middle",
 		"Right",
 	}
-	
+
 	local function SkinSocialHeaderTab(tab)
 		if not tab then return end
 		for _, object in pairs(tabs) do
@@ -23,7 +23,7 @@ local function LoadSkin()
 		tab.backdrop:Point("TOPLEFT", 3, -8)
 		tab.backdrop:Point("BOTTOMRIGHT", -6, 0)
 	end
-		
+
 	local StripAllTextures = {
 		"FriendsListFrame",
 		"FriendsTabHeader",
@@ -51,7 +51,7 @@ local function LoadSkin()
 		"LFRQueueFrameCommentInset",
 		"WhoFrameListInset",
 		"WhoFrameEditBoxInset",
-	}			
+	}
 
 	local KillTextures = {
 		"FriendsFrameInset",
@@ -67,8 +67,8 @@ local function LoadSkin()
 		"ChannelFrameDaughterFrameChannelNameRight",
 		"ChannelFrameDaughterFrameChannelNameMiddle",
 		"ChannelFrameDaughterFrameChannelPasswordLeft",
-		"ChannelFrameDaughterFrameChannelPasswordRight",				
-		"ChannelFrameDaughterFrameChannelPasswordMiddle",			
+		"ChannelFrameDaughterFrameChannelPasswordRight",
+		"ChannelFrameDaughterFrameChannelPasswordMiddle",
 	}
 
 	local buttons = {
@@ -95,7 +95,7 @@ local function LoadSkin()
 		"AddFriendInfoFrameContinueButton",
 		"FriendsFriendsSendRequestButton",
 		"FriendsFriendsCloseButton",
-	}			
+	}
 
 	for _, button in pairs(buttons) do
 		T.SkinButton(_G[button])
@@ -127,7 +127,7 @@ local function LoadSkin()
 	FriendsFrame:StripTextures(true)
 
 	T.SkinEditBox(AddFriendNameEditBox)
-	AddFriendFrame:SetTemplate("Default")			
+	AddFriendFrame:SetTemplate("Default")
 
 	--Who Frame
 	local function UpdateWhoSkins()
@@ -140,7 +140,7 @@ local function LoadSkin()
 	--BNet Frame
 	FriendsFrameBroadcastInput:CreateBackdrop("Default")
 	ChannelFrameDaughterFrameChannelName:CreateBackdrop("Default")
-	ChannelFrameDaughterFrameChannelPassword:CreateBackdrop("Default")			
+	ChannelFrameDaughterFrameChannelPassword:CreateBackdrop("Default")
 
 	ChannelFrame:HookScript("OnShow", UpdateChannel)
 	hooksecurefunc("FriendsFrame_OnEvent", UpdateChannel)
@@ -174,20 +174,20 @@ local function LoadSkin()
 			if button then
 				button:StripTextures()
 				button:SetHighlightTexture("Interface\\PaperDollInfoFrame\\UI-Character-Tab-Highlight")
-				
-				_G["ChannelButton"..i.."Text"]:SetFont(C.media.caith, 12)
+
+				_G["ChannelButton"..i.."Text"]:SetFont(C.media.font, 12)
 			end
 		end
 	end
 	hooksecurefunc("ChannelList_Update", Channel)
-	
+
 	--View Friends BN Frame
 	FriendsFriendsFrame:CreateBackdrop("Default")
 
 	T.SkinEditBox(FriendsFriendsList)
 	T.SkinEditBox(FriendsFriendsNoteFrame)
 	T.SkinDropDownBox(FriendsFriendsFrameDropDown,150)
-	
+
 	--Raid Browser Tab
 	for i=1, 2 do
 		local tab = _G["LFRParentFrameSideTab"..i]
@@ -201,18 +201,18 @@ local function LoadSkin()
 
 			tab:GetNormalTexture():Point("TOPLEFT", 2, -2)
 			tab:GetNormalTexture():Point("BOTTOMRIGHT", -2, 2)
-			
+
 			tab:CreateBackdrop("Default")
 			tab.backdrop:SetAllPoints()
-			tab:StyleButton(true)			
-			
+			tab:StyleButton(true)
+
 			local point, relatedTo, point2, x, y = tab:GetPoint()
 			tab:Point(point, relatedTo, point2, 1, y)
 		end
 	end
-	
+
 	-- 4.3+ only stuff
-	if T.build > 14600 then
+	if T.toc >= 40300 then
 		-- bug on PTR with WhoFrame, fixing them
 		WhoFrameEditBox:ClearAllPoints()
 		WhoFrameWhoButton:ClearAllPoints()
@@ -227,7 +227,7 @@ local function LoadSkin()
 		WhoFrameEditBox:Point("BOTTOM", 0, 32)
 		WhoFrameEditBox:Point("LEFT", 6, 0)
 		WhoFrameEditBox:Point("RIGHT", -6, 0)
-		
+
 		-- go
 		FriendsFrame:SetTemplate("Default")
 	end

@@ -172,11 +172,13 @@ T.PostUpdateHealthRaid = function(health, unit, min, max)
 			end
 		end
 		
-		if not unit:find('partypet%d') then
-			if min ~= max then
-				health.value:SetText("|cff559655-"..ShortValue(max-min).."|r")
-			else
-				health.value:SetText(" ")
+		if C.unitframes.healthdeficit then
+			if not unit:find('partypet%d') then
+				if min ~= max then
+					health.value:SetText("|cff559655-"..ShortValue(max-min).."|r")
+				else
+					health.value:SetText(" ")
+				end
 			end
 		end
 	end

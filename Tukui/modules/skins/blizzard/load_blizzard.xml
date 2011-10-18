@@ -3,6 +3,7 @@
 	<Script file="achievementpopup.lua"/>
 	<Script file="archeology.lua"/>
 	<Script file="auction.lua"/>
+	<Script file="bags.lua"/>
 	<Script file="barbershop.lua"/>
 	<Script file="bgscore.lua"/>
 	<Script file="binding.lua"/>
@@ -23,6 +24,7 @@
 	<Script file="guildregister.lua"/>
 	<Script file="help.lua"/>
 	<Script file="inspect.lua"/>
+	<Script file="itemtransmogrify.lua"/>
 	<Script file="itemtext.lua"/>
 	<Script file="journal.lua"/>
 	<Script file="lfd.lua"/>
@@ -50,6 +52,8 @@
 	<Script file="trade.lua"/>
 	<Script file="tradeskill.lua"/>
 	<Script file="trainer.lua"/>
+	<Script file="tutorial.lua"/>
+	<Script file="voidstorage.lua"/>
 	<Script file="watchframe.lua"/>
 	<Script file="worldmap.lua"/>
 </Ui>

@@ -1,0 +1,11 @@
+## Interface: 40300
+## Title: |cffC495DDTukui|r Filger
+## Notes: Minimal buff/debuff tracking
+## Author: Nils Ruesch, Affli
+## Editor: FourOne
+## Credits: Nils Ruesch, Shestak, Affli, Garagar, hidekki
+## Version: 3.02
+## RequiredDeps: Tukui
+
+Tukui_Filger_Settings.lua
+Tukui_Filger.lua
