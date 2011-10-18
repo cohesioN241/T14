@@ -1,7 +1,7 @@
 local T, C, L = unpack(select(2, ...))
 
 -- Bags & Bank
-if C["bags"].enable == true then return end
+if C["bags"].enable == true then return end	
 
 local function LoadSkin()
 	-- BAGS
@@ -28,7 +28,7 @@ local function LoadSkin()
 				icon:Point("BOTTOMRIGHT", slots, -2, 2)
 			end
 		end
-
+		
 		BackpackTokenFrame:StripTextures()
 		BagItemSearchBox:Size(159, 15)
 		BagItemSearchBox:ClearAllPoints()
@@ -50,7 +50,7 @@ local function LoadSkin()
 
 		T.SkinButton(BankFramePurchaseButton)
 		BankFramePurchaseButton:Height(22)
-
+		
 		BankItemSearchBox:Size(159, 15)
 		BankItemSearchBox:ClearAllPoints()
 		BankItemSearchBox:Point("TOPRIGHT", -56, -48)
@@ -82,7 +82,7 @@ local function LoadSkin()
 			icon:SetTexCoord(.08, .92, .08, .92)
 			icon:ClearAllPoints()
 			icon:SetAllPoints()
-		icon:Point("TOPLEFT", slots, 2, -2)
+			icon:Point("TOPLEFT", slots, 2, -2)
 			icon:Point("BOTTOMRIGHT", slots, -2, 2)
 		end
 
@@ -90,7 +90,7 @@ local function LoadSkin()
 		for i = 6, 12 do
 			local bag = _G["ContainerFrame"..i]
 			if bag then
-			bag:StripTextures(true)
+				bag:StripTextures(true)
 				bag:CreateBackdrop("Default")
 				bag.backdrop:CreateShadow("Default")
 				bag.backdrop:Point("TOPLEFT", 4, -2)

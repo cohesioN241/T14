@@ -103,13 +103,13 @@ local function LoadSkin()
 		T.SkinButton(LFDDungeonReadyDialogEnterDungeonButton)
 		T.SkinButton(LFDDungeonReadyDialogLeaveQueueButton)
 	end
-	
+
 	LFDQueueFrameSpecificListScrollFrame:StripTextures()
 	LFDQueueFrameSpecificListScrollFrame:Height(LFDQueueFrameSpecificListScrollFrame:GetHeight() - 8)
 	LFDParentFrame:CreateBackdrop("Default")
 	LFDParentFrame.backdrop:Point( "TOPLEFT", LFDParentFrame, "TOPLEFT")
 	LFDParentFrame.backdrop:Point( "BOTTOMRIGHT", LFDParentFrame, "BOTTOMRIGHT")
-	T.SkinCloseButton(LFDParentFrameCloseButton,LFDParentFrame)
+	T.SkinCloseButton(LFDParentFrameCloseButton,LFDParentFrame)	
 	T.SkinDropDownBox(LFDQueueFrameTypeDropDown, 300)
 	LFDQueueFrameTypeDropDown:Point("RIGHT",-10,0)
 	LFDQueueFrameCapBar:CreateBackdrop("Default")

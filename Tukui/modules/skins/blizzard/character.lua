@@ -85,6 +85,36 @@ local function LoadSkin()
 				end
 			end
 		end)
+	else
+		EquipmentFlyoutFrameHighlight:Kill()
+		local function SkinItemFlyouts()
+			EquipmentFlyoutFrameButtons:StripTextures()
+
+			for i = 1, EQUIPMENTFLYOUT_MAXITEMS do
+				local button = _G["EquipmentFlyoutFrameButton"..i]
+				local icon = _G["EquipmentFlyoutFrameButton"..i.."IconTexture"]
+				if button then
+					button:StyleButton(false)
+
+					icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+					button:GetNormalTexture():SetTexture(nil)
+
+					icon:ClearAllPoints()
+					icon:Point("TOPLEFT", 2, -2)
+					icon:Point("BOTTOMRIGHT", -2, 2)
+					button:SetFrameLevel(button:GetFrameLevel() + 2)
+					button:SetFrameStrata("DIALOG")
+					if not button.backdrop then
+						button:CreateBackdrop("Default")
+						button.backdrop:SetAllPoints()
+					end
+				end
+			end
+		end
+
+		-- Swap item flyout frame (shown when holding alt over a slot)
+		EquipmentFlyoutFrame:HookScript("OnShow", SkinItemFlyouts)
+		hooksecurefunc("EquipmentFlyout_Show", SkinItemFlyouts)
 	end
 
 	--Icon in upper right corner of character frame
@@ -114,7 +144,7 @@ local function LoadSkin()
 			object.BgMiddle:SetTexture(nil)
 
 			object.Check:SetTexture(nil)
-			object.text:SetFont(C.media.caith,12)
+			object.text:SetFont(C["media"].font,12)
 			object.text.SetFont = T.dummy
 		end
 	end)
@@ -275,6 +305,33 @@ local function LoadSkin()
 	xtex:SetTexCoord(.12, .63, .15, .55)
 	PetPaperDollPetInfo:CreateBackdrop("Default")
 	PetPaperDollPetInfo:Size(24, 24)
+	
+	-- a request to color item by rarity on character frame.
+	local function ColorItemBorder()
+		for _, slot in pairs(slots) do
+			-- Colour the equipment slots by rarity
+			local target = _G["Character"..slot]
+			local slotId, _, _ = GetInventorySlotInfo(slot)
+			local itemId = GetInventoryItemID("player", slotId)
+			
+			if itemId then
+				local _, _, rarity, _, _, _, _, _, _, _, _ = GetItemInfo(itemId)
+				if rarity then				
+					target.backdrop:SetBackdropBorderColor(GetItemQualityColor(rarity))
+				end
+			else
+				target.backdrop:SetBackdropBorderColor(unpack(C.media.bordercolor))
+			end
+		end
+	end
+	
+	-- execute item coloring everytime we open character frame
+	CharacterFrame:HookScript("OnShow", ColorItemBorder)
+	
+	-- execute item coloring everytime an item is changed
+	local CheckItemBorderColor = CreateFrame("Frame")
+	CheckItemBorderColor:RegisterEvent("PLAYER_EQUIPMENT_CHANGED")
+	CheckItemBorderColor:SetScript("OnEvent", ColorItemBorder)
 end
 
 tinsert(T.SkinFuncs["Tukui"], LoadSkin)
