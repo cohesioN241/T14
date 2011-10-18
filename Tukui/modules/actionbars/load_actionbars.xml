@@ -11,10 +11,11 @@
 	<Script file="BarPet.lua"/>
 	<Script file="BarShift.lua"/>
 	<Script file="BarTotem.lua"/>
-	<Script file="buttons.lua"/>	
+	<Script file="buttons.lua"/>
 	<Script file="Style.lua"/>
 	<Script file="Range.lua"/>
 	<Script file="Others.lua"/>
-	<Script file="Cooldowns.lua"/>	
-	<Script file="Toggle.lua"/>	
+	<Script file="Cooldowns.lua"/>
+	<Script file="Extra.lua"/>
+	<Script file="Toggle.lua"/>
 </Ui>
