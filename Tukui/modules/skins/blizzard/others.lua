@@ -20,6 +20,7 @@ local function LoadSkin()
 		"ReadyCheckFrame",
 		"StackSplitFrame",
 		"CharacterFrame",
+		"VoiceChatTalkers"
 	}
 
 	for i = 1, getn(skins) do
@@ -31,19 +32,25 @@ local function LoadSkin()
 		end
 	end
 
-	-- Skin all DropDownList[i]
-	local function SkinDropDownList(level, index)
-		for i = 1, UIDROPDOWNMENU_MAXLEVELS do
-			local menubackdrop = _G["DropDownList"..i.."MenuBackdrop"]
-			local backdrop = _G["DropDownList"..i.."Backdrop"]
-			if not backdrop.isSkinned then
-				menubackdrop:SetTemplate("Default")
-				backdrop:SetTemplate("Default")
-				backdrop.isSkinned = true
-			end
-		end
+	local StripAllTextures = {
+		"VideoOptionsFrameCategoryFrame",
+		"VideoOptionsFramePanelContainer",
+		"AudioOptionsSoundPanelPlayback",
+		"AudioOptionsSoundPanelHardware",
+		"AudioOptionsSoundPanelVolume",
+		"AudioOptionsVoicePanelTalking",
+		"AudioOptionsVoicePanelBinding",
+		"AudioOptionsVoicePanelListening",
+		"InterfaceOptionsFrameCategories",
+		"InterfaceOptionsFramePanelContainer",
+		"InterfaceOptionsFrameTab1",
+		"InterfaceOptionsFrameTab2",
+		"InterfaceOptionsFrameAddOns",
+	}
+	
+	for _, object in pairs(StripAllTextures) do
+		_G[object]:StripTextures()
 	end
-	hooksecurefunc("UIDropDownMenu_CreateFrames", SkinDropDownList)
 
 	local ChatMenus = {
 		"ChatMenu",
@@ -157,7 +164,9 @@ local function LoadSkin()
 		"ReadyCheckFrameNoButton",
 		"StackSplitOkayButton",
 		"StackSplitCancelButton",
-		"RolePollPopupAcceptButton"
+		"RolePollPopupAcceptButton",
+		"InterfaceOptionsHelpPanelResetTutorials",
+		"CompactUnitFrameProfilesGeneralOptionsFrameResetPositionButton",
 	}
 
 	for i = 1, getn(BlizzardButtons) do

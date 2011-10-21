@@ -7,6 +7,9 @@ local function LoadSkin()
 		"PlayerTalentFrameActivateButton",
 	}
 	PlayerTalentFrameToggleSummariesButton:Point("BOTTOM", PlayerTalentFrame, "BOTTOM",0,5)
+	
+	-- fix button frame level
+	PlayerTalentFrameActivateButton:SetFrameLevel(6)
 
 	for i = 1, #buttons do
 		_G[buttons[i]]:StripTextures()
@@ -109,7 +112,7 @@ local function LoadSkin()
 		end
 		
 		if button.Rank then
-			button.Rank:SetFont(C.media.pixel_font, 12, "MONOCHROMEOUTLINE")
+			button.Rank:SetFont(C.media.font, 12, "THINOUTLINE")
 			button.Rank:ClearAllPoints()
 			button.Rank:SetPoint("BOTTOMRIGHT")
 		end
@@ -203,14 +206,14 @@ local function LoadSkin()
 			button:StripTextures()
 		end
 		
-		_G["PlayerTalentFramePanel"..i.."HeaderIconPointsSpent"]:SetFont(C.media.pixel_font, 12, "THINOUTLINE")
+		_G["PlayerTalentFramePanel"..i.."HeaderIconPointsSpent"]:SetFont(C.media.font, 12, "THINOUTLINE")
 
 		if icon then
 			icon:SetTexCoord(.08, .92, .08, .92)
 			button:SetFrameLevel(button:GetFrameLevel() +1)
 			button:ClearAllPoints()
 			button:Point("TOPLEFT",panel,"TOPLEFT", 4, -4)
-			text:SetFont(C.media.pixel_font, 12, "MONOCHROMEOUTLINE")
+			text:SetFont(C.media.font, 12, "THINOUTLINE")
 			text:Point("BOTTOMRIGHT",button, "BOTTOMRIGHT", -1, 2)
 			local frame = CreateFrame("Frame",nil, button)
 			frame:CreateBackdrop("Default", true)
@@ -269,7 +272,7 @@ local function LoadSkin()
 			button:SetFrameLevel(button:GetFrameLevel() +1)
 			button:ClearAllPoints()
 			button:Point("TOPLEFT",panel,"TOPLEFT", 5, -5)
-			local text = button:FontString(nil, C.media.pixel_font, 12, "MONOCHROMEOUTLINE")
+			local text = button:FontString(nil, C.media.font, 12, "THINOUTLINE")
 			text:Point("BOTTOMRIGHT",button, "BOTTOMRIGHT", -1, 2)
 			text:SetText(pointsSpent)
 			local frame = CreateFrame("Frame",nil, button)
@@ -304,7 +307,7 @@ local function LoadSkin()
 			button:SetFrameLevel(button:GetFrameLevel() +1)
 			button:ClearAllPoints()
 			button:Point("BOTTOMLEFT",panel,"TOPLEFT", 0, 10)
-			local text = button:FontString(nil, C.media.pixel_font, 12, "MONOCHROMEOUTLINE")
+			local text = button:FontString(nil, C.media.font, 12, "THINOUTLINE")
 			text:Point("TOPRIGHT",button, "TOPRIGHT", 0, -10)
 			text:SetText(diet)
 			local frame = CreateFrame("Frame",nil, button)
@@ -325,7 +328,7 @@ local function LoadSkin()
 		end
 		
 		if button.Rank then
-			button.Rank:SetFont(C.media.pixel_font, 12, "MONOCHROMEOUTLINE")
+			button.Rank:SetFont(C.media.font, 12, "THINOUTLINE")
 			button.Rank:ClearAllPoints()
 			button.Rank:SetPoint("BOTTOMRIGHT")
 		end

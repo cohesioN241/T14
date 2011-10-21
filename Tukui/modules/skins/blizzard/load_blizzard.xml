@@ -42,6 +42,7 @@
 	<Script file="questlog.lua"/>
 	<Script file="raid.lua"/>
 	<Script file="raidinfo.lua"/>
+	<Script file="raidparent.lua"/>
 	<Script file="reforging.lua"/>
 	<Script file="socket.lua"/>
 	<Script file="spellbook.lua"/>

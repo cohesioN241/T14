@@ -7,13 +7,13 @@ local function LoadSkin()
 	  "LFRBrowseFrameSendMessageButton",
 	  "LFRBrowseFrameInviteButton",
 	  "LFRBrowseFrameRefreshButton",
+	  "LFRQueueFrameNoLFRWhileLFDLeaveQueueButton",
 	}
 
 	LFRParentFrame:StripTextures()
 	LFRParentFrame:SetTemplate("Default")
 	LFRQueueFrame:StripTextures()
 	LFRBrowseFrame:StripTextures()
-
 
 	for i=1, #buttons do
 	  T.SkinButton(_G[buttons[i]])
@@ -63,6 +63,7 @@ local function LoadSkin()
 	
 	LFRQueueFrameCommentTextButton:CreateBackdrop("Default")
 	LFRQueueFrameCommentTextButton:Height(35)
+	LFRQueueFrameNoLFRWhileLFD:SetTemplate("Default")
 
 	for i=1, 7 do
 		local button = "LFRBrowseFrameColumnHeader"..i
