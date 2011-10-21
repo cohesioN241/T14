@@ -20,4 +20,5 @@
 	
 	<Script file="raidutility.lua"/>
 	<Script file="micromenu.lua"/>
+	<Script file="dropdownlist.lua"/>
 </Ui>
