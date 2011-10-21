@@ -223,6 +223,8 @@ if T.client == "zhTW" then
 	L.move_achievements = "ç§»å‹•æˆå°±ä»‹é¢"
 	L.move_roll = "ç§»å‹•Rollæˆ°åˆ©å“çš„ä»‹é¢"
 	L.move_vehicle = "ç§»å‹•è¼‰å…·åä½ä»‹é¢"
+	L.move_durability = "Move Durability"
+	L.move_extrabutton = "Extra Button"
 	
 	-- tuto/install
 	L.install_header_1 = "æ­¡è¿Ž"

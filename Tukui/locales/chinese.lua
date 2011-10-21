@@ -222,6 +222,8 @@ if T.client == "zhCN" then
 	L.move_achievements = "移动成就框体"
 	L.move_roll = "移动拾取R点框体"
 	L.move_vehicle = "移动载具界面"
+	L.move_durability = "Move Durability"
+	L.move_extrabutton = "Extra Button"
 
 	-------------------------------------------------
 	-- INSTALLATION

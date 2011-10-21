@@ -224,6 +224,7 @@ if T.client == "deDE" then
 	L.move_roll = "Würfelfenster bewegen"
 	L.move_vehicle = "Fahrzeugausstieg bewegen"
 	L.move_durability = "Move Durability"
+	L.move_extrabutton = "Extra Button"
 	
 	L.actionbars_locked = "Actionbars |cffe45050Locked|r"
 	L.actionbars_unlocked = "Actionbars |cff50e468Unlocked|r"

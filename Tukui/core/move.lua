@@ -14,6 +14,7 @@ T.AllowFrameMoving = {
 	TukuiVehicleAnchor,
 	TukuiDurabilityAnchor,
 	TukuiWorldStateAnchor,
+	TukuiExtraActionBarFrameHolder,
 }
 
 -- used to exec various code if we enable or disable moving
@@ -93,13 +94,13 @@ local function exec(self, enable)
 		end
 	end
 
-	if self == TukuiWatchFrameAnchor then
+	if self == TukuiWatchFrameAnchor or self == TukuiExtraActionBarFrameHolder then
 		if enable then
-			TukuiWatchFrameAnchor:SetBackdropBorderColor(1,0,0,1)
-			TukuiWatchFrameAnchor:SetBackdropColor(unpack(C.media.backdropcolor))
+			self:SetBackdropBorderColor(1,0,0,1)
+			self:SetBackdropColor(unpack(C.media.backdropcolor))
 		else
-			TukuiWatchFrameAnchor:SetBackdropBorderColor(0,0,0,0)
-			TukuiWatchFrameAnchor:SetBackdropColor(0,0,0,0)
+			self:SetBackdropBorderColor(0,0,0,0)
+			self:SetBackdropColor(0,0,0,0)
 		end
 	end
 

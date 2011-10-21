@@ -224,6 +224,7 @@ if T.client == "esES" then
 	L.move_roll = "Mover Marco de Lanzamiento de Dados por Objetos"
 	L.move_vehicle = "Mover Asiento del vehiculo"
 	L.move_durability = "Move Durability"
+	L.move_extrabutton = "Extra Button"
 	
 	L.actionbars_locked = "Actionbars |cffe45050Locked|r"
 	L.actionbars_unlocked = "Actionbars |cff50e468Unlocked|r"
