@@ -596,12 +596,7 @@ local function Shared(self, unit)
 			local buffs = CreateFrame("Frame", nil, self)
 			local debuffs = CreateFrame("Frame", nil, self)
 			
-			if (T.myclass == "SHAMAN" and C["unitframes"].shaman) or
-				(T.myclass == "DEATHKNIGHT" and C["unitframes"].deathknight) or
-				(T.myclass == "WARLOCK" and C["unitframes"].warlock) or
-				(T.myclass == "PALADIN" and C["unitframes"].paladin) or
-				(T.myclass == "DRUID" and C["unitframes"].druid) and 
-				(C["unitframes"].classbar and C["unitframes"].playerauras and unit == "player") then
+			if T.lowversion then
 				buffs:SetPoint("BOTTOMLEFT", ufbg, "TOPLEFT", 0, 7)
 			else
 				buffs:SetPoint("BOTTOMLEFT", ufbg, "TOPLEFT", 0, 3)
