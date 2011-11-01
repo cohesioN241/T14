@@ -159,7 +159,10 @@ local OnAttributeChanged = function(self, attribute, value)
 end
 
 local Skin = function(self)
-	self:SetTemplate("Default")
+	if not self.isSkinned then
+		self:SetTemplate("Default")
+		self.isSkinned = true
+	end
 	
 	local proxy = self:GetName():sub(-11) == "ProxyButton"
 	local Icon = self:CreateTexture(nil, "BORDER")

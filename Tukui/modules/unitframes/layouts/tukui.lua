@@ -576,7 +576,7 @@ local function Shared(self, unit)
 			self.Name = Name
 			
 			-- standard combo points on target if classbar is disabled
-			if not C["unitframes"].classbar then
+			if C["unitframes"].classiccombo then
 				local CPoints = {}
 				CPoints.unit = PlayerFrame.unit
 				for i = 1, 5 do
@@ -607,11 +607,7 @@ local function Shared(self, unit)
 			local buffs = CreateFrame("Frame", nil, self)
 			local debuffs = CreateFrame("Frame", nil, self)
 			
-			if T.lowversion then
-				buffs:SetPoint("BOTTOMLEFT", ufbg, "TOPLEFT", 0, 7)
-			else
-				buffs:SetPoint("BOTTOMLEFT", ufbg, "TOPLEFT", 0, 3)
-			end
+			buffs:SetPoint("BOTTOMLEFT", ufbg, "TOPLEFT", 0, 3)
 			
 			local bs = 26
 			local bh = 0

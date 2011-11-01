@@ -30,6 +30,7 @@ C["unitframes"] = {
 	["unitcastbar"] = true,                             -- enable tukui castbar
 	["cblatency"] = true,                              	-- enable castbar latency
 	["cbicons"] = true,                                 -- enable icons on castbar
+	["classiccombo"] = false,                           -- display classic combo points (from Tukui 13 or less)
 	["cbclasscolor"] = false,
 		-- if cbclasscolor == false then it uses this color
 		["cbcustomcolor"] = { .15, .15, .15 },
