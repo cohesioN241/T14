@@ -516,7 +516,6 @@ T.DruidBarDisplay = function(self, login)
 	local dm = self.DruidMana
 	local txt = self.EclipseBar.Text
 	local bg = self.DruidManaBackground
-	local buffs = self.Buffs
 	local flash = self.FlashInfo
 
 	if login then
@@ -529,12 +528,10 @@ T.DruidBarDisplay = function(self, login)
 			flash:Hide()
 		end
 		bg:SetAlpha(1)
-		if buffs then buffs:SetPoint("BOTTOMLEFT", self.ufbg, "TOPLEFT", 0, 7) end
 	else
 		txt:Hide()
 		flash:Hide()
 		bg:SetAlpha(0)
-		if buffs then buffs:SetPoint("BOTTOMLEFT", self.ufbg, "TOPLEFT", 0, 3) end
 	end
 end
 

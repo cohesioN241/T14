@@ -37,7 +37,6 @@ C["unitframes"] = {
 	-- Auras
 	["auratimer"] = true,                               -- enable timers on buffs/debuffs
 	["auratextscale"] = 11,                             -- the font size of buffs/debuffs timers on unitframes
-	["playerauras"] = false,                            -- enable auras
 	["targetauras"] = true,                             -- enable auras on target unit frame
 	["totdebuffs"] = false,                             -- enable tot debuffs (high reso only)
 	["focusdebuffs"] = false,                             -- enable focus debuffs
