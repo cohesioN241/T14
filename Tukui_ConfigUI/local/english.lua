@@ -105,6 +105,7 @@ TukuiConfigUILocalization.unitframesweakenedsoulbar = "Enable Weakened Soul bar 
 TukuiConfigUILocalization.unitframesonlyselfdebuffs = "Display only our debuffs on target"
 TukuiConfigUILocalization.unitframesshowfocustarget = "Enable Focus target"
 TukuiConfigUILocalization.unitframesbordercolor = "Set default border color of panels"
+TukuiConfigUILocalization.unitframesmovecombobar = "Move the combo bar from target (ROGUE ONLY)"
 
 -- loot
 TukuiConfigUILocalization.loot = "Loot"
