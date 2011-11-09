@@ -10,7 +10,7 @@
 			
 	<Include file="config\load_config.xml"/>
 	<Script file="core\config.lua"/>
-
+	<Script file="core\customconfig.lua"/>
 	<Script file="core\video.lua"/>
 	<Script file="core\deprecated.lua"/>
 	<Script file="core\api.lua"/>
