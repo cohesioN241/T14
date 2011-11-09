@@ -4,12 +4,12 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 --------------------------------------------------------------------
 
 if C["datatext"].avd and C["datatext"].avd > 0 then
-	local Stat = CreateFrame("Frame")
+	local Stat = CreateFrame("Frame", "TukuiStatAvoidance")
 	Stat:EnableMouse(true)
 	Stat:SetFrameStrata("BACKGROUND")
 	Stat:SetFrameLevel(3)
 
-	local Text  = TukuiInfoLeft:CreateFontString(nil, "OVERLAY")
+	local Text  = TukuiInfoLeft:CreateFontString("TukuiStatAvoidanceText", "OVERLAY")
 	Text:SetFont(unpack(T.Fonts.dFont.setfont))
 	T.PP(C["datatext"].avd, Text)
 	

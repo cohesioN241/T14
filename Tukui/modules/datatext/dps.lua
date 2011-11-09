@@ -5,14 +5,14 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 
 if C["datatext"].dps_text and C["datatext"].dps_text > 0 then
 	local events = {SWING_DAMAGE = true, RANGE_DAMAGE = true, SPELL_DAMAGE = true, SPELL_PERIODIC_DAMAGE = true, DAMAGE_SHIELD = true, DAMAGE_SPLIT = true, SPELL_EXTRA_ATTACKS = true}
-	local DPS_FEED = CreateFrame("Frame")
+	local DPS_FEED = CreateFrame("Frame", "TukuiStatDPS")
 	local player_id = UnitGUID("player")
 	local dmg_total, last_dmg_amount = 0, 0
 	local cmbt_time = 0
 
 	local pet_id = UnitGUID("pet")
     
-	local Text = TukuiInfoLeft:CreateFontString(nil, "OVERLAY")
+	local Text = TukuiInfoLeft:CreateFontString("TukuiStatDPSText", "OVERLAY")
 	Text:SetFont(unpack(T.Fonts.dFont.setfont))
 	Text:SetText("0.0 ", T.cStart .. L.datatext_dps)
 

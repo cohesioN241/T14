@@ -20,13 +20,13 @@ local officerNoteString = "  o: '%s'"
 local guildTable, guildXP, guildMotD = {}, {}, ""
 local totalOnline = 0
 
-local Stat = CreateFrame("Frame")
+local Stat = CreateFrame("Frame", "TukuiStatGuild")
 Stat:EnableMouse(true)
 Stat:SetFrameStrata("MEDIUM")
 Stat:SetFrameLevel(3)
 Stat.update = false
 
-local Text  = TukuiInfoLeft:CreateFontString(nil, "OVERLAY")
+local Text  = TukuiInfoLeft:CreateFontString("TukuiStatGuildText", "OVERLAY")
 Text:SetFont(unpack(T.Fonts.dFont.setfont))
 T.PP(C["datatext"].guild, Text)
 
