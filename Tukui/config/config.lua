@@ -31,6 +31,7 @@ C["unitframes"] = {
 	["cblatency"] = true,                              	-- enable castbar latency
 	["cbicons"] = true,                                 -- enable icons on castbar
 	["classiccombo"] = false,                           -- display classic combo points (from Tukui 13 or less)
+	["movecombobar"] = true,                            -- display the new combo bar (t14+) from target to player (ROGUE ONLY)
 	["cbclasscolor"] = false,
 		-- if cbclasscolor == false then it uses this color
 		["cbcustomcolor"] = { .15, .15, .15 },
