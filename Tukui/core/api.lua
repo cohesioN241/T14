@@ -11,6 +11,8 @@ local borderr, borderg, borderb = unpack(C["media"].bordercolor)
 local backdropa = 1
 local bordera = 1
 local template
+local inset = 0
+local noinset = C.media.noinset
 
 -- pixel perfect script of custom ui Scale.
 local mult = 768/string.match(GetCVar("gxResolution"), "%d+x(%d+)")/C["general"].uiscale
@@ -106,6 +108,8 @@ local function CreateBorder(f, i, o)
 	end
 end
 
+if noinset then inset = mult end
+
 -- function to update color when it doesn't match template we try to apply
 local function UpdateColor(t)
 	if t == template then return end
@@ -138,7 +142,7 @@ local function CreatePanel(f, t, w, h, a1, p, a2, x, y)
 		bgFile = C["media"].blank, 
 		edgeFile = C["media"].blank, 
 		tile = false, tileSize = 0, edgeSize = mult, 
-		insets = { left = -mult, right = -mult, top = -mult, bottom = -mult}
+		insets = { left = -mult + inset, right = -mult + inset, top = -mult + inset, bottom = -mult + inset}
 	})
 	
 	f:SetBackdropColor(backdropr, backdropg, backdropb, backdropa)
@@ -156,8 +160,8 @@ local function CreateBackdrop(f, t, tex)
 	if not t then t = "Default" end
 
 	local b = CreateFrame("Frame", nil, f)
-	b:Point("TOPLEFT", -2, 2)
-	b:Point("BOTTOMRIGHT", 2, -2)
+	b:Point("TOPLEFT", -2 + inset, 2 - inset)
+	b:Point("BOTTOMRIGHT", 2 - inset, -2 + inset)
 	b:SetTemplate(t, tex)
 
 	if f:GetFrameLevel() - 1 >= 0 then
@@ -182,7 +186,7 @@ local function SetTemplate(f, t, tex)
 		bgFile = texture, 
 		edgeFile = C.media.blank, 
 		tile = false, tileSize = 0, edgeSize = mult, 
-		insets = { left = -mult, right = -mult, top = -mult, bottom = -mult}
+		insets = { left = -mult + inset, right = -mult + inset, top = -mult + inset, bottom = -mult + inset}
 	})
 	
 	f:SetBackdropColor(backdropr, backdropg, backdropb, backdropa)
