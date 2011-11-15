@@ -297,7 +297,12 @@ end
 
 oUF:RegisterStyle('TukuiHealRaid', Shared)
 oUF:Factory(function(self)
-	oUF:SetActiveStyle("TukuiHealRaid")	
+	oUF:SetActiveStyle("TukuiHealRaid")
+	
+	if C.unitframes.gridvertical then
+		point = "TOP"
+		columnAnchorPoint = "LEFT"
+	end
 
 	local raid = self:SpawnHeader("TukuiHealRaid", nil, "raid",
 		'oUF-initialConfigFunction', [[
@@ -309,14 +314,14 @@ oUF:Factory(function(self)
 		'initial-height', T.Scale(41),
 		"showRaid", true, 
 		"xoffset", T.Scale(7),
-		"point", "LEFT",
+		"point", point,
 		"groupFilter", "1,2,3,4,5,6,7,8",
 		"groupingOrder", "1,2,3,4,5,6,7,8",
 		"groupBy", "GROUP",
 		"maxColumns", 5,
 		"unitsPerColumn", 5,
 		"columnSpacing", T.Scale(3),
-		"columnAnchorPoint", "BOTTOM"
+		"columnAnchorPoint", columnAnchorPoint
 	)
 	raid:SetPoint("BOTTOM", UIParent, "BOTTOM", 0, T.Scale(145))
 end)
