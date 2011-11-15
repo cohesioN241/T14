@@ -66,3 +66,17 @@ C["media"] = {
 	["pixel_font"] = [[Interface\Addons\Tukui\media\fonts\visitor2.ttf]],
 	["caith"] = [[Interface\Addons\Tukui\media\fonts\caith.ttf]],
 }
+
+-------------------------------------------------------------------
+-- Used to overwrite default medias outside Tukui
+-------------------------------------------------------------------
+
+local settings = TukuiCustomConfig
+if settings then
+	local media = settings.media
+	if media then
+		for option, value in pairs(media) do
+			C.media[option] = value
+		end
+	end
+end
