@@ -18,6 +18,7 @@ Stat:RegisterEvent("PLAYER_ENTERING_WORLD")
 Stat:SetFrameStrata("MEDIUM")
 Stat:SetFrameLevel(3)
 Stat:EnableMouse(true)
+Stat.Option = C.datatext.maptime
 
 local Text = Stat:CreateFontString(nil, "OVERLAY")
 Text:SetFont(unpack(T.Fonts.dFont.setfont))

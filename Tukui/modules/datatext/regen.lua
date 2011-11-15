@@ -6,6 +6,7 @@ local regen
 local Stat = CreateFrame("Frame", "TukuiStatRegen")
 Stat:SetFrameStrata("BACKGROUND")
 Stat:SetFrameLevel(3)
+Stat.Option = C.datatext.regen
 
 local Text = TukuiInfoLeft:CreateFontString("TukuiStatRegenText", "OVERLAY")
 Text:SetFont(unpack(T.Fonts.dFont.setfont))

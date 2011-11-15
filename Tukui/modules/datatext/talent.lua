@@ -5,6 +5,7 @@ if C.datatext.talent then
 	Stat:EnableMouse(true)
 	Stat:SetFrameStrata("BACKGROUND")
 	Stat:SetFrameLevel(3)
+	Stat.Option = C.datatext.talent
 
 	local Text = TukuiInfoLeft:CreateFontString("TukuiStatTalentText", "OVERLAY")
 	Text:SetFont(unpack(T.Fonts.dFont.setfont))

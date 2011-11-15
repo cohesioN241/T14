@@ -8,6 +8,7 @@ if C["datatext"].bags and C["datatext"].bags > 0 then
 	Stat:EnableMouse(true)
 	Stat:SetFrameStrata("BACKGROUND")
 	Stat:SetFrameLevel(3)
+	Stat.Option = C.datatext.bags
 
 	local Text  = TukuiInfoLeft:CreateFontString("TukuiStatBagsText", "OVERLAY")
 	Text:SetFont(unpack(T.Fonts.dFont.setfont))
