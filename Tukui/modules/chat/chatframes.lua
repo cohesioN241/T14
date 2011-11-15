@@ -2,7 +2,7 @@
 local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
 if C["chat"].enable ~= true then return end
 
-local TukuiChat = CreateFrame("Frame")
+local TukuiChat = CreateFrame("Frame", "TukuiChat")
 local _G = _G
 local origs = {}
 local type = type
