@@ -7,7 +7,7 @@ if not C["datatext"].mastery == nil or C["datatext"].mastery > 0 then
 	local Stat = CreateFrame("Frame", "TukuiStatMastery")
 	Stat.Option = C.datatext.talent
 
-	local Text  = TukuiInfoLeft:CreateFontString("TukuiStatMasteryText", "OVERLAY")
+	local Text  = Stat:CreateFontString("TukuiStatMasteryText", "OVERLAY")
 	Text:SetFont(unpack(T.Fonts.dFont.setfont))
 	T.PP(C["datatext"].mastery, Text)
 

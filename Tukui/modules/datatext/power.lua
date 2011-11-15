@@ -10,7 +10,7 @@ if C["datatext"].power and C["datatext"].power > 0 then
 	Stat:SetFrameLevel(3)
 	Stat.Option = C.datatext.power
 
-	local Text  = TukuiInfoLeft:CreateFontString("TukuiStatPowerText", "OVERLAY")
+	local Text  = Stat:CreateFontString("TukuiStatPowerText", "OVERLAY")
 	Text:SetFont(unpack(T.Fonts.dFont.setfont))
 	T.PP(C["datatext"].power, Text)
 

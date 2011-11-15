@@ -10,7 +10,7 @@ if C["datatext"].gold and C["datatext"].gold > 0 then
 	Stat:SetFrameLevel(3)
 	Stat.Option = C.datatext.gold
 
-	local Text  = TukuiInfoLeft:CreateFontString("TukuiStatGoldText", "OVERLAY")
+	local Text  = Stat:CreateFontString("TukuiStatGoldText", "OVERLAY")
 	Text:SetFont(unpack(T.Fonts.dFont.setfont))
 	T.PP(C["datatext"].gold, Text)
 

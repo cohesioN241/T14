@@ -9,7 +9,7 @@ if C["datatext"].haste and C["datatext"].haste > 0 then
 	Stat:SetFrameLevel(3)
 	Stat.Option = C.datatext.haste
 
-	local Text  = TukuiInfoLeft:CreateFontString("TukuiStatHasteText", "OVERLAY")
+	local Text  = Stat:CreateFontString("TukuiStatHasteText", "OVERLAY")
 	Text:SetFont(unpack(T.Fonts.dFont.setfont))
 	T.PP(C["datatext"].haste, Text)
 

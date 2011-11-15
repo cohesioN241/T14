@@ -12,7 +12,7 @@ if C["datatext"].hps_text and C["datatext"].hps_text > 0 then
 	local actual_heals_total, cmbt_time = 0
 	local amount_healed, amount_over_healed = 0
  
-	local Text = TukuiInfoLeft:CreateFontString("TukuiStatHealText", "OVERLAY")
+	local Text = HPS_FEED:CreateFontString("TukuiStatHealText", "OVERLAY")
 	Text:SetFont(unpack(T.Fonts.dFont.setfont))
 	Text:SetText("0.0 ", T.cStart .. L.datatext_hps)
  
