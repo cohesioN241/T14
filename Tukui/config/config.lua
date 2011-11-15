@@ -71,6 +71,7 @@ C["unitframes"] = {
 		["debuffHighlightFilter"] = true,					-- filter debuff border coloring
 			-- enable player / target debuff highlight
 			["playerHighlight"] = true,				
+		["gridvertical"] = false,                           -- grid group displayed vertically
 		
 		-- Heal
 		["healthvertical"] = true,						-- change orientation of health bars in heal mode

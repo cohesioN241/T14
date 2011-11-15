@@ -106,6 +106,8 @@ TukuiConfigUILocalization.unitframesonlyselfdebuffs = "Display only our debuffs 
 TukuiConfigUILocalization.unitframesshowfocustarget = "Enable Focus target"
 TukuiConfigUILocalization.unitframesbordercolor = "Set default border color of panels"
 TukuiConfigUILocalization.unitframesmovecombobar = "Move the combo bar from target (ROGUE ONLY)"
+TukuiConfigUILocalization.unitframesclassiccombo = "Use classic combo point"
+TukuiConfigUILocalization.unitframesgridvertical = "Display raid groups on Grid vertically"
 
 -- loot
 TukuiConfigUILocalization.loot = "Loot"
