@@ -41,3 +41,12 @@ T.build = tonumber(T.buildtext)
 T.level = UnitLevel("player")
 T.myrealm = GetRealmName()
 T.InfoLeftRightWidth = 370
+
+if not TukuiSaved then
+	TukuiSaved = {	
+		["bottomrows"] = 1,
+		["rightbars"] = 1,
+		["splitbars"] = false,
+		["actionbarsLocked"] = false,
+	}
+end

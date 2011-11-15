@@ -6,7 +6,6 @@ if not C["datatext"].location == true then return end
 local TukuiLocationPanel = CreateFrame("Frame", "TukuiLocationPanel", UIParent)
 TukuiLocationPanel:CreatePanel(TukuiLocationPanel, 54, 23, "TOP", UIParent, "TOP", 0, -8)
 TukuiLocationPanel:CreateShadow("TukuiLocationPanel")
-Stat.Option = C.datatext.location
 
 -- Coord panel from Eclipse edit
 if C["datatext"].location_coords == true then

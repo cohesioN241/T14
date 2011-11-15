@@ -132,8 +132,8 @@ for i = 1, getn(MWbuttons) do
 end
 
 -- set our custom text inside main window buttons
-+Recount.MainWindow.RightButton.text:SetText(">")
-+Recount.MainWindow.LeftButton.text:SetText("<")
+Recount.MainWindow.RightButton.text:SetText(">")
+Recount.MainWindow.LeftButton.text:SetText("<")
 Recount.MainWindow.ResetButton.text:SetText("R")
 Recount.MainWindow.FileButton.text:SetText("F")
 Recount.MainWindow.ConfigButton.text:SetText("C")
