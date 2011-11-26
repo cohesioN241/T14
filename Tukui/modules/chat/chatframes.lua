@@ -135,6 +135,17 @@ local function StyleChat(frame)
 	if _G[chat] ~= _G["ChatFrame2"] then
 		origs[_G[chat]] = _G[chat].AddMessage
 		_G[chat].AddMessage = AddMessage
+	else
+		CombatLogQuickButtonFrame_Custom:StripTextures()
+		CombatLogQuickButtonFrame_Custom:SetTemplate("Default")
+		T.SkinCloseButton(CombatLogQuickButtonFrame_CustomAdditionalFilterButton)
+		CombatLogQuickButtonFrame_CustomAdditionalFilterButton.t:SetText("V")
+		CombatLogQuickButtonFrame_CustomAdditionalFilterButton.t:ClearAllPoints()
+		CombatLogQuickButtonFrame_CustomAdditionalFilterButton.t:Point("RIGHT", -8, 4)
+		CombatLogQuickButtonFrame_CustomProgressBar:ClearAllPoints()
+		CombatLogQuickButtonFrame_CustomProgressBar:SetPoint("TOPLEFT", CombatLogQuickButtonFrame_Custom, 2, -2)
+		CombatLogQuickButtonFrame_CustomProgressBar:SetPoint("BOTTOMRIGHT", CombatLogQuickButtonFrame_Custom, -2, 2)
+		CombatLogQuickButtonFrame_CustomProgressBar:SetStatusBarTexture(C.media.normTex)
 	end
 
 	frame.isSkinned = true
@@ -198,6 +209,9 @@ local function ToastFramePosition(self)
 		self:Point("BOTTOMLEFT", TukuiChatLeft, "TOPLEFT", 0, 3)
 	end)
 end
+
+-- reskin Toast Frame Close Button
+T.SkinCloseButton(BNToastFrameCloseButton)
 
 TukuiChat:RegisterEvent("ADDON_LOADED")
 TukuiChat:RegisterEvent("UPDATE_CHAT_WINDOWS")
