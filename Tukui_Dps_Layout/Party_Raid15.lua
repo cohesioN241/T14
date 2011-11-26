@@ -143,50 +143,6 @@ local function Shared(self, unit)
 		local range = {insideAlpha = 1, outsideAlpha = C["unitframes"].raidalphaoor}
 		self.Range = range
 	end
-
-	-- AuraWatch for DPS layout
-	if C["unitframes"].raidunitdebuffwatch and C["unitframes"].dpsunitdebuffwatch then
-		-- AuraWatch (corner icon)
-		--T.createAuraWatch(self,unit)
-		
-		-- Raid Debuffs (big middle icon)
-		local RaidDebuffs = CreateFrame('Frame', nil, self)
-		RaidDebuffs:Height(22)
-		RaidDebuffs:Width(22)
-		RaidDebuffs:Point('CENTER', health, 1,0)
-		RaidDebuffs:SetFrameStrata(health:GetFrameStrata())
-		RaidDebuffs:SetFrameLevel(health:GetFrameLevel() + 2)
-		
-		RaidDebuffs:SetTemplate("Default")
-		
-		RaidDebuffs.icon = RaidDebuffs:CreateTexture(nil, 'OVERLAY')
-		RaidDebuffs.icon:SetTexCoord(.09, .91, .09, .91)
-		RaidDebuffs.icon:Point("TOPLEFT", 2, -2)
-		RaidDebuffs.icon:Point("BOTTOMRIGHT", -2, 2)
-		
-		-- just in case someone want to add this feature, uncomment to enable it
-		--[[
-		if C["unitframes"].auratimer then
-			RaidDebuffs.cd = CreateFrame('Cooldown', nil, RaidDebuffs)
-			RaidDebuffs.cd:SetPoint("TOPLEFT", T.Scale(2), T.Scale(-2))
-			RaidDebuffs.cd:SetPoint("BOTTOMRIGHT", T.Scale(-2), T.Scale(2))
-			RaidDebuffs.cd.noOCC = true -- remove this line if you want cooldown number on it
-		end
-		--]]
-		
-		RaidDebuffs.count = RaidDebuffs:CreateFontString(nil, 'OVERLAY')
-		RaidDebuffs.count:SetFont(C["media"].pixel_font, 12, "MONOCHROMEOUTLINE")
-		RaidDebuffs.count:SetPoint('BOTTOMRIGHT', RaidDebuffs, 'BOTTOMRIGHT', 0, 2)
-		RaidDebuffs.count:SetTextColor(1, .9, 0)
-		
-		if C["unitframes"].raiddebuffstime == true then
-			RaidDebuffs:FontString('time', C["media"].pixel_font, 12, "MONOCHROMEOUTLINE")
-			RaidDebuffs.time:SetPoint('CENTER', 2, 0)
-			RaidDebuffs.time:SetTextColor(1, .9, 0)
-		end
-		
-		self.RaidDebuffs = RaidDebuffs
-    end
 	
 	return self
 end

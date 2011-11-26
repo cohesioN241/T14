@@ -66,7 +66,6 @@ C["unitframes"] = {
 		["showsymbols"] = true,	                            -- show symbol.
 		["aggro"] = true,                                   -- show aggro on all raids layouts
 		["raidunitdebuffwatch"] = true,                     -- track important spell to watch in pve for heal mode.
-			["dpsunitdebuffwatch"] = true,					-- track important spell to watch in pve for dps mode (requires raidunitdebuffwatch = true)
 		["healcomm"] = true,                               -- enable healprediction support.
 		["debuffHighlightFilter"] = true,					-- filter debuff border coloring
 			-- enable player / target debuff highlight

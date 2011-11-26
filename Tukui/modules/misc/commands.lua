@@ -76,10 +76,12 @@ SlashCmdList.TUKUICHATRESET = function()
 		-- move general bottom left or Loot (if found) on right
 		if i == 1 then
 			frame:ClearAllPoints()
-			frame:Point("BOTTOMLEFT", TukuiInfoLeft, "TOPLEFT", 0, 6)
+			frame:Point("TOPLEFT", TukuiTabsLeft, "BOTTOMLEFT", 0, -4)
+			frame:Point("BOTTOMRIGHT", TukuiInfoLeft, "TOPRIGHT", 0, 4)
 		elseif i == 4 and chatName == LOOT then
 			frame:ClearAllPoints()
-			frame:Point("BOTTOMRIGHT", TukuiInfoRight, "TOPRIGHT", 0, 6)
+			frame:Point("TOPLEFT", TukuiTabsRight, "BOTTOMLEFT", 0, -4)
+			frame:Point("BOTTOMRIGHT", TukuiInfoRight, "TOPRIGHT", 0, 4)
 		end
 
 		-- save new default position and dimension
