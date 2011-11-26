@@ -133,6 +133,16 @@ local function StyleChat(frame)
 	end)
 	
 	if _G[chat] ~= _G["ChatFrame2"] then
+		-- justify text on loot frame to the right
+		if _G[chat] == _G["ChatFrame4"] and not _G[chat].isDocked then
+			local name = _G[chat.."TabText"]:GetText()
+			if name == LOOT and C.chat.justifyRight then
+				frame:SetJustifyH("RIGHT")
+			else
+				frame:SetJustifyH("LEFT")
+			end
+		end
+	
 		origs[_G[chat]] = _G[chat].AddMessage
 		_G[chat].AddMessage = AddMessage
 	else
@@ -171,38 +181,6 @@ local function SetupChat(self)
 	ChatTypeInfo.CHANNEL.sticky = 1
 end
 
-local function ChatPosition(self)
-	for i = 1, NUM_CHAT_WINDOWS do
-		local chat = _G[format("ChatFrame%s", i)]
-		
-		if i == 1 then
-			chat:ClearAllPoints()
-			chat:Point("TOPLEFT", TukuiTabsLeft, "BOTTOMLEFT", 0, -4)
-			chat:Point("BOTTOMRIGHT", TukuiInfoLeft, "TOPRIGHT", 0, 4)
-		elseif i == 4 then
-			if C["chat"].rightchat == true then
-				if not chat.isDocked then
-					chat:ClearAllPoints()
-					chat:Point("TOPLEFT", TukuiTabsRight, "BOTTOMLEFT", 0, -4)
-					chat:Point("BOTTOMRIGHT", TukuiInfoRight, "TOPRIGHT", 0, 4)
-				else
-					FCF_UnDockFrame(chat)
-					FCF_SetTabPosition(chat, 0)
-					
-					chat:ClearAllPoints()
-					chat:Point("TOPLEFT", TukuiTabsRight, "BOTTOMLEFT", 0, -4)
-					chat:Point("BOTTOMRIGHT", TukuiInfoRight, "TOPRIGHT", 0, 4)
-				end
-			else
-				FCF_DockFrame(chat)
-			end
-		end
-		FCF_SavePositionAndDimensions(chat)
-	end
-end
-hooksecurefunc("FCF_DockFrame", ChatPosition)
-hooksecurefunc("FCF_UnDockFrame", ChatPosition)
-
 local function ToastFramePosition(self)
 	BNToastFrame:HookScript("OnShow", function(self)
 		self:ClearAllPoints()
@@ -223,10 +201,7 @@ TukuiChat:SetScript("OnEvent", function(self, event, addon)
 			SetupChat(self)
 		end
 	elseif event == "PLAYER_ENTERING_WORLD" then
-		ChatPosition(self)
 		ToastFramePosition(self)
-	elseif event == "UPDATE_CHAT_WINDOWS" then
-		ChatPosition(self)
 	end
 end)
 
