@@ -22,7 +22,7 @@ AltPowerBarStatus:SetMinMaxValues(0, 100)
 AltPowerBarStatus:Point("TOPLEFT", AltPowerBar, "TOPLEFT", 2, -2)
 AltPowerBarStatus:Point("BOTTOMRIGHT", AltPowerBar, "BOTTOMRIGHT", -2, 2)
 
-local AltPowerText = AltPowerBarStatus:CreateFontString(nil, "OVERLAY")
+local AltPowerText = AltPowerBarStatus:CreateFontString("TukuiAltPowerBarText", "OVERLAY")
 AltPowerText:SetFont(unpack(T.Fonts.altPowerBar.setfont))
 AltPowerText:Point(unpack(T.Fonts.altPowerBar.setoffsets))
 AltPowerText:SetShadowColor(0, 0, 0)
