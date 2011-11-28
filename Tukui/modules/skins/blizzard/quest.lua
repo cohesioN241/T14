@@ -19,6 +19,9 @@ local function LoadSkin()
 	T.SkinButton(QuestFrameGoodbyeButton, true)
 	T.SkinButton(QuestFrameCompleteQuestButton, true)
 	T.SkinCloseButton(QuestFrameCloseButton, QuestFrame.backdrop)
+	T.SkinScrollBar(QuestLogScrollFrameScrollBar)
+	T.SkinScrollBar(QuestDetailScrollFrameScrollBar)
+	T.SkinScrollBar(QuestRewardScrollFrameScrollBar)
 
 	for i=1, 6 do
 		local button = _G["QuestProgressItem"..i]
@@ -41,7 +44,10 @@ local function LoadSkin()
 		QuestProgressRequiredItemsText:SetTextColor(1, 1, 0)
 		QuestProgressRequiredMoneyText:SetTextColor(1, 1, 0)
 	end)
-
+	
+	T.SkinScrollBar(QuestNPCModelTextScrollFrameScrollBar)
+	T.SkinScrollBar(QuestGreetingScrollFrameScrollBar)
+	T.SkinScrollBar(QuestProgressScrollFrame)
 	QuestNPCModel:StripTextures()
 	QuestNPCModel:CreateBackdrop("Default")
 	QuestNPCModel:Point("TOPLEFT", QuestLogDetailFrame, "TOPRIGHT", 4, -34)

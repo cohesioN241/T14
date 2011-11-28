@@ -170,9 +170,9 @@ local function LoadSkin()
 	}
 
 	for i = 1, getn(BlizzardButtons) do
-		local ElvuiButtons = _G[BlizzardButtons[i]]
-		if ElvuiButtons then
-			T.SkinButton(ElvuiButtons)
+		local Buttons = _G[BlizzardButtons[i]]
+		if Buttons then
+			T.SkinButton(Buttons)
 		end
 	end
 

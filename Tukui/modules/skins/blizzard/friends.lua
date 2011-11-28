@@ -157,7 +157,7 @@ local function LoadSkin()
 	T.SkinCloseButton(FriendsFrameCloseButton,FriendsFrame.backdrop)
 	if T.toc >= 40300 then
 		FriendsFrameCloseButton:ClearAllPoints()
-		FriendsFrameCloseButton:SetPoint("TOPRIGHT", 0, 0)
+		FriendsFrameCloseButton:SetPoint("TOPRIGHT", 0, 0)	
 	end
 	T.SkinDropDownBox(WhoFrameDropDown,150)
 	T.SkinDropDownBox(FriendsFrameStatusDropDown,70)
@@ -195,7 +195,7 @@ local function LoadSkin()
 				button:StripTextures()
 				button:SetHighlightTexture("Interface\\PaperDollInfoFrame\\UI-Character-Tab-Highlight")
 				
-				_G["ChannelButton"..i.."Text"]:SetFont(C.media.font, 12)
+				_G["ChannelButton"..i.."Text"]:SetFont(C.media.caith, 12)
 			end
 		end
 	end
