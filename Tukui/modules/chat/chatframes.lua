@@ -238,6 +238,9 @@ TukuiChat:SetScript("OnEvent", function(self, event, addon)
 	end
 end)
 
+-- kill the default reset button
+ChatConfigFrameDefaultButton:Kill()
+
 -- Setup temp chat (BN, WHISPER) when needed.
 local function SetupTempChat(id)
 	local frame = FCF_GetCurrentChatFrame()
