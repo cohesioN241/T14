@@ -181,6 +181,38 @@ local function SetupChat(self)
 	ChatTypeInfo.CHANNEL.sticky = 1
 end
 
+-- default chat position of left and right (1 & 4) windows
+T.SetDefaultChatPositions = function()
+	for i = 1, NUM_CHAT_WINDOWS do
+		local frame = _G[format("ChatFrame%s", i)]
+		local chatFrameId = frame:GetID()
+		local chatName = FCF_GetChatWindowInfo(chatFrameId)
+
+		-- set the size of chat frames
+		frame:Size(T.InfoLeftRightWidth + 1, 111)
+
+		-- tell wow that we are using new size
+		SetChatWindowSavedDimensions(chatFrameId, T.Scale(T.InfoLeftRightWidth + 1), T.Scale(111))
+
+		-- move general bottom left or Loot (if found) on right
+		if i == 1 then
+			frame:ClearAllPoints()
+			frame:Point("TOPLEFT", TukuiTabsLeft, "BOTTOMLEFT", 0, -4)
+			frame:Point("BOTTOMRIGHT", TukuiInfoLeft, "TOPRIGHT", 0, 4)
+		elseif i == 4 and chatName == LOOT then
+			frame:ClearAllPoints()
+			frame:Point("TOPLEFT", TukuiTabsRight, "BOTTOMLEFT", 0, -4)
+			frame:Point("BOTTOMRIGHT", TukuiInfoRight, "TOPRIGHT", 0, 4)
+		end
+
+		-- save new default position and dimension
+		FCF_SavePositionAndDimensions(frame)
+
+		-- lock them if unlocked
+		if not frame.isLocked then FCF_SetLocked(frame, 1) end
+	end
+end
+
 local function ToastFramePosition(self)
 	BNToastFrame:HookScript("OnShow", function(self)
 		self:ClearAllPoints()
@@ -201,6 +233,7 @@ TukuiChat:SetScript("OnEvent", function(self, event, addon)
 			SetupChat(self)
 		end
 	elseif event == "PLAYER_ENTERING_WORLD" then
+		T.SetDefaultChatPositions()
 		ToastFramePosition(self)
 	end
 end)
