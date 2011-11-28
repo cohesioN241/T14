@@ -33,10 +33,12 @@ local function chatsetup()
 		-- move general bottom left or Loot (if found) on right
 		if i == 1 then
 			frame:ClearAllPoints()
-			frame:Point("BOTTOMLEFT", TukuiInfoLeft, "TOPLEFT", 0, 6)
+			frame:Point("TOPLEFT", TukuiTabsLeft, "BOTTOMLEFT", 0, -4)
+			frame:Point("BOTTOMRIGHT", TukuiInfoLeft, "TOPRIGHT", 0, 4)
 		elseif i == 4 and chatName == LOOT then
 			frame:ClearAllPoints()
-			frame:Point("BOTTOMRIGHT", TukuiInfoRight, "TOPRIGHT", 0, 6)
+			frame:Point("TOPLEFT", TukuiTabsRight, "BOTTOMLEFT", 0, -4)
+			frame:Point("BOTTOMRIGHT", TukuiInfoRight, "TOPRIGHT", 0, 4)
 		end
 
 		-- save new default position and dimension
@@ -258,6 +260,16 @@ end)
 
 local step4 = function()
 	TukuiDataPerChar.install = true
+	
+	-- we can reset this shit here :)
+	TukuiSaved = {} -- make sure we clear the table first, don't want any unnecessary values
+	TukuiSaved = {
+		["bottomrows"] = 1,
+		["rightbars"] = 1,
+		["splitbars"] = false,
+		["actionbarsLocked"] = false,
+	}
+	
 	sb:SetValue(4)
 	PlaySoundFile("Sound\\interface\\LevelUp.wav")
 	header:SetText(L.install_header_11)
