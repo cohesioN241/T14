@@ -230,6 +230,10 @@ if T.client == "koKR" then
 	L.move_roll = "주사위 창 이동"
 	L.move_vehicle = "탈것 창 이동"
 	L.move_extrabutton = "추가 버튼"
+	L.move_durability = "Move Durability"
+
+	L.actionbars_locked = "Actionbars |cffe45050Locked|r"
+	L.actionbars_unlocked = "Actionbars |cff50e468Unlocked|r"
 	
 	-- tuto/install
 	L.install_header_1 = "환영합니다"

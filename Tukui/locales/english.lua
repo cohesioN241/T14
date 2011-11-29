@@ -223,6 +223,10 @@ L.move_achievements = "Move Achievements"
 L.move_roll = "Move Loot Roll Frame"
 L.move_vehicle = "Move Vehicle Seat"
 L.move_extrabutton = "Extra Button"
+L.move_durability = "Move Durability"
+
+L.actionbars_locked = "Actionbars |cffe45050Locked|r"
+L.actionbars_unlocked = "Actionbars |cff50e468Unlocked|r"
 
 -------------------------------------------------
 -- INSTALLATION

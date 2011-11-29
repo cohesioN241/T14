@@ -223,6 +223,10 @@ if T.client == "ruRU" then
 	L.move_roll = "Передвинуть окно розыгрыша добычи"
 	L.move_vehicle = "Передвинуть фрейм транспорта"
 	L.move_extrabutton = "Передвинуть доп. кнопку"
+	L.move_durability = "Move Durability"
+
+	L.actionbars_locked = "Actionbars |cffe45050Locked|r"
+	L.actionbars_unlocked = "Actionbars |cff50e468Unlocked|r"
 	
 	-- tuto/install
 	L.install_header_1 = "Добро пожаловать!"

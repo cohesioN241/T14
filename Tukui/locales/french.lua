@@ -224,6 +224,10 @@ if T.client == "frFR" then
 	L.move_roll = "Bouger la fenêtre d'attribution du butin"
 	L.move_vehicle = "Bouger le schéma du véhicule"
 	L.move_extrabutton = "Extra Button"
+	L.move_durability = "Move Durability"
+
+	L.actionbars_locked = "Actionbars |cffe45050Locked|r"
+	L.actionbars_unlocked = "Actionbars |cff50e468Unlocked|r"
 	
 	-- tuto/install
 	L.install_header_1 = "Bienvenue"
