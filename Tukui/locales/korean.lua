@@ -1,7 +1,6 @@
 local T, C, L = unpack(select(2, ...))
 
 if T.client == "koKR" then
- 
 	L.chat_BATTLEGROUND_GET = "[B]"
 	L.chat_BATTLEGROUND_LEADER_GET = "[B]"
 	L.chat_BN_WHISPER_GET = "[FR]"
@@ -26,9 +25,9 @@ if T.client == "koKR" then
 	L.chat_recrutment = "길드모집"
 	L.chat_lfg = "파티찾기"
  
-	L.disband = "공격대를 해체합니다."
- 
-	L.datatext_notalents ="No Talents"
+	L.disband = "공격대를 해체합니까?"
+
+	L.datatext_notalents ="특성 없음"
 	L.datatext_download = "다운로드: "
 	L.datatext_bandwidth = "대역폭: "
 	L.datatext_guild = "길드"
@@ -70,10 +69,10 @@ if T.client == "koKR" then
 	L.datatext_servertime = "서버 시간: "
 	L.datatext_localtime = "지역 시간: "
 	L.datatext_mitigation = "레벨에 따른 경감수준: "
-	L.datatext_healing = "치유량: "
-	L.datatext_damage = "피해량: "
-	L.datatext_honor = "명예 점수: "
-	L.datatext_killingblows = "결정타: "
+	L.datatext_healing = "치유량 : "
+	L.datatext_damage = "피해량 : "
+	L.datatext_honor = "명예 점수 : "
+	L.datatext_killingblows = "결정타 : "
 	L.datatext_ttstatsfor = "점수 : "
 	L.datatext_ttkillingblows = "결정타:"
 	L.datatext_tthonorkills = "명예 승수:"
@@ -123,7 +122,7 @@ if T.client == "koKR" then
 	L.popup_install_no = "아니오"
 	L.popup_reset_yes = "예"
 	L.popup_reset_no = "아니오"
-	L.popup_fix_ab = "There is something wrong with your action bar. Do you want to reloadui to fix it?"
+	L.popup_fix_ab = "귀하의 행동단축바에 문제가 있습니다. reloadui를 하여 문제를 해결하시겠습니까?"
  
 	L.merchant_repairnomoney = "수리에 필요한 돈이 충분하지 않습니다!"
 	L.merchant_repaircost = "모든 아이템이 수리되었습니다: "
@@ -152,7 +151,7 @@ if T.client == "koKR" then
  
 	L.tooltip_count = "개수"
  
-	L.bags_noslots = "소지품이 가득 찼습니다."
+	L.bags_noslots = "더이상 가방보관함을 구입할 수 없습니다."
 	L.bags_costs = "가격: %.2f 골"
 	L.bags_buyslots = "가방 보관함을 추가로 구입하시려면 /bags를 입력해주세요."
 	L.bags_openbank = "먼저 은행을 열어야 합니다."
@@ -170,10 +169,10 @@ if T.client == "koKR" then
 	L.bags_bids = "사용 중인 가방: "
 	L.bags_stackend = "재정리 완료."
 	L.bags_rightclick_search = "검색하려면 오른쪽 클릭"
- 
-	L.loot_fish = "Fishy loot"
-	L.loot_empty = "Empty slot"
 	
+	L.loot_fish = "전리품"
+	L.loot_empty = "빈 슬롯"
+ 
 	L.chat_invalidtarget = "잘못된 대상"
  
 	L.mount_wintergrasp = "겨울손아귀"
@@ -230,11 +229,7 @@ if T.client == "koKR" then
 	L.move_achievements = "업적창 이동"
 	L.move_roll = "주사위 창 이동"
 	L.move_vehicle = "탈것 창 이동"
-	L.move_durability = "Move Durability"
-	L.move_extrabutton = "Extra Button"
-	
-	L.actionbars_locked = "Actionbars |cffe45050Locked|r"
-	L.actionbars_unlocked = "Actionbars |cff50e468Unlocked|r"
+	L.move_extrabutton = "추가 버튼"
 	
 	-- tuto/install
 	L.install_header_1 = "환영합니다"

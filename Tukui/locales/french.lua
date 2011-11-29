@@ -1,7 +1,6 @@
 local T, C, L = unpack(select(2, ...))
 
 if T.client == "frFR" then
-
 	L.chat_BATTLEGROUND_GET = "[BG]"
 	L.chat_BATTLEGROUND_LEADER_GET = "[BG]"
 	L.chat_BN_WHISPER_GET = "De"
@@ -26,9 +25,9 @@ if T.client == "frFR" then
 	L.chat_recrutment = "RecrutementDeGuilde"
 	L.chat_lfg = "RechercheDeGroupe"
 
-	L.disband = "Dissoudre le groupe"
+	L.disband = "Dissoudre le groupe ?"
 
-	L.datatext_notalents ="No Talents"
+	L.datatext_notalents ="Aucun talents"
 	L.datatext_download = "Téléchargement : "
 	L.datatext_bandwidth = "Bande passante : "
 	L.datatext_guild = "Guilde"
@@ -70,10 +69,10 @@ if T.client == "frFR" then
 	L.datatext_servertime = "Heure Serveur : "
 	L.datatext_localtime = "Heure Locale : "
 	L.datatext_mitigation = "Mitigation par Level : "
-	L.datatext_healing = "Soins: "
-	L.datatext_damage = "Dégâts: "
-	L.datatext_honor = "Honneur: "
-	L.datatext_killingblows = "Coups fatals: "
+	L.datatext_healing = "Soins : "
+	L.datatext_damage = "Dégâts : "
+	L.datatext_honor = "Honneur : "
+	L.datatext_killingblows = "Coups fatals : "
 	L.datatext_ttstatsfor = "Statistiques pour "
 	L.datatext_ttkillingblows = "Coups fatals : "
 	L.datatext_tthonorkills = "Victoires honorables : "
@@ -112,11 +111,11 @@ if T.client == "frFR" then
 	L.popup_install = "Première fois sur Tukui V13 avec ce personnage. Vous devez recharger l'interface utilisateur afin de configurer les barres d'action, les variables et les cadres de Chat."
 	L.popup_2raidactive = "2 modèles de raid sont activés, merci d'en choisir un."
 	L.popup_reset = "Attention ! Vous allez charger les paramètres par défaut de Tukui. Voulez-vous poursuivre ?"
-	L.popup_install_yes = "Yeah! (recommended!)"
-	L.popup_install_no = "No, it sux so hard"
-	L.popup_reset_yes = "Yeah baby!"
-	L.popup_reset_no = "No, else I'll QQ forums!"
-	L.popup_fix_ab = "There is something wrong with your action bar. Do you want to reloadui to fix it?"
+	L.popup_install_yes = "Ouais! (recommandé!)"
+	L.popup_install_no = "Non, ça craint trop!"
+	L.popup_reset_yes = "Ouais bébé!"
+	L.popup_reset_no = "Non, ou j'irai pleurer sur les forums!"
+	L.popup_fix_ab = "Quelque chose ne va pas avec vos barres d'action. Voulez-vous recharger l'interface pour les réparer?"
 
 	L.merchant_repairnomoney = "Vous n'avez pas assez d'argent pour réparer !"
 	L.merchant_repaircost = "Tous les objets ont été réparés pour"
@@ -164,10 +163,10 @@ if T.client == "frFR" then
 	L.bags_bids = "Emplacements utilisés : "
 	L.bags_stackend = "Empilage terminé."
 	L.bags_rightclick_search = "Clic-droit pour rechercher."
-
+	
 	L.loot_fish = "Poisson!"
 	L.loot_empty = "Emplacement vide"
-	
+
 	L.chat_invalidtarget = "Cible non valide"
 
 	L.mount_wintergrasp = "Joug-d'hiver"
@@ -224,11 +223,7 @@ if T.client == "frFR" then
 	L.move_achievements = "Bouger la fenêtre des Hauts-Faits"
 	L.move_roll = "Bouger la fenêtre d'attribution du butin"
 	L.move_vehicle = "Bouger le schéma du véhicule"
-	L.move_durability = "Move Durability"
 	L.move_extrabutton = "Extra Button"
-	
-	L.actionbars_locked = "Actionbars |cffe45050Locked|r"
-	L.actionbars_unlocked = "Actionbars |cff50e468Unlocked|r"
 	
 	-- tuto/install
 	L.install_header_1 = "Bienvenue"
@@ -260,7 +255,7 @@ if T.client == "frFR" then
 
 	L.tutorial_step_3_line_1 = "Tukui est une interface refaite de Blizzard. Ni plus, ni moins. A peu près toutes les caractéristiques que vous pouvez voir sur l'interface de base sont disponibles par Tukui. Les seules caractéristiques non disponible sur l'interface par défaut sont quelques caractéristiques automatiques non réellement visibles à l'écran, par exemple vente auto des objets gris chez un marchand ou trier les objets dans les sacs."
 	L.tutorial_step_3_line_2 = "Parce que tout le monde n'apprécie pas des addons comme les DPS meters, Boss mods, gestion des menaces, etc, nous jugeons que c'est la meilleure chose à faire. Tukui est réalisé dans l'idée de s'adapter au maximum de classes, rôles, spécialisation, type de jeu, goûts des joueurs, etc. C'est pourquoi Tukui est l'une des interfaces les plus populaires du moment. Cela convient à tout style de jeu et est éditable à souhait. C'est aussi présenté afin d'être un bon départ pour celui qui veut faire sa propre interface personnalisée sans dépendre d'autres addons. Des tonnes d'utilisateurs depuis 2009 utilisent désormais Tukui comme une base pour leur propre interface. Allez faire un tour dans notre section 'Edited Packages' sur notre site !"
-	L.tutorial_step_3_line_3 = "Les utilisateurs peuvent visiter notre section 'extra mods' sur notre site ou en visiter WoWInterface."
+	L.tutorial_step_3_line_3 = "Les utilisateurs peuvent visiter notre section 'extra mods' sur notre site ou visiter WoWInterface."
 	L.tutorial_step_3_line_4 = ""
 
 	L.tutorial_step_4_line_1 = "Pour définir le nombre de barres que vous voulez, placez votre souris sur la gauche, droite ou le dessous du cadre de fond de la barre d'action. Faites la même chose sur la droite de l'écran, en haut ou en bas du cadre. Pour copier le texte de la fenêtre de dialogue, cliquez sur le bouton vu en passant la souris sur le coin droit de la fenêtre de discussion."

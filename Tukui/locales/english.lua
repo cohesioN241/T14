@@ -1,4 +1,5 @@
-local T, C, L = unpack(select(2, ...))
+-- localization for enUS and enGB
+local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
 
 L.chat_BATTLEGROUND_GET = "[BG]"
 L.chat_BATTLEGROUND_LEADER_GET = "[BG]"
@@ -24,7 +25,7 @@ L.chat_defense = "LocalDefense"
 L.chat_recrutment = "GuildRecruitment"
 L.chat_lfg = "LookingForGroup"
 
-L.disband = "Disbanding group."
+L.disband = "Disbanding group ?"
 
 L.datatext_notalents ="No Talents"
 L.datatext_download = "Download: "
@@ -221,11 +222,7 @@ L.move_shapeshift = "Move Shapeshift/Totem"
 L.move_achievements = "Move Achievements"
 L.move_roll = "Move Loot Roll Frame"
 L.move_vehicle = "Move Vehicle Seat"
-L.move_durability = "Move Durability"
 L.move_extrabutton = "Extra Button"
-
-L.actionbars_locked = "Actionbars |cffe45050Locked|r"
-L.actionbars_unlocked = "Actionbars |cff50e468Unlocked|r"
 
 -------------------------------------------------
 -- INSTALLATION

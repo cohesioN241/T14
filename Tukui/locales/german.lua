@@ -1,7 +1,6 @@
 local T, C, L = unpack(select(2, ...))
 
 if T.client == "deDE" then
-
 	L.chat_BATTLEGROUND_GET = "[B]"
 	L.chat_BATTLEGROUND_LEADER_GET = "[B]"
 	L.chat_BN_WHISPER_GET = "Von"
@@ -26,9 +25,9 @@ if T.client == "deDE" then
 	L.chat_recrutment = "Gildenrekrutierung"
 	L.chat_lfg = "SucheNachGruppe"
 	
-	L.disband = "Gruppe wird aufgelöst."  
- 
-	L.datatext_notalents ="No Talents"
+	L.disband = "Gruppe wird aufgelöst ?"  
+
+	L.datatext_notalents ="Keine Spezalisierung"  --changed
 	L.datatext_download = "Download: "
 	L.datatext_bandwidth = "Bandbreite: "
 	L.datatext_guild = "Gilde"
@@ -70,10 +69,10 @@ if T.client == "deDE" then
 	L.datatext_servertime = "Serverzeit: "
 	L.datatext_localtime = "Ortszeit: "
 	L.datatext_mitigation = "Schadensverringerung nach Level: " 
-	L.datatext_healing = "Heilung: "
-	L.datatext_damage = "Schaden: "
-	L.datatext_honor = "Ehre: "
-	L.datatext_killingblows = "Todesstöße: "
+	L.datatext_healing = "Heilung : "
+	L.datatext_damage = "Schaden : "
+	L.datatext_honor = "Ehre : "
+	L.datatext_killingblows = "Todesstöße : "
 	L.datatext_ttstatsfor = "Stats für "
 	L.datatext_ttkillingblows = "Todesstöße:"
 	L.datatext_tthonorkills = "Ehrenhafte Siege:"
@@ -116,7 +115,7 @@ if T.client == "deDE" then
 	L.popup_install_no = "Nein, das is echt großer Mist"
 	L.popup_reset_yes = "Yeah baby!"
 	L.popup_reset_no = "Nein!"
-	L.popup_fix_ab = "There is something wrong with your action bar. Do you want to reloadui to fix it?"
+	L.popup_fix_ab = "Etwas stimmt nicht mit der Aktionsleiste. Willst du UI neu laden um es zu beheben?"  --changed
  
 	L.merchant_repairnomoney = "Du hast nicht genügend Gold zum Reparieren!" 
 	L.merchant_repaircost = "Deine Rüstung wurde repariert für"
@@ -163,10 +162,10 @@ if T.client == "deDE" then
 	L.bags_bids = "Benutze Taschen: "
 	L.bags_stackend = "Neu stapeln abgeschlossen."  
 	L.bags_rightclick_search = "Rechtsklick, um zu suchen." 
- 
-	L.loot_fish = "Fishy loot"
-	L.loot_empty = "Empty slot"
 	
+	L.loot_fish = "Faule Beute" --changed
+	L.loot_empty = "Leerer slot" --changed
+ 
 	L.chat_invalidtarget = "Falsches Ziel"
  
 	L.mount_wintergrasp = "Tausendwinter"
@@ -223,11 +222,7 @@ if T.client == "deDE" then
 	L.move_achievements = "Erfolgsfenster bewegen"
 	L.move_roll = "Würfelfenster bewegen"
 	L.move_vehicle = "Fahrzeugausstieg bewegen"
-	L.move_durability = "Move Durability"
 	L.move_extrabutton = "Extra Button"
-	
-	L.actionbars_locked = "Actionbars |cffe45050Locked|r"
-	L.actionbars_unlocked = "Actionbars |cff50e468Unlocked|r"
 	
 	-- tuto/install
 	L.install_header_1 = "Willkommen"

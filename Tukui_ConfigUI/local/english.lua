@@ -9,7 +9,7 @@ TukuiConfigUILocalization.generaluiscale = "UI Scale (if auto-scale is disabled)
 TukuiConfigUILocalization.generalbackdropcolor = "Set default backdrop color of panels"
 TukuiConfigUILocalization.generalbordercolor = "Set default border color of panels"
 TukuiConfigUILocalization.generalblizzardreskin = "Reskin Blizzard frames to match Tukui"
-
+ 
 -- nameplate
 TukuiConfigUILocalization.nameplate = "Nameplates"
 TukuiConfigUILocalization.nameplates_enable = "Enable Nameplates"
@@ -19,17 +19,17 @@ TukuiConfigUILocalization.nameplatecombat = "Only show enemy nameplates in-comba
 TukuiConfigUILocalization.nameplategoodcolor = "Good threat color, varies depending if your a tank or dps/heal"
 TukuiConfigUILocalization.nameplatebadcolor = "Bad threat color, varies depending if your a tank or dps/heal"
 TukuiConfigUILocalization.nameplatetransitioncolor = "Losing/Gaining threat color"
-
+ 
 -- merchant
 TukuiConfigUILocalization.merchant = "Merchant"
 TukuiConfigUILocalization.merchantsellgrays = "Auto sell grey items"
 TukuiConfigUILocalization.merchantautorepair = "Auto Repair items"
 TukuiConfigUILocalization.merchantsellmisc = "Sell some defined (craps not grey) items automatically"
-
+ 
 -- bags
 TukuiConfigUILocalization.bags = "Bags"
 TukuiConfigUILocalization.bagsenable = "Enable all-in-one bag"
-
+ 
 -- datatext
 TukuiConfigUILocalization.datatext = "Data Text"
 TukuiConfigUILocalization.datatexttime24 = "Enable 24h time"
@@ -58,8 +58,12 @@ TukuiConfigUILocalization.datatexthit = "Hit position (0 for disabled)"
 TukuiConfigUILocalization.datatextmastery = "Mastery position (0 for disabled)"
 TukuiConfigUILocalization.datatexttalent = "Display talents (0 for disabled)"
 TukuiConfigUILocalization.datatextcalltoarms = "Call to Arms & Dungeons (0 for disabled)"
+TukuiConfigUILocalization.datatextregen = MANA_REGEN_ABBR
+TukuiConfigUILocalization.unitframesmovecombobar = "Move the combo bar from target (ROGUE ONLY)"
+TukuiConfigUILocalization.unitframesclassiccombo = "Use classic combo point"
+TukuiConfigUILocalization.unitframesgridvertical = "Display raid groups on Grid vertically"
 
-
+ 
 -- unit frames
 TukuiConfigUILocalization.unitframes = "Unit Frames"
 TukuiConfigUILocalization.unitframescombatfeedback = "Combat Feedback on player and target"
@@ -105,20 +109,17 @@ TukuiConfigUILocalization.unitframesweakenedsoulbar = "Enable Weakened Soul bar 
 TukuiConfigUILocalization.unitframesonlyselfdebuffs = "Display only our debuffs on target"
 TukuiConfigUILocalization.unitframesshowfocustarget = "Enable Focus target"
 TukuiConfigUILocalization.unitframesbordercolor = "Set default border color of panels"
-TukuiConfigUILocalization.unitframesmovecombobar = "Move the combo bar from target (ROGUE ONLY)"
-TukuiConfigUILocalization.unitframesclassiccombo = "Use classic combo point"
-TukuiConfigUILocalization.unitframesgridvertical = "Display raid groups on Grid vertically"
-
+ 
 -- loot
 TukuiConfigUILocalization.loot = "Loot"
 TukuiConfigUILocalization.lootlootframe = "Enable loot window"
 TukuiConfigUILocalization.lootautogreed = "Enable auto-greed for green item at max level"
 TukuiConfigUILocalization.lootrolllootframe = "Enable item roll window"
-
+ 
 -- invite
 TukuiConfigUILocalization.invite = "Invite"
 TukuiConfigUILocalization.inviteautoaccept = "Enable Auto-Invite (Friends and Guildmates)"
-
+ 
 -- tooltip
 TukuiConfigUILocalization.tooltip = "Tooltip"
 TukuiConfigUILocalization.tooltipenable = "Enable tooltip"
@@ -126,11 +127,11 @@ TukuiConfigUILocalization.tooltiphidecombat = "Hide tooltip in combat"
 TukuiConfigUILocalization.tooltiphidebuttons = "Hide tooltip on action bar buttons"
 TukuiConfigUILocalization.tooltiphideuf = "Hide tooltip on unit frames"
 TukuiConfigUILocalization.tooltipcursor = "Enable cursor tooltip"
-
+ 
 -- error
 TukuiConfigUILocalization.error = "Error Message"
 TukuiConfigUILocalization.errorenable = "Hide spamming error in the middle of your screen"
-
+ 
 -- action bar
 TukuiConfigUILocalization.actionbar = "Action Bars"
 TukuiConfigUILocalization.actionbarhideshapeshift = "Hide Shapeshift bar or Totem bar"
@@ -145,16 +146,16 @@ TukuiConfigUILocalization.actionbarbuttonsize = "Size of the main action buttons
 TukuiConfigUILocalization.actionbarbuttonspacing = "Spacing of the main action buttons"
 TukuiConfigUILocalization.actionbarpetbuttonsize = "Size of pet/shapeshift buttons"
 TukuiConfigUILocalization.actionbarownshdbar = "Use an empty bar for shadow dance (rogue) instead of stealth bar"
-
+ 
 -- arena
 TukuiConfigUILocalization.arena = "Arena"
 TukuiConfigUILocalization.arenaunitframes = "Enable arena unit frames"
-
+ 
 -- cooldowns
 TukuiConfigUILocalization.cooldown = "Cooldowns"
 TukuiConfigUILocalization.cooldownenable = "Enable cooldown number on buttons"
 TukuiConfigUILocalization.cooldowntreshold = "Turn cooldown number red at X value"
-
+ 
 -- chat
 TukuiConfigUILocalization.chat = "Chat"
 TukuiConfigUILocalization.chatenable = "Enable Tukui Chat"
