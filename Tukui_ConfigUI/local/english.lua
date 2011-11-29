@@ -12,7 +12,7 @@ TukuiConfigUILocalization.generalblizzardreskin = "Reskin Blizzard frames to mat
  
 -- nameplate
 TukuiConfigUILocalization.nameplate = "Nameplates"
-TukuiConfigUILocalization.nameplates_enable = "Enable Nameplates"
+TukuiConfigUILocalization.nameplateenable = "Enable Nameplates"
 TukuiConfigUILocalization.nameplateenhancethreat = "Enable threat feature, automatically changes by your role"
 TukuiConfigUILocalization.nameplateshowhealth = "Show health on nameplate"
 TukuiConfigUILocalization.nameplatecombat = "Only show enemy nameplates in-combat"

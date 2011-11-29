@@ -13,7 +13,7 @@
 	 
 	-- nameplate
 	TukuiConfigUILocalization.nameplate = "Индикаторы здоровья"
-	TukuiConfigUILocalization.nameplates_enable = "Включить индикаторы здоровья"
+	TukuiConfigUILocalization.nameplateenable = "Включить индикаторы здоровья"
 	TukuiConfigUILocalization.nameplateenhancethreat = "Автоматическая смена цвета угрозы (зависит от вашей роли)"
 	TukuiConfigUILocalization.nameplateshowhealth = "Цифровое значение здоровья"
 	TukuiConfigUILocalization.nameplatecombat = "Показывать индикаторы только во время боя"

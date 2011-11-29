@@ -13,7 +13,7 @@
 	 
 	-- nameplate
 	TukuiConfigUILocalization.nameplate = "Barres d'info"
-	TukuiConfigUILocalization.nameplates_enable = "Activer les barres d'info"
+	TukuiConfigUILocalization.nameplateenable = "Activer les barres d'info"
 	TukuiConfigUILocalization.nameplateenhancethreat = "Activer le système de menace, change automatiquement selon votre rôle"
 	TukuiConfigUILocalization.nameplateshowhealth = "Montrer la santé sur les barres d'info"
 	TukuiConfigUILocalization.nameplatecombat = "Afficher les barres d'infos des ennemis seulement en combat"

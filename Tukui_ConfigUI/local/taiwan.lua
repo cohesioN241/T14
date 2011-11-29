@@ -13,7 +13,7 @@
 	 
 	-- nameplate
 	TukuiConfigUILocalization.nameplate = "名條"
-	TukuiConfigUILocalization.nameplates_enable = "啟用名條模組"
+	TukuiConfigUILocalization.nameplateenable = "啟用名條模組"
 	TukuiConfigUILocalization.nameplateenhancethreat = "啟用仇恨上色模式, 依照你的角色定位決定"
 	TukuiConfigUILocalization.nameplateshowhealth = "在名條上顯示生命值"
 	TukuiConfigUILocalization.nameplatecombat = "只在戰鬥中顯示敵人名條"

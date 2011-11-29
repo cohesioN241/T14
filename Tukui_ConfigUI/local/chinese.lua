@@ -12,7 +12,7 @@ if GetLocale() == "zhCN" then
 	 
 	-- nameplate
 	TukuiConfigUILocalization.nameplate = "姓名板"
-	TukuiConfigUILocalization.nameplates_enable = "开启姓名版"
+	TukuiConfigUILocalization.nameplateenable = "开启姓名版"
 	TukuiConfigUILocalization.nameplateenhancethreat = "启用仇恨着色模式，将会根据你的角色自动改变颜色"
 	TukuiConfigUILocalization.nameplateshowhealth = "在姓名板上显示生命值"
 	TukuiConfigUILocalization.nameplatecombat = "仅在战斗中显示姓名板"

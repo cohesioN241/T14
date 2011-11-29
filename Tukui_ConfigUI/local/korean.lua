@@ -11,7 +11,7 @@
 	 
 	-- nameplate
 	TukuiConfigUILocalization.nameplate = "이름표"
-	TukuiConfigUILocalization.nameplates_enable = "이름표를 사용"
+	TukuiConfigUILocalization.nameplateenable = "이름표를 사용"
 	TukuiConfigUILocalization.nameplateenhancethreat = "위협수준 기능 사용, 당신의 역할에 따라 자동적으로 변경됨"
 	TukuiConfigUILocalization.nameplateshowhealth = "생명력을 표시"
 	TukuiConfigUILocalization.nameplatecombat = "전투 중에만 표시"

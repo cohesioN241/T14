@@ -13,7 +13,7 @@
 	 
 	-- nameplate
 	TukuiConfigUILocalization.nameplate = "Namensplaketten"
-	TukuiConfigUILocalization.nameplates_enable = "Aktiviere Namensplaketten"
+	TukuiConfigUILocalization.nameplateenable = "Aktiviere Namensplaketten"
 	TukuiConfigUILocalization.nameplateenhancethreat = "Aktiviere Bedrohungsanzeige, ändert sich automatisch nach Rolle"
 	TukuiConfigUILocalization.nameplateshowhealth = "Zeige Leben an Namensplaketten"
 	TukuiConfigUILocalization.nameplatecombat = "Zeige nur feindliche Namensplaketten im Kampf"
