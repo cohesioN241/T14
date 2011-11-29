@@ -25,10 +25,19 @@ if T.myname == "PutYourNameHere" then
 end
 
 if T.myname == "Aereos" then
-	C.datatext.classcolor = false
+	C.combo.display = true
 end
 
 if T.myname == "Fraiality" then
 	C.datatext.power = 0
 	C.datatext.avd = 4
+	C.combo.display = true
+end
+
+if T.myname == "Holybawls" then
+	C.combo.display = true
+end
+
+if T.myname == "Crottychopp" then
+	C.combo.display = true
 end

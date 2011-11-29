@@ -29,8 +29,8 @@ C["unitframes"] = {
 	["unitcastbar"] = true,                             -- enable tukui castbar
 	["cblatency"] = true,                              	-- enable castbar latency
 	["cbicons"] = true,                                 -- enable icons on castbar
-	["classiccombo"] = false,                           -- display classic combo points (from Tukui 13 or less)
-	["movecombobar"] = true,                            -- display the new combo bar (t14+) from target to player (ROGUE ONLY)
+	["classiccombo"] = true,                           -- display classic combo points (from Tukui 13 or less)
+	["movecombobar"] = false,                            -- display the new combo bar (t14+) from target to player (ROGUE ONLY)
 	["cbclasscolor"] = false,
 		-- if cbclasscolor == false then it uses this color
 		["cbcustomcolor"] = { .15, .15, .15 },
@@ -78,7 +78,6 @@ C["unitframes"] = {
 		-- Dps
 		["hidepower"] = false,							-- hide power bar in dps party/raid15 mode
 	
-
 	-- Extra Frames
 	["maintank"] = false,                               -- enable maintank
 	["mainassist"] = false,                             -- enable mainassist
@@ -166,9 +165,10 @@ C["datatext"] = {
 	["system"] = 0,                                     -- show total memory and others systems infos on panels
 	["wowtime"] = 0,                                    -- show time on panels
 	["regen"] = 0,										-- show mana regeneration
-	["location"] = true,								-- enable location panel
+
+	["location"] = false,								-- enable location panel
 		-- coordinates display only if location == true
-		["location_coords"] = true,						-- display location coordinates
+		["location_coords"] = false,						-- display location coordinates
 	["exprepbars"] = true,								-- enable experience and reputation bar
 		["expreptext"] = false,							-- enable text on experience and reputation bars
 
@@ -184,6 +184,7 @@ C["datatext"] = {
 	
 	["talent"] = 0,                                     -- show talent
 	["calltoarms"] = 0,                                 -- show dungeon and call to arms
+	["battleground"] = true,
 }
 
 C["chat"] = {
@@ -234,7 +235,7 @@ C["invite"] = {
 }
 
 C["combo"] = {											-- credit to Dajova
-	["display"] = true,									-- enable numeric combo display
+	["display"] = false,									-- enable numeric combo display
 	-- combo setup
 		["dknight"] = false,                   			-- enable death knight combo module (odd behaviour and not updating correctly, disabled until further notice)
 		["druid"] = false,                    			-- enable druid combo module (odd behaviour and not updating correctly, disabled until further notice)

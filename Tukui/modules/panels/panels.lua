@@ -73,3 +73,13 @@ if C["actionbar"].enable then
 		TukuiPetBar:Height((T.petbuttonsize + T.buttonspacing * 2) + 2)
 	end
 end
+
+--BATTLEGROUND STATS FRAME
+if C["datatext"].battleground then
+	local TukuiInfoLeftBattleGround = CreateFrame("Frame", "TukuiInfoLeftBattleGround", UIParent)
+	TukuiInfoLeftBattleGround:CreatePanel("Default", 1, 23, "BOTTOMLEFT", TukuiChatLeft, "BOTTOMLEFT", 5, 5)
+	TukuiInfoLeftBattleGround:Point("BOTTOMRIGHT", TukuiChatLeft, "BOTTOMRIGHT", -5, 5)
+	TukuiInfoLeftBattleGround:SetFrameStrata("LOW")
+	TukuiInfoLeftBattleGround:SetFrameLevel(TukuiInfoLeft:GetFrameLevel() + 1)
+	TukuiInfoLeftBattleGround:EnableMouse(true)
+end
