@@ -5,5 +5,5 @@
 	<Script file="skada.lua"/>
 	<Script file="tinydps.lua"/>
 	<Script file="dbm.lua"/>
-	<!--<Script file="dxe.lua"/>-->
+	<Script file="dxe.lua"/>
 </Ui>

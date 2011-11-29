@@ -133,16 +133,6 @@ local function StyleChat(frame)
 	end)
 	
 	if _G[chat] ~= _G["ChatFrame2"] then
-		-- justify text on loot frame to the right
-		if _G[chat] == _G["ChatFrame4"] and not _G[chat].isDocked then
-			local name = _G[chat.."TabText"]:GetText()
-			if name == LOOT and C.chat.justifyRight then
-				frame:SetJustifyH("RIGHT")
-			else
-				frame:SetJustifyH("LEFT")
-			end
-		end
-	
 		origs[_G[chat]] = _G[chat].AddMessage
 		_G[chat].AddMessage = AddMessage
 	else
@@ -182,7 +172,7 @@ local function SetupChat(self)
 end
 
 -- default chat position of left and right (1 & 4) windows
-T.SetDefaultChatPositions = function()
+T.SetDefaultChatPosition = function()
 	for i = 1, NUM_CHAT_WINDOWS do
 		local frame = _G[format("ChatFrame%s", i)]
 		local chatFrameId = frame:GetID()
@@ -215,33 +205,13 @@ T.SetDefaultChatPositions = function()
 	end
 end
 
-local function ToastFramePosition(self)
-	BNToastFrame:HookScript("OnShow", function(self)
-		self:ClearAllPoints()
-		self:Point("BOTTOMLEFT", TukuiChatLeft, "TOPLEFT", 0, 3)
-	end)
-end
-
--- reskin Toast Frame Close Button
-T.SkinCloseButton(BNToastFrameCloseButton)
-
 TukuiChat:RegisterEvent("ADDON_LOADED")
-TukuiChat:RegisterEvent("UPDATE_CHAT_WINDOWS")
-TukuiChat:RegisterEvent("PLAYER_ENTERING_WORLD")
 TukuiChat:SetScript("OnEvent", function(self, event, addon)
-	if event == "ADDON_LOADED" then
-		if addon == "Blizzard_CombatLog" then
-			self:UnregisterEvent("ADDON_LOADED")
-			SetupChat(self)
-		end
-	elseif event == "PLAYER_ENTERING_WORLD" then
-		T.SetDefaultChatPositions()
-		ToastFramePosition(self)
+	if addon == "Blizzard_CombatLog" then
+		self:UnregisterEvent("ADDON_LOADED")
+		SetupChat(self)
 	end
 end)
-
--- kill the default reset button
-ChatConfigFrameDefaultButton:Kill()
 
 -- Setup temp chat (BN, WHISPER) when needed.
 local function SetupTempChat(id)
@@ -253,3 +223,53 @@ local function SetupTempChat(id)
 	StyleChat(frame)
 end
 hooksecurefunc("FCF_OpenTemporaryWindow", SetupTempChat)
+
+-- reposition battle.net popup
+BNToastFrame:HookScript("OnShow", function(self)
+	self:ClearAllPoints()
+	self:Point("BOTTOMLEFT", TukuiChatLeft, "TOPLEFT", 0, 3)
+end)
+
+-- reskin Toast Frame Close Button
+T.SkinCloseButton(BNToastFrameCloseButton)
+
+-- kill the default reset button
+ChatConfigFrameDefaultButton:Kill()
+
+-- default position of chat #1 (left) and chat #4 (right)
+T.SetDefaultChatPosition = function(frame)
+	if frame then
+		local id = frame:GetID()
+		local name = FCF_GetChatWindowInfo(id)
+
+		-- set the size of chat frames
+		frame:Size(T.InfoLeftRightWidth + 1, 111)
+
+		-- tell wow that we are using new size
+		SetChatWindowSavedDimensions(id, T.Scale(T.InfoLeftRightWidth + 1), T.Scale(111))
+
+		if id == 1 then
+			frame:ClearAllPoints()
+			frame:Point("TOPLEFT", TukuiTabsLeft, "BOTTOMLEFT", 0, -4)
+			frame:Point("BOTTOMRIGHT", TukuiInfoLeft, "TOPRIGHT", 0, 4)
+		elseif id == 4 and name == LOOT then
+			if not frame.isDocked then
+				frame:ClearAllPoints()
+				frame:Point("TOPLEFT", TukuiTabsRight, "BOTTOMLEFT", 0, -4)
+				frame:Point("BOTTOMRIGHT", TukuiInfoRight, "TOPRIGHT", 0, 4)
+				if C.chat.justifyRight then
+					frame:SetJustifyH("RIGHT")
+				else
+					frame:SetJustifyH("LEFT")
+				end
+			end
+		end
+
+		-- save new default position and dimension
+		FCF_SavePositionAndDimensions(frame)
+
+		-- lock them if unlocked
+		if not frame.isLocked then FCF_SetLocked(frame, 1) end
+	end
+end
+hooksecurefunc("FCF_RestorePositionAndDimensions", T.SetDefaultChatPosition)

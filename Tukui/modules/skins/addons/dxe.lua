@@ -9,7 +9,7 @@ skin:SetScript("OnEvent", function(self, event, addon)
 
 	local DXE = DXE
 	local _G = getfenv(0)
-	local barSpacing = T.Scale(1, 1)
+	local barSpacing = T.Scale(2, 2)
 	local borderWidth = T.Scale(2, 2)
 	local buttonZoom = {.09,.91,.09,.91}
 
@@ -26,6 +26,8 @@ skin:SetScript("OnEvent", function(self, event, addon)
 		-- Right Icon
 		bar.righticon:SetTemplate("Default")
 		bar.righticon.border:Kill()
+		bar.righticon:ClearAllPoints()
+		bar.righticon:SetPoint("LEFT", bar, "RIGHT", 2, 0)
 		bar.righticon.t:SetTexCoord(unpack(buttonZoom))
 		bar.righticon.t:ClearAllPoints()
 		bar.righticon.t:SetPoint("TOPLEFT", borderWidth, -borderWidth)
@@ -35,6 +37,8 @@ skin:SetScript("OnEvent", function(self, event, addon)
 		-- Left Icon
 		bar.lefticon:SetTemplate("Default")
 		bar.lefticon.border:Kill()
+		bar.lefticon:ClearAllPoints()
+		bar.lefticon:SetPoint("RIGHT", bar, "LEFT", -2, 0)
 		bar.lefticon.t:SetTexCoord(unpack(buttonZoom))
 		bar.lefticon.t:ClearAllPoints()
 		bar.lefticon.t:SetPoint("TOPLEFT",borderWidth, -borderWidth)
@@ -79,7 +83,6 @@ skin:SetScript("OnEvent", function(self, event, addon)
 	-- Force some updates
 	DXE:LayoutHealthWatchers()
 	DXE.Alerts:RefreshBars()
-	--DXE.Pane.border:Kill()
 
 	--Force some default profile options
 	if not DXEDB then DXEDB = {} end
