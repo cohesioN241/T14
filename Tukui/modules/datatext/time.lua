@@ -108,12 +108,6 @@ local function Update(self, t)
 	
 	local Hr, Min, AmPm = CalculateTimeValues()
 	
-	if CalendarGetNumPendingInvites() > 0 then
-		Text:SetTextColor(1, 0, 0)
-	else
-		Text:SetTextColor(1, 1, 1)
-	end
-	
 	-- no update quick exit
 	if (Hr == curHr and Min == curMin and AmPm == curAmPm) then
 		int = 2
@@ -193,8 +187,6 @@ Stat:SetScript("OnEnter", function(self)
 end)
 
 Stat:SetScript("OnLeave", function() GameTooltip:Hide() end)
-Stat:RegisterEvent("CALENDAR_UPDATE_PENDING_INVITES")
-Stat:RegisterEvent("PLAYER_ENTERING_WORLD")
 Stat:SetScript("OnUpdate", Update)
 Stat:RegisterEvent("UPDATE_INSTANCE_INFO")
 Stat:SetScript("OnMouseDown", function(self, btn)
